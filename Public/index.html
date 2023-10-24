@@ -3,9 +3,516 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Web bán sách</title>
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      #menu-mobile ul {
+        list-style: none;
+      }
+    </style>
   </head>
+
   <body>
-    <h1>Hello word</h1>
+    <header>
+      <div class="superNav border-bottom py-2 bg-light">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 centerOnMobile">
+              <span
+                class="d-none d-lg-inline-block d-md-inline-block d-sm-inline-block d-xs-none me-3"
+                ><i class="fa-solid fa-envelope fa-xl"></i>
+                <strong>loi@gmail.com</strong></span
+              >
+              <span class="me-3"
+                ><i class="fa-solid fa-phone fa-xl"></i>
+                <strong>SDT:123123</strong></span
+              >
+            </div>
+            <div
+              class="col-lg-6 col-md-6 col-sm-12 col-xs-12 d-none d-lg-block d-md-block-d-sm-block d-xs-none text-end"
+            >
+              <span class="me-3"
+                ><a class="text-muted" href="#">Hỗ Trợ</a></span
+              >
+              <span class="me-3"
+                ><a class="text-muted" href="#">Chính Sách</a></span
+              >
+              <span class="me-3"
+                ><a class="text-muted" href="#">Dịch Vụ</a></span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <nav class="navbar navbar-expand-lg bg-white navbar-light p-3 shadow-sm">
+        <div class="container">
+          <div class="row" style="width: 100%">
+            <!-- Nav-PC-->
+
+            <!---->
+            <div
+              id="logo-shop"
+              class="d-flex align-items-center justify-content-center col-md-2"
+            >
+              <a class="navbar-brand m-0" href="#"
+                ><strong>NAME SHOP</strong></a
+              >
+            </div>
+            <!--/-->
+            <!---->
+
+            <div class="ms-auto col-md-6 d-none d-md-block">
+              <div class="input-group" style="width: 80%; margin-left: auto">
+                <span class="border-dark input-group-text bg-dark text-white"
+                  ><i class="fa-solid fa-magnifying-glass"></i
+                ></span>
+                <input
+                  type="text"
+                  class="form-control border-dark"
+                  style="color: #7a7a7a"
+                  placeholder="Tìm kiếm sản phẩm"
+                />
+                <button class="btn btn-dark text-white">
+                  <i class="fa-solid fa-magnifying-glass fa-xl"></i>
+                </button>
+              </div>
+            </div>
+            <!--/-->
+
+            <!---->
+            <div
+              class="navbar-nav col-md-3 justify-content-end d-md-flex d-none"
+              id="nav-category-1"
+            >
+              <!-- <div class="nav-item">
+                <a
+                  class="nav-link mx-2 text-uppercase"
+                  aria-current="page"
+                  href="#"
+                  >Sales</a
+                >
+              </div> -->
+              <div class="nav-item" id="nav-category-2">
+                <a class="nav-link text-uppercase" href="#">Sản phẩm</a>
+              </div>
+              <div class="nav-item">
+                <a class="nav-link text-uppercase" href="#">Danh mục</a>
+              </div>
+            </div>
+            <!--/-->
+
+            <!---->
+            <div class="navbar-nav ms-auto col-md-1 d-md-flex d-none">
+              <div class="nav-item">
+                <a class="nav-link mx-2 text-uppercase" href="#"
+                  ><i class="fa-sharp fa-solid fa-cart-shopping fa-xl tex"></i
+                ></a>
+              </div>
+              <div class="nav-item">
+                <a class="nav-link mx-2 text-uppercase" href="#"
+                  ><i class="fa-solid fa-user fa-xl"></i
+                ></a>
+              </div>
+            </div>
+            <!--/-->
+            <!--/Nav-PC-->
+
+            <!-- Menu-button Mobile-->
+            <div
+              class="d-md-none d-flex justify-content-between px-4 align-items-center"
+            >
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <button
+                    class="navbar-toggler px-2"
+                    style="border: none"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    href="#menu-mobile"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="#menu-mobile"
+                  >
+                    <span
+                      class="navbar-toggler-icon"
+                      style="color: #212529"
+                    ></span>
+                  </button>
+                </div>
+                <div>
+                  <button
+                    class="navbar-toggler px-2"
+                    style="border: none"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    href="#search-mobile"
+                    role="button"
+                    aria-expanded="false"
+                    aria-controls="search-mobile"
+                  >
+                    <i class="bx bx-search-alt-2"></i>
+                  </button>
+                </div>
+              </div>
+              <!-- Menu-button -->
+
+              <!-- cart Mobile-->
+              <div class="p-2">
+                <a class="nav-link text-uppercase" href="#"
+                  ><i class="fa-sharp fa-solid fa-cart-shopping fa-xl tex"></i
+                ></a>
+              </div>
+            </div>
+            <!-- Card Mobile-->
+          </div>
+        </div>
+      </nav>
+    </header>
+    <div class="collapse multi-collapse" id="menu-mobile">
+      <ul>
+        <li class="p-2"><a class="dropdown-item" href="#">Danh mục</a></li>
+        <li class="p-2"><a class="dropdown-item" href="#">Sản phẩm</a></li>
+        <li class="p-2"><a class="dropdown-item" href="#">Sales</a></li>
+        <li class="p-2"><a class="dropdown-item" href="#">Đăng nhập</a></li>
+      </ul>
+    </div>
+    <!-- Search Mobile-->
+    <div class="collapse multi-collapse px-4 py-3" id="search-mobile">
+      <div class="ms-auto">
+        <div class="input-group">
+          <span class="border-dark input-group-text bg-dark text-white"
+            ><i class="fa-solid fa-magnifying-glass"></i
+          ></span>
+          <input
+            type="text"
+            class="form-control border-dark"
+            style="color: #7a7a7a"
+            placeholder="Tìm kiếm sản phẩm"
+          />
+          <button class="btn btn-dark text-white">
+            <i class="fa-solid fa-magnifying-glass fa-xl"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    <!-- Search Mobile-->
+
+    <main>
+      <div class="container pt-3">
+        <div class="row p-4">
+          <div class="d-flex justify-content-center col-md-2 py-2">
+            <div class="border">
+              <img src="img/Sach1.jpg" class="card-img-top p-2" alt="product" />
+              <div class="card-body p-2">
+                <h5 class="card-title text-truncate">Ten Sach:...........</h5>
+                <h6>Tac Gia:.........</h6>
+                <p>Giá:190.000</p>
+                <a href="" class="btn btn-primary">add</a>
+              </div>
+              <div class="star p-2 pt-0">
+                <i class="bx bxs-star"></i><i class="bx bxs-star"></i
+                ><i class="bx bxs-star"></i><i class="bx bxs-star"></i
+                ><i class="bx bx-star"></i>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-center col-md-2 py-2">
+            <div class="border">
+              <img src="img/Sach1.jpg" class="card-img-top p-2" alt="product" />
+              <div class="card-body p-2">
+                <h5 class="card-title text-truncate">Ten Sach:...........</h5>
+                <h6>Tac Gia:.........</h6>
+                <p>Giá:190.000</p>
+                <a href="" class="btn btn-primary">add</a>
+              </div>
+              <div class="star p-2 pt-0">
+                <i class="bx bxs-star"></i><i class="bx bxs-star"></i
+                ><i class="bx bxs-star"></i><i class="bx bxs-star"></i
+                ><i class="bx bx-star"></i>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-center col-md-2 py-2">
+            <div class="border">
+              <img src="img/Sach1.jpg" class="card-img-top p-2" alt="product" />
+              <div class="card-body p-2">
+                <h5 class="card-title text-truncate">Ten Sach:...........</h5>
+                <h6>Tac Gia:.........</h6>
+                <p>Giá:190.000</p>
+                <a href="" class="btn btn-primary">add</a>
+              </div>
+              <div class="star p-2 pt-0">
+                <i class="bx bxs-star"></i><i class="bx bxs-star"></i
+                ><i class="bx bxs-star"></i><i class="bx bxs-star"></i
+                ><i class="bx bx-star"></i>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-center col-md-2 py-2">
+            <div class="border">
+              <img src="img/Sach1.jpg" class="card-img-top p-2" alt="product" />
+              <div class="card-body p-2">
+                <h5 class="card-title text-truncate">Ten Sach:...........</h5>
+                <h6>Tac Gia:.........</h6>
+                <p>Giá:190.000</p>
+                <a href="" class="btn btn-primary">add</a>
+              </div>
+              <div class="star p-2 pt-0">
+                <i class="bx bxs-star"></i><i class="bx bxs-star"></i
+                ><i class="bx bxs-star"></i><i class="bx bxs-star"></i
+                ><i class="bx bx-star"></i>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-center col-md-2 py-2">
+            <div class="border">
+              <img src="img/Sach1.jpg" class="card-img-top p-2" alt="product" />
+              <div class="card-body p-2">
+                <h5 class="card-title text-truncate">Ten Sach:...........</h5>
+                <h6>Tac Gia:.........</h6>
+                <p>Giá:190.000</p>
+                <a href="" class="btn btn-primary">add</a>
+              </div>
+              <div class="star p-2 pt-0">
+                <i class="bx bxs-star"></i><i class="bx bxs-star"></i
+                ><i class="bx bxs-star"></i><i class="bx bxs-star"></i
+                ><i class="bx bx-star"></i>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-center col-md-2 py-2">
+            <div class="border">
+              <img src="img/Sach1.jpg" class="card-img-top p-2" alt="product" />
+              <div class="card-body p-2">
+                <h5 class="card-title text-truncate">Ten Sach:...........</h5>
+                <h6>Tac Gia:.........</h6>
+                <p>Giá:190.000</p>
+                <a href="" class="btn btn-primary">add</a>
+              </div>
+              <div class="star p-2 pt-0">
+                <i class="bx bxs-star"></i><i class="bx bxs-star"></i
+                ><i class="bx bxs-star"></i><i class="bx bxs-star"></i
+                ><i class="bx bx-star"></i>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-center col-md-2 py-2">
+            <div class="border">
+              <img src="img/Sach1.jpg" class="card-img-top p-2" alt="product" />
+              <div class="card-body p-2">
+                <h5 class="card-title text-truncate">Ten Sach:...........</h5>
+                <h6>Tac Gia:.........</h6>
+                <p>Giá:190.000</p>
+                <a href="" class="btn btn-primary">add</a>
+              </div>
+              <div class="star p-2 pt-0">
+                <i class="bx bxs-star"></i><i class="bx bxs-star"></i
+                ><i class="bx bxs-star"></i><i class="bx bxs-star"></i
+                ><i class="bx bx-star"></i>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-center col-md-2 py-2">
+            <div class="border">
+              <img src="img/Sach1.jpg" class="card-img-top p-2" alt="product" />
+              <div class="card-body p-2">
+                <h5 class="card-title text-truncate">Ten Sach:...........</h5>
+                <h6>Tac Gia:.........</h6>
+                <p>Giá:190.000</p>
+                <a href="" class="btn btn-primary">add</a>
+              </div>
+              <div class="star p-2 pt-0">
+                <i class="bx bxs-star"></i><i class="bx bxs-star"></i
+                ><i class="bx bxs-star"></i><i class="bx bxs-star"></i
+                ><i class="bx bx-star"></i>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-center col-md-2 py-2">
+            <div class="border">
+              <img src="img/Sach1.jpg" class="card-img-top p-2" alt="product" />
+              <div class="card-body p-2">
+                <h5 class="card-title text-truncate">Ten Sach:...........</h5>
+                <h6>Tac Gia:.........</h6>
+                <p>Giá:190.000</p>
+                <a href="" class="btn btn-primary">add</a>
+              </div>
+              <div class="star p-2 pt-0">
+                <i class="bx bxs-star"></i><i class="bx bxs-star"></i
+                ><i class="bx bxs-star"></i><i class="bx bxs-star"></i
+                ><i class="bx bx-star"></i>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-center col-md-2 py-2">
+            <div class="border">
+              <img src="img/Sach1.jpg" class="card-img-top p-2" alt="product" />
+              <div class="card-body p-2">
+                <h5 class="card-title text-truncate">Ten Sach:...........</h5>
+                <h6>Tac Gia:.........</h6>
+                <p>Giá:190.000</p>
+                <a href="" class="btn btn-primary">add</a>
+              </div>
+              <div class="star p-2 pt-0">
+                <i class="bx bxs-star"></i><i class="bx bxs-star"></i
+                ><i class="bx bxs-star"></i><i class="bx bxs-star"></i
+                ><i class="bx bx-star"></i>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-center col-md-2 py-2">
+            <div class="border">
+              <img src="img/Sach1.jpg" class="card-img-top p-2" alt="product" />
+              <div class="card-body p-2">
+                <h5 class="card-title text-truncate">Ten Sach:...........</h5>
+                <h6>Tac Gia:.........</h6>
+                <p>Giá:190.000</p>
+                <a href="" class="btn btn-primary">add</a>
+              </div>
+              <div class="star p-2 pt-0">
+                <i class="bx bxs-star"></i><i class="bx bxs-star"></i
+                ><i class="bx bxs-star"></i><i class="bx bxs-star"></i
+                ><i class="bx bx-star"></i>
+              </div>
+            </div>
+          </div>
+          <div class="d-flex justify-content-center col-md-2 py-2">
+            <div class="border">
+              <img src="img/Sach1.jpg" class="card-img-top p-2" alt="product" />
+              <div class="card-body p-2">
+                <h5 class="card-title text-truncate">Ten Sach:...........</h5>
+                <h6>Tac Gia:.........</h6>
+                <p>Giá:190.000</p>
+                <a href="" class="btn btn-primary">add</a>
+              </div>
+              <div class="star p-2 pt-0">
+                <i class="bx bxs-star"></i><i class="bx bxs-star"></i
+                ><i class="bx bxs-star"></i><i class="bx bxs-star"></i
+                ><i class="bx bx-star"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="text-center text-lg-start bg-light text-muted">
+      <section
+        class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
+      >
+        <div class="me-5 d-none d-lg-block">
+          <span>Kết nối với chúng tôi trên mạng xã hội:</span>
+        </div>
+
+        <div>
+          <a href="" class="me-4 text-reset">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="" class="me-4 text-reset">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="" class="me-4 text-reset">
+            <i class="fab fa-google"></i>
+          </a>
+          <a href="" class="me-4 text-reset">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="" class="me-4 text-reset">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="" class="me-4 text-reset">
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+      </section>
+
+      <section class="">
+        <div class="container text-center text-md-start mt-5">
+          <div class="row mt-3">
+            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+              <h6 class="text-uppercase fw-bold mb-4">
+                <i class="fas fa-gem me-3"></i>Ten sshop
+              </h6>
+              <p>23123</p>
+            </div>
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+              <h6 class="text-uppercase fw-bold mb-4">Về Chúng Tôi</h6>
+              <p>
+                <a href="#!" class="text-reset">Giới Thiệu</a>
+              </p>
+              <p>
+                <a href="#!" class="text-reset">Điều Khoản</a>
+              </p>
+              <p>
+                <a href="#!" class="text-reset">Chính Sách Bảo Mật</a>
+              </p>
+              <p>
+                <a href="#!" class="text-reset">Chính Hãng</a>
+              </p>
+            </div>
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+              <h6 class="text-uppercase fw-bold mb-4">CSKH</h6>
+              <p>
+                <a href="#!" class="text-reset">Trung Tâm Trợ Giúp</a>
+              </p>
+              <p>
+                <a href="#!" class="text-reset">Hướng Dẫn Mua Hàng</a>
+              </p>
+              <p>
+                <a href="#!" class="text-reset">Vận Chuyển</a>
+              </p>
+              <p>
+                <a href="#!" class="text-reset">Thanh Toán</a>
+              </p>
+              <p>
+                <a href="#!" class="text-reset">Trả Hàng & Hoàn Tiền</a>
+              </p>
+              <p>
+                <a href="#!" class="text-reset">Bảo Hành</a>
+              </p>
+            </div>
+
+            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+              <!-- Links -->
+              <h6 class="text-uppercase fw-bold mb-4">Liên Hệ</h6>
+              <p><i class="fas fa-home me-3"></i> CTU, 3/2</p>
+              <p>
+                <i class="fas fa-envelope me-3"></i>
+                loi@gmail.com
+              </p>
+              <p><i class="fas fa-phone me-3"></i> 123123</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div
+        class="text-center p-4"
+        style="background-color: rgba(0, 0, 0, 0.05)"
+      >
+        © 2021 Copyright: NTL
+      </div>
+    </footer>
   </body>
 </html>

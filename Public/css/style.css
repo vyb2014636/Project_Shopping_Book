@@ -1,0 +1,31 @@
+/* Header */
+a {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.superNav {
+  font-size: 13px;
+}
+
+.form-control {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+@media screen and (max-width: 540px) {
+  .centerOnMobile {
+    text-align: center;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  /* #nav-category-1 {
+    display: none;
+  }
+  #nav-category-2 {
+    display: none;
+  } */
+}
+
+/*  */
