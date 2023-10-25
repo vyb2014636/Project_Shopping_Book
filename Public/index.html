@@ -35,10 +35,10 @@
 
   <body>
     <header>
-      <div class="superNav border-bottom py-2 bg-light">
+      <div class="superNav border-bottom p-3" style="background-color: #bacbd3">
         <div class="container">
           <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 centerOnMobile">
+            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
               <span
                 class="d-none d-lg-inline-block d-md-inline-block d-sm-inline-block d-xs-none me-3"
                 ><i class="fa-solid fa-envelope fa-xl"></i>
@@ -53,67 +53,65 @@
               class="col-lg-6 col-md-6 col-sm-12 col-xs-12 d-none d-lg-block d-md-block-d-sm-block d-xs-none text-end"
             >
               <span class="me-3"
-                ><a class="text-muted" href="#">Hỗ Trợ</a></span
+                ><a class="text-muted text-decoration-none" href="#"
+                  >Hỗ Trợ</a
+                ></span
               >
               <span class="me-3"
-                ><a class="text-muted" href="#">Chính Sách</a></span
+                ><a class="text-muted text-decoration-none" href="#"
+                  >Chính Sách</a
+                ></span
               >
               <span class="me-3"
-                ><a class="text-muted" href="#">Dịch Vụ</a></span
+                ><a class="text-muted text-decoration-none" href="#"
+                  >Dịch Vụ</a
+                ></span
               >
             </div>
           </div>
         </div>
       </div>
 
-      <nav class="navbar navbar-expand-lg bg-white navbar-light p-3 shadow-sm">
-        <div class="container">
-          <div class="row" style="width: 100%">
+      <nav
+        class="navbar navbar-expand-lg bg-white navbar-light py-3 px-2 shadow-sm"
+      >
+        <div class="container px-0">
+          <div class="row" style="width: 100%; padding-left: 12px">
             <!-- Nav-PC-->
 
             <!---->
             <div
               id="logo-shop"
-              class="d-flex align-items-center justify-content-center col-md-2"
+              class="d-flex align-items-center col-md-2 justify-content-md-start justify-content-center"
             >
-              <a class="navbar-brand m-0" href="#"
-                ><strong>NAME SHOP</strong></a
+              <a class="navbar-brand m-0 text-center" href="#"
+                ><strong>NAME SHOP </strong></a
               >
-            </div>
-            <!--/-->
-            <!---->
-
-            <div class="ms-auto col-md-6 d-none d-md-block">
-              <div class="input-group" style="width: 80%; margin-left: auto">
-                <span class="border-dark input-group-text bg-dark text-white"
-                  ><i class="fa-solid fa-magnifying-glass"></i
-                ></span>
-                <input
-                  type="text"
-                  class="form-control border-dark"
-                  style="color: #7a7a7a"
-                  placeholder="Tìm kiếm sản phẩm"
-                />
-                <button class="btn btn-dark text-white">
-                  <i class="fa-solid fa-magnifying-glass fa-xl"></i>
-                </button>
-              </div>
             </div>
             <!--/-->
 
             <!---->
             <div
-              class="navbar-nav col-md-3 justify-content-end d-md-flex d-none"
+              class="navbar-nav col-md-8 d-md-flex d-none align-items-center justify-content-center p-0"
               id="nav-category-1"
             >
-              <!-- <div class="nav-item">
+              <div class="nav-item">
                 <a
                   class="nav-link mx-2 text-uppercase"
                   aria-current="page"
                   href="#"
-                  >Sales</a
+                  >Trang chủ</a
                 >
-              </div> -->
+              </div>
+              <div class="nav-item">
+                <a
+                  class="nav-link mx-2 text-uppercase"
+                  aria-current="page"
+                  href="#"
+                  >Tin tức</a
+                >
+              </div>
+
               <div class="nav-item" id="nav-category-2">
                 <a class="nav-link text-uppercase" href="#">Sản phẩm</a>
               </div>
@@ -124,30 +122,45 @@
             <!--/-->
 
             <!---->
-            <div class="navbar-nav ms-auto col-md-1 d-md-flex d-none">
+            <div
+              class="navbar-nav col-md-2 d-md-flex d-none align-items-center justify-content-end p-0"
+            >
+              <div class="nav-item">
+                <button
+                  class="nav-link mx-2 text-uppercase btn"
+                  type="button"
+                  data-bs-toggle="collapse"
+                  data-bs-target="#search-pc"
+                  aria-expanded="false"
+                  aria-controls="search-pc"
+                >
+                  <i class="fa-sharp fa-solid fa-magnifying-glass fa-xl"></i>
+                </button>
+              </div>
               <div class="nav-item">
                 <a class="nav-link mx-2 text-uppercase" href="#"
                   ><i class="fa-sharp fa-solid fa-cart-shopping fa-xl tex"></i
                 ></a>
               </div>
               <div class="nav-item">
-                <a class="nav-link mx-2 text-uppercase" href="#"
+                <a class="nav-link ms-2 text-uppercase" href="#"
                   ><i class="fa-solid fa-user fa-xl"></i
                 ></a>
               </div>
             </div>
             <!--/-->
-            <!--/Nav-PC-->
 
-            <!-- Menu-button Mobile-->
+            <!--/Nav PC-->
+
+            <!-- Nav Mobile-->
             <div
               class="d-md-none d-flex justify-content-between px-4 align-items-center"
             >
+              <!-- Menu mobile -->
               <div class="d-flex justify-content-between align-items-center">
                 <div>
                   <button
-                    class="navbar-toggler px-2"
-                    style="border: none"
+                    class="navbar-toggler p-2 border-0"
                     type="button"
                     data-bs-toggle="collapse"
                     href="#menu-mobile"
@@ -155,56 +168,39 @@
                     aria-expanded="false"
                     aria-controls="#menu-mobile"
                   >
-                    <span
-                      class="navbar-toggler-icon"
-                      style="color: #212529"
-                    ></span>
-                  </button>
-                </div>
-                <div>
-                  <button
-                    class="navbar-toggler px-2"
-                    style="border: none"
-                    type="button"
-                    data-bs-toggle="collapse"
-                    href="#search-mobile"
-                    role="button"
-                    aria-expanded="false"
-                    aria-controls="search-mobile"
-                  >
-                    <i class="bx bx-search-alt-2"></i>
+                    <i class="fa-sharp fa-solid fa-bars fa-xl"></i>
                   </button>
                 </div>
               </div>
-              <!-- Menu-button -->
+              <!-- Menu mobile -->
 
               <!-- cart Mobile-->
-              <div class="p-2">
+              <div>
                 <a class="nav-link text-uppercase" href="#"
                   ><i class="fa-sharp fa-solid fa-cart-shopping fa-xl tex"></i
                 ></a>
               </div>
+              <!-- cart Mobile-->
             </div>
-            <!-- Card Mobile-->
+            <!-- Nav Mobile-->
           </div>
         </div>
       </nav>
     </header>
-    <div class="collapse multi-collapse" id="menu-mobile">
-      <ul>
-        <li class="p-2"><a class="dropdown-item" href="#">Danh mục</a></li>
-        <li class="p-2"><a class="dropdown-item" href="#">Sản phẩm</a></li>
-        <li class="p-2"><a class="dropdown-item" href="#">Sales</a></li>
-        <li class="p-2"><a class="dropdown-item" href="#">Đăng nhập</a></li>
-      </ul>
-    </div>
-    <!-- Search Mobile-->
-    <div class="collapse multi-collapse px-4 py-3" id="search-mobile">
-      <div class="ms-auto">
+    <!---->
+
+    <!--Show Nav PC-->
+    <div
+      style="
+        width: 30%;
+        margin-left: auto;
+        padding-right: 136px;
+        margin-top: 20px;
+      "
+      class="d-none d-md-block"
+    >
+      <div class="collapse" id="search-pc">
         <div class="input-group">
-          <span class="border-dark input-group-text bg-dark text-white"
-            ><i class="fa-solid fa-magnifying-glass"></i
-          ></span>
           <input
             type="text"
             class="form-control border-dark"
@@ -217,11 +213,42 @@
         </div>
       </div>
     </div>
-    <!-- Search Mobile-->
+    <!--Show Nav PC-->
 
-    <main>
-      <div class="container pt-3">
-        <div class="row p-4">
+    <!--Show Nav Mobile-->
+    <div
+      class="collapse multi-collapse under-header d-md-none"
+      id="menu-mobile"
+    >
+      <ul>
+        <li class="pb-1 pt-2">
+          <a class="dropdown-item" href="#">Danh mục</a>
+        </li>
+        <li class="py-1"><a class="dropdown-item" href="#">Sản phẩm</a></li>
+        <li class="py-1"><a class="dropdown-item" href="#">Sales</a></li>
+        <li class="py-1"><a class="dropdown-item" href="#">Đăng nhập</a></li>
+      </ul>
+      <div class="py-1" style="padding-left: 32px">
+        <div class="d-flex justify-content-start">
+          <div class="input-group" style="width: 80%">
+            <input
+              type="text"
+              class="form-control border-dark"
+              style="color: #7a7a7a"
+              placeholder="Tìm kiếm sản phẩm"
+            />
+            <button class="btn btn-dark text-white">
+              <i class="fa-solid fa-magnifying-glass fa-xl"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!--Show Nav Mobile-->
+
+    <main class="pt-3 px-2">
+      <div class="container pt-3 px-0">
+        <div class="row m-0">
           <div class="d-flex justify-content-center col-md-2 py-2">
             <div class="border">
               <img src="img/Sach1.jpg" class="card-img-top p-2" alt="product" />
