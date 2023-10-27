@@ -1,9 +1,15 @@
 /* Header */
-a {
-  font-size: 14px;
-  font-weight: 700;
-}
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
+body {
+  font-family: Poppins, sans-serif;
+}
+a {
+  text-decoration: none;
+}
+.a-footer:hover .a-footer {
+  color: black;
+}
 /* .superNav {
   font-size: 13px;
 } */
@@ -18,14 +24,20 @@ a {
     text-align: center;
   }
 }
-
-@media only screen and (max-width: 1000px) {
-  /* #nav-category-1 {
-    display: none;
-  }
-  #nav-category-2 {
-    display: none;
-  } */
+.link-nav .link-nav-item span {
+  position: relative;
 }
-
+.link-nav .link-nav-item span ::after {
+  content: " ";
+  position: absolute;
+  width: 0px;
+  height: 2px;
+  background-color: black;
+  bottom: 0;
+  left: 0;
+  transition: width 0.5s ease-in-out;
+}
+.link-nav .link-nav-item span:hover ::after {
+  width: 100%;
+}
 /*  */
