@@ -7,8 +7,8 @@ body {
 a {
   text-decoration: none;
 }
-.a-footer:hover .a-footer {
-  color: black;
+.superNav div span a {
+  color: white;
 }
 /* .superNav {
   font-size: 13px;

@@ -31,7 +31,31 @@
 
   <body>
     <header>
-      <div class="superNav border-bottom p-3" style="background-color: #bacbd3">
+      <!-- <div
+        id="carouselExampleInterval"
+        class="carousel slide flex-row"
+        data-bs-ride="carousel"
+      >
+        <div class="carousel-inner">
+          <div class="carousel-item active" data-bs-interval="5000">
+            <span
+              class="d-none d-lg-inline-block d-md-inline-block d-sm-inline-block d-xs-none me-3 w-100"
+              ><i class="fa-solid fa-envelope fa-xl"></i>
+              <strong>loi@gmail.com</strong></span
+            >
+          </div>
+          <div class="carousel-item" data-bs-interval="2000">
+            <span class="me-3 w-100"
+              ><i class="fa-solid fa-phone fa-xl"></i>
+              <strong>SDT:123123</strong></span
+            >
+          </div>
+        </div>
+      </div> -->
+      <div
+        class="superNav border-bottom p-3"
+        style="background-color: #38284f; color: white"
+      >
         <div class="container">
           <div class="row">
             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -49,19 +73,13 @@
               class="col-lg-6 col-md-6 col-sm-12 col-xs-12 d-none d-lg-block d-md-block-d-sm-block d-xs-none text-end"
             >
               <span class="me-3"
-                ><a class="text-muted text-decoration-none" href="#"
-                  >Hỗ Trợ</a
-                ></span
+                ><a class="text-decoration-none" href="#">Hỗ Trợ</a></span
               >
               <span class="me-3"
-                ><a class="text-muted text-decoration-none" href="#"
-                  >Chính Sách</a
-                ></span
+                ><a class="text-decoration-none" href="#">Chính Sách</a></span
               >
               <span class="me-3"
-                ><a class="text-muted text-decoration-none" href="#"
-                  >Dịch Vụ</a
-                ></span
+                ><a class="text-decoration-none" href="#">Dịch Vụ</a></span
               >
             </div>
           </div>
@@ -386,7 +404,7 @@
       class="collapse multi-collapse under-header d-md-none"
       id="menu-mobile"
     >
-      <ul>
+      <ul style="list-style: none">
         <li class="pb-1 pt-2">
           <a class="dropdown-item" href="#">Danh mục</a>
         </li>
@@ -659,46 +677,50 @@
       </div>
     </main>
 
-    <footer class="text-center text-lg-start bg-light text-muted">
-      <section
-        class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
-      >
-        <div class="me-5 d-none d-lg-block">
-          <span>Kết nối với chúng tôi trên mạng xã hội:</span>
-        </div>
+    <footer class="text-center text-lg-start bg-light text-muted border-top">
+      <section class="">
+        <div
+          class="container d-flex justify-content-center justify-content-lg-between p-2 border-bottom"
+        >
+          <div class="me-5 d-none d-lg-block">
+            <span>Kết nối với chúng tôi trên mạng xã hội:</span>
+          </div>
 
-        <div>
-          <a href="" class="me-4 text-reset">
-            <i class="fab fa-facebook-f"></i>
-          </a>
-          <a href="" class="me-4 text-reset">
-            <i class="fab fa-twitter"></i>
-          </a>
-          <a href="" class="me-4 text-reset">
-            <i class="fab fa-google"></i>
-          </a>
-          <a href="" class="me-4 text-reset">
-            <i class="fab fa-instagram"></i>
-          </a>
-          <a href="" class="me-4 text-reset">
-            <i class="fab fa-linkedin"></i>
-          </a>
-          <a href="" class="me-4 text-reset">
-            <i class="fab fa-github"></i>
-          </a>
+          <div>
+            <a href="" class="me-4 text-reset">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="" class="me-4 text-reset">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="" class="me-4 text-reset">
+              <i class="fab fa-google"></i>
+            </a>
+            <a href="" class="me-4 text-reset">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="" class="me-4 text-reset">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="" class="me-4 text-reset">
+              <i class="fab fa-github"></i>
+            </a>
+          </div>
         </div>
       </section>
 
-      <section class="">
+      <section>
         <div class="container text-center px-0">
           <div class="row mt-3" style="padding: 0 12px">
-            <div class="col-md-3 mb-4 text-start">
+            <div
+              class="col-md-3 col-sm-6 offset-sm-1 offset-md-0 mb-4 text-start"
+            >
               <h6 class="text-uppercase fw-bold mb-4">
                 <i class="fas fa-gem me-3"></i>TÊN SHOP
               </h6>
               <p>Shopping BOOKLV</p>
             </div>
-            <div class="col-md-4 text-start mb-4">
+            <div class="col-md-4 col-sm-5 text-start mb-4">
               <h6 class="text-uppercase fw-bold mb-4">Về Chúng Tôi</h6>
               <p>
                 <a href="#!" class="text-reset">Giới Thiệu</a>
@@ -713,7 +735,9 @@
                 <a href="#!" class="text-reset">Chính Hãng</a>
               </p>
             </div>
-            <div class="col-md-3 text-start mb-4">
+            <div
+              class="col-md-3 col-sm-6 offset-sm-1 offset-md-0 text-start mb-4"
+            >
               <h6 class="text-uppercase fw-bold mb-4">CSKH</h6>
               <p>
                 <a href="#!" class="text-reset">Trung Tâm Trợ Giúp</a>
@@ -735,7 +759,7 @@
               </p>
             </div>
 
-            <div class="col-md-2 text-start mb-md-0 mb-4">
+            <div class="col-md-2 col-sm-5 text-start mb-md-0 mb-4">
               <!-- Links -->
               <h6 class="text-uppercase fw-bold mb-4">Liên Hệ</h6>
               <p><i class="fas fa-home me-3"></i> CTU, 3/2</p>
