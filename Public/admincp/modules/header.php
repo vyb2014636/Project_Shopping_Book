@@ -47,14 +47,14 @@
           <!---->
           <div class="navbar-nav col-md-8 d-md-flex d-none align-items-center justify-content-center p-0" id="nav-category-1">
             <div class="nav-item link-nav">
-              <a class="nav-link link-nav-item text-uppercase" aria-current="page" href="index.php?page=category"><span>Danh Mục<after></after></span></a>
+              <a class="nav-link link-nav-item text-uppercase" aria-current="page" href="index.php?page=category&query=add"><span>Danh Mục<after></after></span></a>
             </div>
             <div class="nav-item link-nav">
               <a class="nav-link link-nav-item text-uppercase" aria-current="page" href="index.php?"><span>Giới thiệu<after></after></span></a>
             </div>
 
             <div class="nav-item link-nav">
-              <a class="nav-link link-nav-item text-uppercase" href="index.php?page=books"><span>Sản phẩm<after></after></span></a>
+              <a class="nav-link link-nav-item text-uppercase" href="index.php?page=books&query=add"><span>Sản phẩm<after></after></span></a>
             </div>
           </div>
           <!--/-->

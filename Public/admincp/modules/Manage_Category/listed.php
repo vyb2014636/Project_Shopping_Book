@@ -1,6 +1,6 @@
 <?php
 
-$sql = 'SELECT IdDanhMuc,TenTheLoai FROM category ORDER BY IdDanhMuc DESC';
+$sql = 'SELECT MaTheLoai,TenTheLoai FROM category ORDER BY MaTheLoai DESC';
 try {
   $statement = $pdo->prepare($sql);
   $statement->execute();
@@ -17,15 +17,26 @@ try {
       </thead>
       <tbody>
         <?php
+
+
         while ($row = $statement->fetch()) {
           $htmlspecialchars = 'htmlspecialchars';
         ?>
           <tr>
-            <td><?php echo $htmlspecialchars($row['IdDanhMuc']) ?></td>
+            <td><?php echo $htmlspecialchars($row['MaTheLoai']) ?></td>
             <td><?php echo $htmlspecialchars($row['TenTheLoai']) ?></td>
             <td class="text-center">
-              <a class="text-dark" href="modules/Manage_Category/handle.php?query=delete&id=<?php echo $htmlspecialchars($row['IdDanhMuc']) ?>"><i class="fa-solid fa-trash-can fa-lg"></i></a> |
-              <a class="text-dark" href="modules/Manage_Category/handle.php?query=edit&id=<?php echo $htmlspecialchars($row['IdDanhMuc']) ?>"> <i class="fa-solid fa-pen fa-lg"></i></a>
+              <a class="text-dark" href="modules/Manage_Category/handle.php?query=delete&id=<?php echo $htmlspecialchars($row['MaTheLoai']) ?>"><i class="fa-solid fa-trash-can fa-lg"></i></a> |
+              <a class="text-dark" href="?page=category&query=edit&id=<?php echo $htmlspecialchars($row['MaTheLoai']) ?>"> <i class="fa-solid fa-pen fa-lg"></i></a>
+            </td>
+          </tr>
+        <?php
+        }
+        if ($quantityRow = $statement->rowCount() == 0) {
+        ?>
+          <tr ">
+            <td colspan=" 3" style="text-align: center;">
+            <div style="font-size: 30px;">Danh mục rỗng</div>
             </td>
           </tr>
       <?php

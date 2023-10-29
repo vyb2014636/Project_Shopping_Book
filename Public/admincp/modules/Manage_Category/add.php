@@ -1,9 +1,4 @@
 <main>
-  <div><?php if (isset($_GET['idalert'])) {
-          echo '<script>alert("Không có id")</script>';
-        } elseif (isset($_GET['namealert'])) {
-          echo '<script>alert("Không có tên")</script>';
-        } ?></div>
   <div class="container" style="width: 30%">
     <form action="modules/Manage_Category/handle.php" method="POST">
       <div class="mb-3 d-flex">
