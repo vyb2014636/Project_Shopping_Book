@@ -1,16 +1,29 @@
 <?php
 
-$sql = 'SELECT MaTheLoai,TenTheLoai FROM category ORDER BY MaTheLoai DESC';
+$sql = 'SELECT * FROM book ORDER BY MaTheLoai DESC';
 try {
   $statement = $pdo->prepare($sql);
   $statement->execute();
 ?>
+  <div class="container mt-3 d-flex justify-content-between">
+    <div>
+      <h5>Danh sách sản phẩm</h5>
+    </div>
+    <div class="text-center">
+      <a href="?page=books&query=add" class="btn btn-primary">Thêm</a>
+    </div>
+  </div>
   <div class="container mt-3">
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Mã danh mục</th>
-          <th scope="col">Tên danh mục</th>
+          <th scope="col">hình ảnh</th>
+          <th scope="col">Mã sách</th>
+          <th scope="col">Tên sách</th>
+          <th scope="col">Tên tác giả</th>
+          <th scope="col">Tên đơn giá</th>
+          <th scope="col">Tên thể loại</th>
+
           <th class="text-center" scope="col">Xóa|Sửa</th>
 
         </tr>
@@ -23,11 +36,18 @@ try {
           $htmlspecialchars = 'htmlspecialchars';
         ?>
           <tr>
+            <td><img style="width: 70px;height: 70px;" src="modules/Manage_Book/uploads/<?php echo $htmlspecialchars($row['HinhAnh']) ?>" alt=""></td>
+            <td><?php echo $htmlspecialchars($row['MaSach']) ?></td>
+
+            <td><?php echo $htmlspecialchars($row['TenSach']) ?></td>
+            <td><?php echo $htmlspecialchars($row['TacGia']) ?></td>
+
+            <td><?php echo $htmlspecialchars($row['DonGia']) ?></td>
             <td><?php echo $htmlspecialchars($row['MaTheLoai']) ?></td>
-            <td><?php echo $htmlspecialchars($row['TenTheLoai']) ?></td>
+
             <td class="text-center">
-              <a class="text-dark" href="modules/Manage_Category/handle.php?query=delete&id=<?php echo $htmlspecialchars($row['MaTheLoai']) ?>"><i class="fa-solid fa-trash-can fa-lg"></i></a> |
-              <a class="text-dark" href="?page=category&query=edit&id=<?php echo $htmlspecialchars($row['MaTheLoai']) ?>"> <i class="fa-solid fa-pen fa-lg"></i></a>
+              <a class="text-dark" href="modules/Manage_Book/handle.php?query=delete&id=<?php echo $htmlspecialchars($row['MaSach']) ?>"><i class="fa-solid fa-trash-can fa-lg"></i></a> |
+              <a class="text-dark" href="?page=books&query=edit&id=<?php echo $htmlspecialchars($row['MaSach']) ?>"> <i class="fa-solid fa-pen fa-lg"></i></a>
             </td>
           </tr>
         <?php

@@ -5,12 +5,20 @@ try {
   $statement = $pdo->prepare($sql);
   $statement->execute();
 ?>
+  <div class="container mt-3 d-flex justify-content-between">
+    <div>
+      <h5>Danh sách danh mục</h5>
+    </div>
+    <div class="text-center">
+      <a href="?page=category&query=add" class="btn btn-primary">Thêm</a>
+    </div>
+  </div>
   <div class="container mt-3">
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Mã danh mục</th>
-          <th scope="col">Tên danh mục</th>
+          <th scope="col">Mã thể loại</th>
+          <th scope="col">Tên thể loại</th>
           <th class="text-center" scope="col">Xóa|Sửa</th>
 
         </tr>

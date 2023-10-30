@@ -7,7 +7,7 @@ $statement->execute();
 ?>
 <main>
   <div class="container" style="width: 30%">
-    <form action="modules/Manage_Books/handle.php" method="POST">
+    <form action="modules/Manage_Book/handle.php" enctype="multipart/form-data" method="POST">
       <div class="mb-3 d-flex align-items-center">
         <label for="id-book" class="form-label text-end pe-3" style="width: 30%">
           Mã sách:</label>
@@ -35,18 +35,19 @@ $statement->execute();
           <?php while ($row = $statement->fetch()) {
             $htmlspecialchars = 'htmlspecialchars';
           ?>
-            <option><?php echo $htmlspecialchars($row['TenTheLoai']) ?></option>
+            <option value="<?php echo $htmlspecialchars($row['MaTheLoai']) ?>"><?php echo $htmlspecialchars($row['MaTheLoai']) ?></option>
           <?php } ?>
         </select>
 
       </div>
       <div class="mb-3 d-flex align-items-center">
-        <label for="id-book" class="form-label text-end pe-3" style="width: 30%">
+        <label for="img-book" class="form-label text-end pe-3" style="width: 30%">
           Hình ảnh:</label>
-        <input type="file" class="form-control" id="id-book" name="id-book" />
+        <input type="file" class="form-control" id="img-book" name="img-book" />
       </div>
       <div class="text-center">
         <input type="submit" class="btn btn-primary" name="add-book" value="Thêm" />
+        <a href="?page=books&query=listed" class="btn btn-primary">Xem danh sách</a>
       </div>
     </form>
   </div>

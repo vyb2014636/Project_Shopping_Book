@@ -12,6 +12,7 @@
       </div>
       <div class="text-center">
         <input type="submit" class="btn btn-primary" name="add-cate" value="Thêm" />
+        <a href="?page=category&query=listed" class="btn btn-primary">Xem danh sách</a>
       </div>
     </form>
   </div>
