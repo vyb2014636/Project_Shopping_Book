@@ -45,27 +45,43 @@ elseif (isset($_GET['query']) &&  $_GET['query'] == 'delete') {
   $statements->execute();
   $rows = $statements->fetch();
   ///Đang làm xóa file
-
+  unlink('uploads/' . $rows["HinhAnh"]);
   $sql = "DELETE FROM book WHERE MaSach LIKE '%$id%' LIMIT 1";
-
   $statement = $pdo->prepare($sql);
   $statement->execute();
-
   header('location: ../../index.php?page=books&&query=listed');
+} elseif (isset($_POST['edit-book'])) {
+  if ($_FILES['img-book'] != '') {
+    $sql = "SELECT * FROM book WHERE MaSach LIKE '%$id_edit%' LIMIT 1";
+    $statement = $pdo->prepare($sql);
+    $statement->execute();
+    $rows = $statement->fetch();
+
+    unlink("uploads/" . $rows["HinhAnh"]);
+
+    $id_edit = $_GET['id'];
+    $sqlu = "UPDATE book SET MaSach = ?,TenSach = ?,TacGia = ?,DonGia = ?,MaTheLoai = ?, HinhAnh = ? WHERE MaSach LIKE '%$id_edit%'";
+    $tmpImg = $_FILES["img-book"]["tmp_name"];
+    $uploads_dir = 'uploads/';
+    $img = $_FILES["img-book"]["name"];
+    $uploads_file = $uploads_dir . basename($_FILES["img-book"]["name"]);
+    move_uploaded_file($tmpImg, $uploads_file);
+    try {
+      $statementu = $pdo->prepare($sqlu);
+      $statementu->execute([
+        $_POST["id-book"],
+        $_POST["name-book"],
+        $_POST["id-author"],
+        $_POST["price-book"],
+        $_POST["id-cate"],
+        $img
+      ]);
+
+      header('location: ../../index.php?page=books&&query=listed');
+    } catch (PDOException $e) {
+      $pdo_error = $e->getMessage();
+    }
+  }
+} else {
+  header('location: ../error.php?error=empty');
 }
-//  elseif (isset($_POST['edit-cate'])) {
-//   $id_edit = $_GET['id'];
-//   $sql = "UPDATE category SET MaTheLoai = ?, TenTheLoai = ? WHERE MaTheLoai LIKE '%$id_edit%'";
-//   try {
-//     $statement = $pdo->prepare($sql);
-//     $statement->execute([
-//       $_POST["id-cate"],
-//       $_POST["name-cate"]
-//     ]);
-//     header('location: ../../index.php?page=category&&query=add');
-//   } catch (PDOException $e) {
-//     $pdo_error = $e->getMessage();
-//   }
-// } else {
-//   header('location: ../error.php?error=empty');
-// }

@@ -21,7 +21,7 @@ try {
           <th scope="col">Mã sách</th>
           <th scope="col">Tên sách</th>
           <th scope="col">Tên tác giả</th>
-          <th scope="col">Tên đơn giá</th>
+          <th scope="col">Đơn giá</th>
           <th scope="col">Tên thể loại</th>
 
           <th class="text-center" scope="col">Xóa|Sửa</th>

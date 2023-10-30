@@ -19,7 +19,7 @@ $statement->execute();
       </div>
       <div class="mb-3 d-flex align-items-center">
         <label for="id-author" class="form-label text-end pe-3" style="width: 30%">
-          Mã tác giả:</label>
+          Tên tác giả:</label>
         <input type="text" class="form-control" id="id-author" name="id-author" />
       </div>
       <div class="mb-3 d-flex align-items-center">
@@ -35,7 +35,7 @@ $statement->execute();
           <?php while ($row = $statement->fetch()) {
             $htmlspecialchars = 'htmlspecialchars';
           ?>
-            <option value="<?php echo $htmlspecialchars($row['MaTheLoai']) ?>"><?php echo $htmlspecialchars($row['MaTheLoai']) ?></option>
+            <option value="<?php echo $htmlspecialchars($row['MaTheLoai']) ?>"><?php echo $htmlspecialchars($row['TenTheLoai']) ?></option>
           <?php } ?>
         </select>
 

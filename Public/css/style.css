@@ -1,8 +1,9 @@
 /* Header */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap"); */
 
 body {
-  font-family: Poppins, sans-serif;
+  /* font-family: "Poppins", sans-serif; */
+  font-family: "Courier New", Courier, monospace;
 }
 a {
   text-decoration: none;

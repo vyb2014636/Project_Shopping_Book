@@ -30,7 +30,7 @@ if (isset($_POST['add-cate']) && $_POST['add-cate']) {
   $statement = $pdo->prepare($sql);
   $statement->execute();
 
-  header('location: ../../index.php?page=category&&query=add');
+  header('location: ../../index.php?page=category&&query=listed');
 } elseif (isset($_POST['edit-cate'])) {
   $id_edit = $_GET['id'];
   $sql = "UPDATE category SET MaTheLoai = ?, TenTheLoai = ? WHERE MaTheLoai LIKE '%$id_edit%'";
