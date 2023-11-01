@@ -1,6 +1,6 @@
 <?php
 
-$sql = 'SELECT * FROM book ORDER BY MaTheLoai DESC';
+$sql = 'SELECT * FROM book ORDER BY MaSach ASC';
 try {
   $statement = $pdo->prepare($sql);
   $statement->execute();
@@ -21,9 +21,10 @@ try {
           <th scope="col">Mã sách</th>
           <th scope="col">Tên sách</th>
           <th scope="col">Tên tác giả</th>
+          <th scope="col">Nhà xuất bản</th>
+          <th scope="col">Nội dung</th>
           <th scope="col">Đơn giá</th>
           <th scope="col">Tên thể loại</th>
-
           <th class="text-center" scope="col">Xóa|Sửa</th>
 
         </tr>
@@ -40,10 +41,15 @@ try {
             <td><?php echo $htmlspecialchars($row['MaSach']) ?></td>
 
             <td><?php echo $htmlspecialchars($row['TenSach']) ?></td>
+
             <td><?php echo $htmlspecialchars($row['TacGia']) ?></td>
+            <td><?php echo $htmlspecialchars($row['NhaXB']) ?></td>
+            <td style="width: 20%;">
+              <div class="text-wrap "><?php echo $htmlspecialchars($row['NoiDung']) ?></div>
+            </td>
 
             <td><?php echo $htmlspecialchars($row['DonGia']) ?></td>
-            <td><?php echo $htmlspecialchars($row['MaTheLoai']) ?></td>
+            <td style="width: 10%;"><?php echo $htmlspecialchars($row['MaTheLoai']) ?></td>
 
             <td class="text-center">
               <a class="text-dark" href="modules/Manage_Book/handle.php?query=delete&id=<?php echo $htmlspecialchars($row['MaSach']) ?>"><i class="fa-solid fa-trash-can fa-lg"></i></a> |

@@ -74,12 +74,12 @@
                 <span class="position-absolute rounded-circle text-center" style="
                       width: 17px;
                       height: 17px;
-                      top: 0px;
+                      top:-14px;
                       right: 0px;
                       background-color: #38284f;
                       font-size: 12px;
                       color: white;
-                    " id="quantity-in-cart"><strong>4</strong>
+                    " id="quantity-in-cart"><strong>0</strong>
                 </span></a>
             </div>
             <div class="nav-item">
@@ -113,7 +113,7 @@
                       right: -10px;
                       background-color: #38284f;
                       color: white;
-                    " id="quantity-in-cart"><strong>4</strong>
+                    " id="quantity-in-cart"><strong>0</strong>
                 </span></a>
             </div>
             <!-- cart Mobile-->
@@ -151,110 +151,7 @@
     </div>
     <div class="offcanvas-body" id="menu-cart-shopping-items">
       <div class="products">
-        <div class="product card flex-row border-0 mb-3" style="height: 70px">
-          <img src="Public/img/Sach1.jpg" alt="..." style="width: 10%; padding-top: 16px; object-fit: cover" />
-          <div class="card-body container" style="width: 90%">
-            <div class="row align-items-center">
-              <div class="card-text col-md-9 mb-0">
-                <p class="text-truncate mb-0">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Repellendus iure officia, soluta explicabo facere quasi ea
-                  hic debitis exercitationem optio unde voluptatibus. Ratione
-                  atque facilis neque, distinctio laudantium qui commodi!
-                </p>
-                <div class="d-flex align-items-center gap-1">
-                  <p class="fs-5 fw-bold mb-0" style="color: black">
-                    ₫125.000
-                  </p>
-                </div>
-              </div>
-              <div class="col-md-2 justify-content-end">
-                <input type="number" min="1" value="1" style="width: 100%" />
-              </div>
-              <div class="col-md-1">
-                <i class="fa-solid fa-xmark fa-xl"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="product card flex-row border-0 mb-3" style="height: 70px">
-          <img src="Public/img/Sach1.jpg" alt="..." style="width: 10%; padding-top: 16px; object-fit: cover" />
-          <div class="card-body container" style="width: 90%">
-            <div class="row align-items-center">
-              <div class="card-text col-md-9 mb-0">
-                <p class="text-truncate mb-0">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Repellendus iure officia, soluta explicabo facere quasi ea
-                  hic debitis exercitationem optio unde voluptatibus. Ratione
-                  atque facilis neque, distinctio laudantium qui commodi!
-                </p>
-                <div class="d-flex align-items-center gap-1">
-                  <p class="fs-5 fw-bold mb-0" style="color: black">
-                    ₫125.000
-                  </p>
-                </div>
-              </div>
-              <div class="col-md-2 justify-content-end">
-                <input type="number" min="1" value="1" style="width: 100%" />
-              </div>
-              <div class="col-md-1">
-                <i class="fa-solid fa-xmark fa-xl"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="product card flex-row border-0 mb-3" style="height: 70px">
-          <img src="Public/img/Sach1.jpg" alt="..." style="width: 10%; padding-top: 16px; object-fit: cover" />
-          <div class="card-body container" style="width: 90%">
-            <div class="row align-items-center">
-              <div class="card-text col-md-9 mb-0">
-                <p class="text-truncate mb-0">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Repellendus iure officia, soluta explicabo facere quasi ea
-                  hic debitis exercitationem optio unde voluptatibus. Ratione
-                  atque facilis neque, distinctio laudantium qui commodi!
-                </p>
-                <div class="d-flex align-items-center gap-1">
-                  <p class="fs-5 fw-bold mb-0" style="color: black">
-                    ₫125.000
-                  </p>
-                </div>
-              </div>
-              <div class="col-md-2 justify-content-end">
-                <input type="number" min="1" value="1" style="width: 100%" />
-              </div>
-              <div class="col-md-1">
-                <i class="fa-solid fa-xmark fa-xl"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="product card flex-row border-0 mb-3" style="height: 70px">
-          <img src="Public/img/Sach1.jpg" alt="..." style="width: 10%; padding-top: 16px; object-fit: cover" />
-          <div class="card-body container" style="width: 90%">
-            <div class="row align-items-center">
-              <div class="card-text col-md-9 mb-0">
-                <p class="text-truncate mb-0">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Repellendus iure officia, soluta explicabo facere quasi ea
-                  hic debitis exercitationem optio unde voluptatibus. Ratione
-                  atque facilis neque, distinctio laudantium qui commodi!
-                </p>
-                <div class="d-flex align-items-center gap-1">
-                  <p class="fs-5 fw-bold mb-0" style="color: black">
-                    ₫125.000
-                  </p>
-                </div>
-              </div>
-              <div class="col-md-2 justify-content-end">
-                <input type="number" min="1" value="1" style="width: 100%" />
-              </div>
-              <div class="col-md-1">
-                <i class="fa-solid fa-xmark fa-xl"></i>
-              </div>
-            </div>
-          </div>
-        </div>
+
       </div>
     </div>
     <div class="offcanvas-footer" style="padding: 16px; padding-top: 0px">
@@ -262,7 +159,7 @@
         <span>Tổng tiền : </span>
       </div>
       <div class="">
-        <div class="btn btn-dark">Thêm vào giỏ</div>
+        <div class="btn btn-dark"><a class="text-white" href="../pages/main/cart.php">Thêm vào giỏ</a></div>
         <div class="btn btn-primary">Thanh toán</div>
       </div>
     </div>
@@ -316,9 +213,7 @@
         <?php
         }
         ?>
-        <!-- <div class='p-2'><a class="text-black" href="">Sách chính trị</a></div>
-        <div class='p-2'><a class="text-black" href="">Sách tiểu thuyết</a></div>
-        <div class='p-2'><a class="text-black" href="">Sách khoa học</a></div> -->
+
       </div>
     </div>
   </div>

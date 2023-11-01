@@ -9,10 +9,14 @@ if (isset($_GET['page'])) {
   $page = '';
 }
 if ($page == 'category' &&  isset($_GET['idcate'])) {
-  include_once __DIR__ . '/../Public/pages/main/xuly.php';
+  include_once __DIR__ . '/../Public/pages/main/category.php';
 } elseif ($page == 'book') {
   include_once __DIR__ . '/../Public/pages/';
+} elseif ($page == 'detail') {
+  include_once __DIR__ . '/../Public/pages/main/detail.php';
 } else {
-  include_once __DIR__ . '/../Public/pages/index.php';
+  include_once __DIR__ . '/../Public/pages/main.php';
 }
+
+//
 include_once __DIR__ . '/../Public/pages/footer.php';

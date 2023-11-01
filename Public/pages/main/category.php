@@ -1,15 +1,11 @@
 <?php
-// if (isset($_POST["add-cart"]) && $_POST["add-cart"]) {
-// }
+if (isset($_GET["idcate"])) {
+  $idbook = $_GET["idcate"];
+} else {
+  $idbook = "";
+}
 
-
-// if (isset($_GET["idcate"])) {
-//   $idbook = $_GET["idcate"];
-// } else {
-//   $idbook = "";
-// }
-
-$sql = "SELECT * FROM book";
+$sql = "SELECT * FROM book WHERE MaTheLoai LIKE '%$idbook%'";
 try {
   $statement = $pdo->prepare($sql);
   $statement->execute();

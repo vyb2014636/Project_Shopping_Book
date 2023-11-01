@@ -37,6 +37,16 @@ try {
         <input type="text" class="form-control" id="id-author" name="id-author" value="<?php echo $htmlspecialchars($row["TacGia"]) ?>" />
       </div>
       <div class="mb-3 d-flex align-items-center">
+        <label for="NXB-book" class="form-label text-end pe-3" style="width: 30%">
+          Nhà XB:</label>
+        <input type="text" class="form-control" id="NXB-book" name="NXB-book" value="<?php echo $htmlspecialchars($row["NhaXB"]) ?>" />
+      </div>
+      <div class="mb-3 d-flex align-items-center">
+        <label for="content-book" class="form-label text-end pe-3" style="width: 30%">
+          Nội dung:</label>
+        <textarea name="content-book" id="content-book" cols="50" rows="4"><?php echo $htmlspecialchars($row["NoiDung"]) ?></textarea>
+      </div>
+      <div class="mb-3 d-flex align-items-center">
         <label for="price-book" class="form-label text-end pe-3" style="width: 30%">
           Đơn giá:</label>
         <input type="text" class="form-control" id="price-book" name="price-book" value="<?php echo $htmlspecialchars($row["DonGia"]) ?>" />
@@ -64,7 +74,7 @@ try {
         <input type="file" class="form-control" id="img-book" name="img-book" value="<?php echo $htmlspecialchars($row["HinhAnh"]) ?>" />
       </div>
       <div class="text-center">
-        <input type="submit" class="btn btn-primary" name="edit-book" value="Thêm" />
+        <input type="submit" class="btn btn-primary" name="edit-book" value="Sửa" />
         <a href="?page=books&query=listed" class="btn btn-primary">Xem danh sách</a>
       </div>
     </form>

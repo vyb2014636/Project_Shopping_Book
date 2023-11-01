@@ -23,6 +23,16 @@ $statement->execute();
         <input type="text" class="form-control" id="id-author" name="id-author" />
       </div>
       <div class="mb-3 d-flex align-items-center">
+        <label for="NXB-book" class="form-label text-end pe-3" style="width: 30%">
+          Nhà XB:</label>
+        <input type="text" class="form-control" id="NXB-book" name="NXB-book" />
+      </div>
+      <div class="mb-3 d-flex align-items-center">
+        <label for="content-book" class="form-label text-end pe-3" style="width: 30%">
+          Nội dung:</label>
+        <textarea name="content-book" id="content-book" cols="50" rows="4"></textarea>
+      </div>
+      <div class="mb-3 d-flex align-items-center">
         <label for="price-book" class="form-label text-end pe-3" style="width: 30%">
           Đơn giá:</label>
         <input type="text" class="form-control" id="price-book" name="price-book" />
@@ -40,6 +50,7 @@ $statement->execute();
         </select>
 
       </div>
+
       <div class="mb-3 d-flex align-items-center">
         <label for="img-book" class="form-label text-end pe-3" style="width: 30%">
           Hình ảnh:</label>

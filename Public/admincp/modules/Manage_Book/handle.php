@@ -7,6 +7,8 @@ if (isset($_POST['add-book']) && $_POST['add-book']) {
   $IdAuthor = $_POST['id-author'];
   $PriceBook = $_POST['price-book'];
   $IdDM = $_POST['id-cate'];
+  $ndbook = $_POST['content-book'];
+  $nxb = $_POST['NXB-book'];
   $check = getimagesize($_FILES['img-book']['tmp_name']);
   if ($check === false) {
     echo "</br>Đây không phải file ảnh";
@@ -15,13 +17,14 @@ if (isset($_POST['add-book']) && $_POST['add-book']) {
     // 'uploads/' . $_FILES["img-book"]["name"]
     $uploads_dir = 'uploads/';
     $img = $_FILES["img-book"]["name"];
+
     $uploads_file = $uploads_dir . basename($_FILES["img-book"]["name"]);
     move_uploaded_file($tmpImg, $uploads_file);
     // if (!empty($IdBook) && !empty($NameBook)  && !empty($IdAuthor)  && !empty($PriceBook)  && !empty($IdDM) && $check === true)
-    $sql = "INSERT INTO book (MaSach,TenSach,TacGia,DonGia,MaTheLoai,HinhAnh) VALUES (?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO book (MaSach,TenSach,TacGia,NhaXB,NoiDung,DonGia,MaTheLoai,HinhAnh) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     try {
       $statement = $pdo->prepare($sql);
-      $statement->execute([$IdBook, $NameBook, $IdAuthor, $PriceBook, $IdDM, $img]);
+      $statement->execute([$IdBook, $NameBook, $IdAuthor, $nxb, $ndbook, $PriceBook, $IdDM, $img]);
       header('location: ../../index.php?page=books&&query=add');
     } catch (PDOException $e) {
       $pdo_error = $e->getMessage();
@@ -60,7 +63,7 @@ elseif (isset($_GET['query']) &&  $_GET['query'] == 'delete') {
     unlink("uploads/" . $rows["HinhAnh"]);
 
     $id_edit = $_GET['id'];
-    $sqlu = "UPDATE book SET MaSach = ?,TenSach = ?,TacGia = ?,DonGia = ?,MaTheLoai = ?, HinhAnh = ? WHERE MaSach LIKE '%$id_edit%'";
+    $sqlu = "UPDATE book SET MaSach = ?,TenSach = ?,TacGia = ?,NhaXB = ?,NoiDung = ?,DonGia = ?,MaTheLoai = ?, HinhAnh = ? WHERE MaSach LIKE '%$id_edit%'";
     $tmpImg = $_FILES["img-book"]["tmp_name"];
     $uploads_dir = 'uploads/';
     $img = $_FILES["img-book"]["name"];
@@ -72,6 +75,8 @@ elseif (isset($_GET['query']) &&  $_GET['query'] == 'delete') {
         $_POST["id-book"],
         $_POST["name-book"],
         $_POST["id-author"],
+        $_POST["NXB-book"],
+        $_POST["content-book"],
         $_POST["price-book"],
         $_POST["id-cate"],
         $img
