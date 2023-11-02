@@ -18,10 +18,11 @@ try {
 ?>
 
 <main class="bg-light pt-4 rounded">
-  <?php while ($row = $statement->fetch()) { ?>
+  <?php
+  while ($row = $statement->fetch()) { ?>
     <!--San pham  -->
     <div class="container bg-white">
-      <section class="py-5 ">
+      <form action="pages/modules/handle-cart.php" method="POST">
         <div class="row pt-2">
           <div class="col-md-4">
             <!-- Hình sản phẩm -->
@@ -58,7 +59,6 @@ try {
             <div class="ps-md-3">
               <h3 class="title text-dark">
                 <?php echo $htmlspecialchars($row['TenSach']) ?>
-
               </h3>
               <div class="row pt-4">
                 <div class="col-md-6 col-6">
@@ -121,13 +121,19 @@ try {
               </div>
               <div class="pt-4 d-block">
                 <a href="#" class="button text-white rounded" style=" padding: 15px 69px; background-color: #38284f;">Mua Ngay</a>
-                <a href="#" class="button text-white rounded text-decoration-none" style=" padding: 15px 32px; background-color: #38284f;">
-                  &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-cart-plus fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;</a>
+                <button type="submit" class="button text-white rounded text-decoration-none" name="add-cart-quantity" style="cursor: pointer; padding: 13px 32px; background-color: #38284f;" value=1>
+                  &nbsp;&nbsp;&nbsp;&nbsp;<i class="fa-solid fa-cart-plus fa-lg"></i>&nbsp;&nbsp;&nbsp;&nbsp;</button>
               </div>
             </div>
           </div>
         </div>
-      </section>
+        <input type="hidden" name="id-book" value="<?php echo $htmlspecialchars($row['HinhAnh']) ?>">
+        <input type="hidden" name="img-book" value="<?php echo $htmlspecialchars($row['HinhAnh']) ?>">
+        <input type="hidden" name="name-book" value="<?php echo $htmlspecialchars($row['TenSach']) ?>">
+        <input type="hidden" name="price-book" value="<?php echo $htmlspecialchars($row['DonGia']) ?>">
+        <input type="hidden" name="MaSach" value="<?php echo $htmlspecialchars($row['MaSach']) ?>">
+        <input type="hidden" name="MaTheLoai" value="<?php echo $htmlspecialchars($row['MaTheLoai']) ?>">
+      </form>
     </div>
     <div class="container bg-white my-3 pt-3 text-muted">
       <h4>Thông tin sản phẩm</h4>
