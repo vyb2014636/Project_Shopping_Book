@@ -11,6 +11,9 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="/js/script.js"></script>
 </head>
 
 <body>
@@ -75,7 +78,7 @@
                 <span class="position-absolute rounded-circle text-center" style="
                       width: 17px;
                       height: 17px;
-                      top:-14px;
+                      top:-2px;
                       right: 0px;
                       background-color: #38284f;
                       font-size: 12px;
@@ -92,8 +95,17 @@
                 </span></a>
             </div>
             <div class="nav-item">
-              <a class="nav-link ms-2 text-uppercase" href="#"><i class="fa-solid fa-user fa-xl"></i></a>
+              <a class="nav-link ms-2 text-uppercase" href="index.php?page=login"><i class="fa-solid fa-user fa-xl"></i></a>
             </div>
+            <?php
+            if (isset($_SESSION['login'])) {
+            ?>
+              <div class="nav-item">
+                <a class="nav-link ms-2 text-uppercase" href="../index.php?logout=2"><i class="fa-solid fa-right-from-bracket fa-xl"></i> </a>
+              </div>
+            <?php
+            }
+            ?>
           </div>
           <!--/-->
 
@@ -150,14 +162,16 @@
         padding-right: 136px;
         margin-top: 20px;
       " class="d-none d-md-block">
-    <div class="collapse" id="search-pc">
-      <div class="input-group">
-        <input type="text" class="form-control border-dark" style="color: #7a7a7a" placeholder="Tìm kiếm sản phẩm" />
-        <button class="btn btn-dark text-white">
-          <i class="fa-solid fa-magnifying-glass fa-xl"></i>
-        </button>
+    <form action="index.php?stext">
+      <div class="collapse" id="search-pc">
+        <div class="input-group">
+          <input type="text" class="form-control border-dark" style="color: #7a7a7a" placeholder="Tìm kiếm sản phẩm" name="stext" />
+          <button class="btn btn-dark text-white" type="submit">
+            <i class="fa-solid fa-magnifying-glass fa-xl"></i>
+          </button>
+        </div>
       </div>
-    </div>
+    </form>
   </div>
 
   <!--Show cart sidebar-->
