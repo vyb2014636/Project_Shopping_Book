@@ -19,9 +19,9 @@
 
               <td><img style="width: 70px;height: 70px;" src="../../admincp/modules/Manage_Book/uploads/<?php echo $item[2] ?>" alt=""></td>
               <td><?php echo $item[1] ?></td>
-              <td><?php echo $item[3] ?></td>
+              <td><?php echo number_format($item[3], 0, ',', '.') . ' vnđ' ?></td>
               <td><?php echo $item[4] ?></td>
-              <td><?php echo $item[4] * $item[3] ?></td>
+              <td><?php echo number_format($item[3] * $item[4], 0, ',', '.') . ' vnđ' ?></td>
               <td class="text-center">
                 <a class="text-dark" href="../../pages/modules/handle-cart.php?want=delcartid&id=<?php echo $item[0] ?>">
                   <i class=" fa-solid fa-trash-can fa-lg"></i>

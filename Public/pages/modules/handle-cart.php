@@ -11,19 +11,17 @@ if (isset($_GET["want"]) && $_GET["want"] == 'delcart') {
 }
 if (isset($_GET["want"]) && $_GET["want"] == 'delcartid') {
   $iddel = $_GET['id'];
-  for ($i = 0; $i < sizeof($_SESSION['cart']); $i++) {
-    if ($_SESSION['cart'][$i][0] == $iddel) {
-      unset($_SESSION['cart'][$i]);
+
+  $a = 0;
+  foreach ($_SESSION['cart'] as $itemcart) {
+    if ($itemcart[0] == $iddel) {
+      array_splice($_SESSION['cart'][$a], 0);
+      array_splice($_SESSION['cart'], $a, 1);
+
+      break;
     }
+    $a++;
   }
-  // foreach ($_SESSION['cart'] as $itemcart) {
-  //   if ($itemcart[0] == $iddel) {
-  //     unset($_SESSION['cart'][$a]);
-  //     $a = 0;
-  //     break;
-  //   }
-  //   $a++;
-  // }
   header('location: ../../index.php');
 }
 if ((isset($_POST["add-cart"]) && $_POST["add-cart"])) {

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -173,27 +174,29 @@
         if ((isset($_SESSION["cart"])) && (count($_SESSION["cart"]) > 0)) {
           $totalprice = 0;
           foreach ($_SESSION["cart"] as $item) {
-            $totalprice += $item[3] * $item[4];
+            if (!empty($item[0])) {
+              $totalprice += $item[3] * $item[4];
         ?>
-            <div class="product card flex-row border-0 mb-3" style="height: 70px;"> <img src="../admincp/modules/Manage_Book/uploads/<?php echo $item[2] ?>" alt=" ..." style="width: 15%; padding-top: 16px; object-fit: contain" />
-              <div class="card-body container" style="width: 84%">
-                <div class="row align-items-center">
-                  <div class="card-text col-md-9 mb-0">
-                    <p class="text-truncate mb-0">
-                      <?php echo $item[1]  ?>
-                    </p>
-                    <div class="d-flex align-items-center gap-1">
-                      <p class="fs-5 fw-bold mb-0" style="color: black">
-                        <?php echo number_format($item[3], 0, ',', '.') . 'vnđ' ?>
+              <div class="product card flex-row border-0 mb-3" style="height: 70px;"> <img src="../admincp/modules/Manage_Book/uploads/<?php echo $item[2] ?>" alt=" ..." style="width: 15%; padding-top: 16px; object-fit: contain" />
+                <div class="card-body container" style="width: 84%">
+                  <div class="row align-items-center">
+                    <div class="card-text col-md-9 mb-0">
+                      <p class="text-truncate mb-0">
+                        <?php echo $item[1]  ?>
                       </p>
+                      <div class="d-flex align-items-center gap-1">
+                        <p class="fs-5 fw-bold mb-0" style="color: black">
+                          <?php echo number_format($item[3], 0, ',', '.') . 'vnđ' ?>
+                        </p>
+                      </div>
                     </div>
+                    <div class="col-md-2 justify-content-end price-in-card-cart"><span><?php echo $item[4] ?></span></div>
+                    <div class="col-md-1"><a href="../pages/modules/handle-cart.php?want=delcartid&id=<?php echo $item[0]  ?>"><i class="fa-solid fa-xmark fa-xl"></i></a> </div>
                   </div>
-                  <div class="col-md-2 justify-content-end price-in-card-cart"><span><?php echo $item[4] ?></span></div>
-                  <div class="col-md-1"><a href="../pages/modules/handle-cart.php?want=delcartid&id=<?php echo $item[0]  ?>"><i class="fa-solid fa-xmark fa-xl"></i></a> </div>
                 </div>
               </div>
-            </div>
           <?php }
+          }
         } else { ?>
           <div>
             <h5>GIỎ HÀNG RỖNG</h5>
