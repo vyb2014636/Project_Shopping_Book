@@ -11,6 +11,7 @@ if (isset($_GET["want"]) && $_GET["want"] == 'delcart') {
 }
 if (isset($_GET["want"]) && $_GET["want"] == 'delcartid') {
   $iddel = $_GET['id'];
+  $stay  = $_GET['stay'];
   $a = 0;
   foreach ($_SESSION['cart'] as $itemcart) {
     if ($itemcart[0] == $iddel) {
@@ -20,7 +21,11 @@ if (isset($_GET["want"]) && $_GET["want"] == 'delcartid') {
     }
     $a++;
   }
-  header('location: ../../index.php');
+  if ($stay == 1) {
+    header('location: ../../index.php?page=cart');
+  } else {
+    header('location: ../../index.php');
+  }
 }
 if ((isset($_POST["add-cart"]) && $_POST["add-cart"])) {
   $imgbook = $_POST["img-book"];

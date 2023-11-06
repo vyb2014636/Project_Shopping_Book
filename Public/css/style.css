@@ -3,7 +3,6 @@
 
 body {
   font-family: "Poppins", sans-serif;
-  /* font-family: "Courier New", Courier, monospace; */
 }
 a {
   text-decoration: none;
@@ -44,7 +43,7 @@ a {
 /*  */
 
 /* Cart product */
-:root {
+/* :root {
   font-size: 16px;
   --heading-color: hsl(0, 0%, 7%);
   --date-text-color: hsl(0, 0%, 51%);
@@ -54,7 +53,7 @@ a {
   --title-font-weight: 800;
   --date-font-weight: 550;
   --card-main-color: whitesmoke;
-  --card-1-secondary-color: #38284F
+  --card-1-secondary-color: #38284f;
 }
 
 .container input {
@@ -86,7 +85,7 @@ a {
 .img-div img {
   transform-origin: bottom;
   transform: translateY(7.5%);
-  transition: transform 0.3s ease-in-out
+  transition: transform 0.3s ease-in-out;
 }
 
 .div_card_header {
@@ -94,8 +93,6 @@ a {
   font-size: 1.5em;
   color: var(--heart-icon-color);
   border-radius: 10px 10px 0 0;
-
-
 }
 
 .header-card-product {
@@ -151,13 +148,9 @@ a {
 
 .card-div:hover {
   transform: translate(0, -10px);
-}
+} */
 
-
-
-
-
-
+/* 
 #card-1-like:checked~.heart-fill {
   animation: like-animation 0.25s ease-in-out forwards;
 }
@@ -202,4 +195,4 @@ a {
     color: var(--heart-icon-color);
     transform: scale(1.0);
   }
-}
+} */

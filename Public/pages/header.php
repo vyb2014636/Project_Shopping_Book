@@ -46,7 +46,7 @@
 
           <!---->
           <div id="logo-shop" class="d-flex align-items-center col-md-2 justify-content-md-start justify-content-center">
-            <a class="navbar-brand m-0 text-center" href="index.php"><strong>NAME SHOP </strong></a>
+            <a class="navbar-brand m-0 text-center" href="index.php"><strong><i class="fa-solid fa-book fa-2xl"></i>ookLV </strong></a>
           </div>
           <!--/-->
 
