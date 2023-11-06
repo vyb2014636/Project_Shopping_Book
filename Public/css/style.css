@@ -196,3 +196,31 @@ a {
     transform: scale(1.0);
   }
 } */
+
+/* Gio hang */
+.icon-hover-danger:hover {
+  border-color: #dc4c64 !important;
+  background-color: white !important;
+}
+
+.icon-hover-danger:hover i {
+  color: #dc4c64 !important;
+}
+.icon-hover-purle:hover {
+  border-color: #38284f !important;
+  background-color: white !important;
+}
+
+.icon-hover-purle:hover i {
+  color: #38284f !important;
+}
+
+.zoom_image_product_cart {
+
+  transition: transform .2s;
+
+}
+
+.zoom_image_product_cart:hover {
+  transform: scale(1.1);
+}
