@@ -58,6 +58,38 @@ if (isset($_SESSION['login'])) {
       $statement->execute();
     }
     header('location: ../../index.php?page=cart');
+  } elseif (isset($_POST["add-cart-quantity"]) && $_POST["add-cart-quantity"]) {
+    $id_user = $_SESSION['login']['username'];
+    $imgbook = $_POST["img-book"];
+    $namebook = $_POST["name-book"];
+    $pricebook = $_POST["price-book"];
+    if (isset($_POST["quantity"])) {
+      $quantitybook = $_POST["quantity"];
+    } else {
+      $quantitybook = 1;
+    }
+    $idbook = $_POST["MaSach"];
+    $idcate = $_POST["MaTheLoai"];
+
+    $statement = $pdo->prepare("SELECT * FROM cart WHERE TenTaiKhoan LIKE '%$id_user%' AND MaSach LIKE '%$idbook%'");
+    $statement->execute();
+    $row_count = $statement->rowCount();
+    if ($row_count > 0) {
+      $statement = $pdo->prepare("UPDATE cart  SET SoLuong = SoLuong+$quantitybook WHERE TenTaiKhoan LIKE '%$id_user%' AND MaSach LIKE '%$idbook%'");
+      $statement->execute();
+    } else {
+      $statement = $pdo->prepare("INSERT INTO cart (TenTaiKhoan,MaSach,TenSach,HinhAnh,DonGia,SoLuong,MaTheLoai) VALUES (?, ?, ?, ?, ?, ?, ?)");
+      $statement->execute([
+        $id_user,
+        $idbook,
+        $namebook,
+        $imgbook,
+        $pricebook,
+        $quantitybook,
+        $idcate
+      ]);
+    }
+    header('location: ../../index.php');
   } else {
     $id_user = $_SESSION['login']['username'];
     $sql = "DELETE FROM cart WHERE TenTaiKhoan LIKE '%$id_user%'";

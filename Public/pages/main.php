@@ -10,12 +10,19 @@ try {
 }
 
 ?>
-<main class="pt-3 px-2">
+<main class="px-2">
   <div class="container pt-3 px-0">
-    <div class="products row m-0">
+    <?php
+    include_once __DIR__ . '/../../Public/pages/slidebar.php';
+    ?>
+    <div class="products row m-0 " style="background-color: #FFFFFF;">
+      <div class="p-3 mb-2" style="width: 100%;background-color: #38284f;">
+        <i class="fa-solid fa-cart-plus fa-xl text-white"></i>
+        <span class="text-white">SẢN PHẨM MỚI NHẤT</span>
+      </div>
       <?php while ($row = $statement->fetch()) { ?>
-        <form action="pages/modules/handle-cart.php" method="POST" class="d-flex justify-content-center col-md-2 py-2 product" style="height: 400px">
-          <div class="border d-flex flex-column" style="width: 100%;box-shadow: 2px 3px silver;">
+        <form action="pages/modules/handle-cart.php" method="POST" class="d-flex justify-content-center col-sm-4 col-md-2 py-2 product" style="height: 400px">
+          <div class="border d-flex flex-column rounded-2" style="width: 100%;box-shadow: 2px 3px silver;">
             <a class="card-img-top p-2 img-product" href="../index.php?page=detail&idbook=<?php echo $htmlspecialchars($row['MaSach']) ?>" style="height: 40%; margin-bottom: auto; flex-shrink:0;cursor: pointer; overflow: hidden;">
               <img src=" ../../admincp/modules/Manage_Book/uploads/<?php echo $htmlspecialchars($row['HinhAnh']) ?>" style="width: 100%;height: 100%; object-fit: contain;" />
             </a>

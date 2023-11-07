@@ -39,9 +39,9 @@
                       <div class="p-2">
                         <img src="../../admincp/modules/Manage_Book/uploads/<?php echo $htmlspecialchars($row['HinhAnh']) ?>" alt="" width="70" class="img-fluid rounded shadow-sm">
                         <div class="ml-3 d-inline-block align-middle">
-                          <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle">
+                          <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle d-sm-none d-md-block">
                               <?php echo $htmlspecialchars($row['TenSach']);
-                              $idcate = $htmlspecialchars($row['MaTheLoai']); ?></a></h5><span class="text-muted font-weight-normal font-italic d-block">Thể loại:
+                              $idcate = $htmlspecialchars($row['MaTheLoai']); ?></a></h5><span class="text-muted font-weight-normal font-italic d-block d-sm-none d-md-block">Thể loại:
                             <?php
                             // $htmlspecialchars = 'htmlspecialchars';
                             $sql = "SELECT TenTheLoai FROM category where MaTheLoai LIKE '%$idcate%' LIMIT 1 ";

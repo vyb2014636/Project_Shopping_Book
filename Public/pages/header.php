@@ -16,7 +16,7 @@
   <script src="/js/script.js"></script>
 </head>
 
-<body>
+<body style="background-color: #efefef;">
   <header>
 
     <div class="superNav border-bottom p-3" style="background-color: #38284f; color: white">
@@ -115,7 +115,7 @@
             if (isset($_SESSION['login'])) {
             ?>
               <div class="nav-item">
-                <a class="nav-link ms-2 text-uppercase" href="index.php?page=profile"><i class="fa-solid fa-user fa-xl"></i></a>
+                <a class="nav-link ms-2 text-uppercase" href="index.php?page=profile"><img src="../img/avatar.png" style="width: 100%;"></a>
               </div>
               <div class="nav-item">
                 <a class="nav-link ms-2 text-uppercase" href="../index.php?logout=2"><i class="fa-solid fa-right-from-bracket fa-xl"></i> </a>
@@ -130,7 +130,7 @@
 
 
           <!-- Nav Mobile-->
-          <div class="d-md-none d-flex justify-content-between px-4 align-items-center">
+          <div class="d-md-none d-flex justify-content-between px-4 align-items-center mt-3">
             <!-- Menu mobile -->
             <div class="d-flex justify-content-between align-items-center">
               <div>
@@ -140,10 +140,21 @@
               </div>
             </div>
             <!-- Menu mobile -->
+            <?php
+            if (isset($_SESSION['login'])) {
+            ?>
+              <div class="d-flex justify-content-between align-items-center">
+                <div>
+                  <button class="navbar-toggler p-2 border-0" type="button" data-bs-toggle="collapse" href="#menu-user" role="button" aria-expanded="false" aria-controls="#menu-user">
+                    <i class="fa-sharp fa-solid fa-user fa-xl"></i>
+                  </button>
+                </div>
+              </div>
 
+            <?php } ?>
             <!-- cart Mobile-->
             <div>
-              <a class="nav-link text-uppercase position-relative" href="cart.html"><i class="fa-sharp fa-solid fa-cart-shopping fa-xl tex"></i>
+              <a class="nav-link text-uppercase position-relative" href="../index.php?page=cart"><i class="fa-sharp fa-solid fa-cart-shopping fa-xl tex"></i>
                 <span class="position-absolute rounded-circle text-center" style="
                       width: 20px;
                       height: 22px;
@@ -187,6 +198,7 @@
         margin-left: auto;
         padding-right: 136px;
         margin-top: 20px;
+        background-color: #efefef;
       " class="d-none d-md-block">
     <form action="index.php?stext">
       <div class="collapse" id="search-pc">
@@ -205,8 +217,18 @@
   <!--Show Cart-->
 
   <!--Show Nav PC-->
-
+  <!-- <div class="nav-item">
+                <a class="nav-link ms-2 text-uppercase" href="index.php?page=profile"><i class="fa-solid fa-user fa-xl"></i></a>
+              </div> -->
   <!--Show Nav Mobile-->
+  <div class="collapse multi-collapse under-header d-md-none" id="menu-user">
+    <ul style="list-style: none">
+      <li class="pb-1 pt-2">
+        <a class="dropdown-item" href="index.php?page=profile">Hồ sơ</a>
+      </li>
+      <li class="py-1"><a class="dropdown-item" href="../index.php?logout=2">Đăng xuất</a></li>
+    </ul>
+  </div>
   <div class="collapse multi-collapse under-header d-md-none" id="menu-mobile">
     <ul style="list-style: none">
       <li class="pb-1 pt-2">
@@ -214,7 +236,7 @@
       </li>
       <li class="py-1"><a class="dropdown-item" href="#">Sản phẩm</a></li>
       <li class="py-1"><a class="dropdown-item" href="#">Sales</a></li>
-      <li class="py-1"><a class="dropdown-item" href="#">Đăng nhập</a></li>
+      <li class="py-1"><a class="dropdown-item" href="index.php?page=login">Đăng nhập</a></li>
     </ul>
     <div class="py-1" style="padding-left: 32px">
       <div class="d-flex justify-content-start">

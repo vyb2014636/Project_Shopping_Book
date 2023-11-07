@@ -5,19 +5,28 @@ if (isset($_GET["idcate"])) {
   $idbook = "";
 }
 
-$sql = "SELECT * FROM book WHERE MaTheLoai LIKE '%$idbook%'";
+$sql = "SELECT * FROM book b JOIN category c ON b.MaTheLoai=c.MaTheLoai WHERE b.MaTheLoai LIKE '%$idbook%'";
+$sql2 = "SELECT * FROM category WHERE MaTheLoai LIKE '%$idbook%'";
+
 try {
   $statement = $pdo->prepare($sql);
+  $statement2 = $pdo->prepare($sql2);
   $statement->execute();
+  $statement2->execute();
   $htmlspecialchars = 'htmlspecialchars';
+  $title = $statement2->fetch();
 } catch (PDOException $e) {
   echo $e->getMessage();
 }
 
 ?>
-<main class="pt-3 px-2">
+<main class="p-3 px-2">
   <div class="container pt-3 px-0">
-    <div class="products row m-0">
+    <div class="products row m-0" style="background-color: #FFFFFF;">
+      <div class="p-3 mb-3" style="width: 100%;background-color: #38284f;">
+        <i class="fa-solid fa-cart-plus fa-xl text-white"></i>
+        <span class="text-white text-uppercase"><?php echo $htmlspecialchars($title['TenTheLoai']) ?></span>
+      </div>
       <?php while ($row = $statement->fetch()) { ?>
         <form action="pages/modules/handle-cart.php" method="POST" class="d-flex justify-content-center col-md-2 py-2 product" style="height: 400px">
           <div class="border d-flex flex-column" style="width: 100%;box-shadow: 2px 3px silver;">

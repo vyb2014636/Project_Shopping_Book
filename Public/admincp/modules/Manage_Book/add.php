@@ -1,9 +1,6 @@
 <?php
 require_once __DIR__ . "/../../config/config.php";
-$sql = "SELECT * FROM category";
 
-$statement = $pdo->prepare($sql);
-$statement->execute();
 ?>
 <main>
   <div class="container" style="width: 30%">

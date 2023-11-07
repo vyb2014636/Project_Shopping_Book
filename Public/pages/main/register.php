@@ -6,11 +6,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $username = $_POST['username'];
       $password = md5($_POST['password']);
       $email = $_POST['email'];
+      $phone = $_POST['phone'];
+      $address = $_POST['address'];
       $roles = 2;
-      $sql = "INSERT INTO tbl_user (TenNguoiDung,TenDangNhap,MatKhau,Email,role) VALUES (?, ?, ?, ?, ?)";
+      $sql = "INSERT INTO tbl_user (TenNguoiDung,TenDangNhap,MatKhau,Email,SoDienThoai,DiaChi,role) VALUES (?, ?, ?, ?, ?, ?, ?)";
       try {
         $statement = $pdo->prepare($sql);
-        $statement->execute([$fullname, $username,  $password, $email, $roles]);
+        $statement->execute([$fullname, $username,  $password, $email, $phone, $address, $roles]);
 ?>
         <script>
           Swal.fire({
@@ -62,6 +64,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                   <div class="form-outline mb-4">
                     <label class="form-label"><strong>Nhập lại mật khẩu</strong></label>
                     <input type="password" class="form-control form-control-lg" name="password" />
+                  </div>
+                  <div class="form-outline mb-4">
+                    <label class="form-label"><strong>Số điện thoại</strong></label>
+                    <input type="tel" class="form-control form-control-lg" name="phone" />
+                  </div>
+                  <div class="form-outline mb-4">
+                    <label class="form-label"><strong>Địa chỉ</strong></label>
+                    <input type="text" class="form-control form-control-lg" name="address" />
                   </div>
                   <div>
                     <input class="btn btn-dark btn-lg btn-block" type="submit" name="dangky" value="Tạo tài khoản" />
