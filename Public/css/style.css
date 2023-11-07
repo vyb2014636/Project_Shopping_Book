@@ -216,9 +216,7 @@ a {
 }
 
 .zoom_image_product_cart {
-
-  transition: transform .2s;
-
+  transition: transform 0.2s;
 }
 
 .zoom_image_product_cart:hover {
