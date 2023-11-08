@@ -1,0 +1,317 @@
+<?php
+require_once __DIR__ . '/../../admincp/config/config.php';
+include_once __DIR__ . '/../header.php';
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $TenNguoiNhan = $_POST['TenNguoiNhan'];
+    $SoDienThoai = $_POST['SoDienThoai'];
+    $DiaChi = $_POST['DiaChi'];
+
+    if (empty($TenNguoiNhan) || empty($SoDienThoai) || empty($DiaChi)) {
+        echo "Vui lòng điền đầy đủ thông tin.";
+    } else {
+        $sql = "INSERT INTO don_hang (TenNguoiNhan, SoDienThoai, DiaChi, TongTien) 
+                VALUES ('$TenNguoiNhan', '$SoDienThoai', '$DiaChi', '0')";
+        
+        if ($pdo->query($sql) == true) {
+            $id_don_hang = $pdo->lastInsertId();
+
+            // foreach ($_SESSION['cart'] as $item) {
+            //     $productId = $item['id'];
+            //     $quantity = $item['soluong'];
+            //     $sql = "INSERT INTO chi_tiet_don_hang (id_don_hang, MaSach, SoLuong) 
+            //             VALUES ($id_don_hang, $MaSach, $SoLuong)";
+            //     $pdo->query($sql);
+            // }
+
+            // // Xóa giỏ hàng sau khi đã thanh toán
+            // unset($_SESSION['cart']);
+
+            echo "Thanh toán đơn hàng thành công! Đơn hàng của bạn đã được lưu có ID: $id_don_hang.";
+        } else {
+            echo "Lỗi trong quá trình thanh toán.";
+        }
+    }
+
+    $pdo = null;
+}
+?>
+
+
+
+<main class="bg-light pt-4 rounded">
+    <form method="POST" action="">
+        <!-- Đia chỉ  và  vận chuyển  -->
+        <div class="container bg-white rounded pt-3">
+            <h3>THANH TOÁN </h3>
+            <hr>
+            <div class="row bg">
+                <div class="col-md-6">
+                    <h5>ĐỊA CHỈ GIAO HÀNG</h5>
+
+
+                    <div class="form-group row pt-2">
+                        <label for="TenNguoiNhan" class="col-md-4 col-form-label">Họ và tên người nhận: </label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="TenNguoiNhan" name="TenNguoiNhan" placeholder="Nhập họ và tên người nhận">
+                        </div>
+                    </div>
+                    <div class="form-group row pt-2">
+                        <label for="SoDienThoai" class="col-md-4 col-form-label">Số điện thoại: </label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="SoDienThoai" name="SoDienThoai" placeholder="Nhập số điện thoại">
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="form-group row pt-2">
+                        <label for="DiaChi" class="col-md-4 col-form-label">Địa chỉ: </label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" id="DiaChi" name="DiaChi" placeholder="Nhập địa chỉ">
+                        </div>
+                    </div>
+                    <!-- 
+                        <div class="form-group row pt-2">
+                            <label for="inputName" class="col-md-4 col-form-label">Tỉnh/Thành Phố: </label>
+                            <div class="col-md-8">
+                                <select class="form-select form-select-md " id="city" aria-label=".form-select-md">
+                                    <option value="" selected>Chọn tỉnh thành</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row pt-2">
+                            <label for="inputName" class="col-md-4 col-form-label">Quận/huyện: </label>
+                            <div class="col-md-8">
+                                <select class="form-select form-select-md " id="district">
+                                    <option value="" selected>Chọn quận huyện</option>
+                                </select>
+
+                            </div>
+                        </div>
+                        <div class="form-group row pt-2">
+                            <label for="inputName" class="col-md-4 col-form-label">Phường/Xã: </label>
+                            <div class="col-md-8">
+                                <select class="form-select form-select-md" id="ward">
+                                    <option value="" selected>Chọn phường xã</option>
+                                </select>
+                            </div>
+                        </div> -->
+
+                    <!-- <div class="form-group row pt-2">
+                            <label for="inputName" class="col-md-4 col-form-label">Địa chỉ nhận hàng: </label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" id="DiaChiNhanHang"
+                                    placeholder="Nhập địa chỉ nhận hàng">
+                            </div>
+                        </div> -->
+
+
+                </div>
+                <div class="col-md-6 my-5">
+                    <h5>PHƯƠNG THỨC VẬN CHUYỂN</h5>
+                    <div class="form-check pt-3">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            <strong>Giao hàng nhanh: 40.000 đ</strong>
+                            <p>Thứ 7 - 2/11</p>
+                        </label>
+                    </div>
+                    <div class="form-check pt-3">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            <strong>Giao hàng tiêu chuẩn: 30.000 đ</strong>
+                            <p>Thứ 7 - 5/11</p>
+                        </label>
+                    </div>
+                    <div class="form-check pt-3">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            <strong>Bưu điện: 20.000 đ</strong>
+                            <p>Thứ 7 - 8/11</p>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="container bg-white rounded my-3">
+            <div class="row">
+                <div class="col-md-6 pt-3">
+                    <h5>PHƯƠNG THỨC THANH TOÁN</h5>
+                    <div class="form-check pt-3">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            <span>
+                                <i class="fa-solid fa-money-bills fa-lg"></i>
+                                <strong> Thanh toán bằng tiền mặt khi nhận hàng</strong>
+                            </span>
+                            <p>Thứ 7 - 8/11</p>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="col-md-6 pt-3">
+                    <h5>MÃ GIẢM GIÁ</h5>
+
+                    <div class="form-group row pt-2">
+                        <label for="inputName" class="col-md-3 col-form-label">Mã giảm giá: </label>
+                        <div class="col-md-5 col-8">
+                            <input type="text" class="form-control" id="inputName" placeholder="Nhập mã giảm giá">
+                        </div>
+                        <div class="col-md-4 col-4">
+                            <a href="" class="btn btn-primary rounded " style="background-color: #38284f;">Áp dụng</a>
+                        </div>
+                    </div>
+                    <p class="text-muted pt-2" style="font-size: 12px;">
+                        Lưu ý: Mỗi đơn hàng chỉ áp dụng được 1 mã giảm giá
+                    </p>
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="container bg-white rounded">
+            <div class="row pt-3">
+                <h5>ĐƠN HÀNG</h5>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-6">
+                    <div class="d-flex">
+                        <p class="text-center"><strong>Sản Phẩm</strong></p>
+                    </div>
+                </div>
+                <div class="col-md-2 col-2">
+                    <p class="text-center"><strong>Số Lượng</strong></p>
+
+                </div>
+                <div class="col-md-4 col-4 d-flex justify-content-center  ">
+                    <p><strong>Thành tiền</strong></p>
+                </div>
+            </div>
+            <div class="row ">
+                <!-- San pham 1 -->
+                <div class="col-md-6 col-6">
+                    <div class="d-flex">
+                        <img src="../img/Sach1.jpg" class="zoom_image_product_cart rounded me-3" style="width: 96px; height: 130px;" />
+                        <div class="">
+                            <a href="#" class="nav-link">Đắc Nhân Tâm</a>
+                            <p class="text-muted">Kinh Dị</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-2 col-2">
+                    <div class="text-center">
+                        1
+                    </div>
+
+                </div>
+                <div class="col-md-4 col-4 d-flex justify-content-center ">
+                    <p>120.000 đ</p>
+                </div>
+
+            </div>
+            <hr>
+            <div class="row ">
+                <!-- San pham 1 -->
+                <div class="col-md-6 col-6">
+                    <div class="d-flex">
+                        <img src="../img/Sach1.jpg" class="zoom_image_product_cart rounded me-3" style="width: 96px; height: 130px;" />
+                        <div class="">
+                            <a href="#" class="nav-link">Đắc Nhân Tâm</a>
+                            <p class="text-muted">Kinh Dị</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-2 col-2">
+                    <div class="text-center">
+                        1
+                    </div>
+
+                </div>
+                <div class="col-md-4 col-4 d-flex justify-content-center ">
+                    <p>120.000 đ</p>
+                </div>
+
+            </div>
+            <hr>
+            <div class="row ">
+                <!-- San pham 1 -->
+                <div class="col-md-6 col-6">
+                    <div class="d-flex">
+                        <img src="../img/Sach1.jpg" class="zoom_image_product_cart rounded me-3" style="width: 96px; height: 130px;" />
+                        <div class="">
+                            <a href="#" class="nav-link">Đắc Nhân Tâm</a>
+                            <p class="text-muted">Kinh Dị</p>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-2 col-2">
+                    <div class="text-center">
+                        1
+                    </div>
+
+                </div>
+                <div class="col-md-4 col-4 d-flex justify-content-center ">
+                    <p>120.000 đ</p>
+                </div>
+
+            </div>
+            <hr>
+            <div class="card shadow-0 border">
+                <div class="card-body">
+                    <h4 class="pt-1">Tóm Tắt</h4>
+                    <hr>
+                    <div class="d-flex justify-content-between">
+                        <p class="mb-2">Thành Tiền:</p>
+                        <p class="mb-2">129.000 đ</p>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <p class="mb-2">Phí Giao Hàng:</p>
+                        <p class="mb-2">30.000 đ</p>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <p class="mb-2">Mã Giảm Giá:</p>
+                        <p class="mb-2">- 30.000 đ</p>
+                    </div>
+                    <hr />
+                    <div class="d-flex justify-content-between">
+                        <p class="mb-2">Tổng Tiền:</p>
+                        <p class="mb-2 fw-bold">129.000 đ</p>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="container">
+            <div class="row pt-3">
+                <div class="col-md-9 col-6 pt-2">
+                    <a href="cart.html" class="text-muted"> <i class="fa-solid fa-arrow-left"></i> Trở về đơn hàng </a>
+
+                </div>
+
+                <div class="col-md-3 col-6 d-flex justify-content-end">
+                    <button type="submit" class="btn w-100 shadow-0 mb-2 text-white" style="background-color:#38284f ;">
+                        Thanh Toán
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+
+    </form>
+
+
+
+</main>
