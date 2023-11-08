@@ -4,37 +4,53 @@ include_once __DIR__ . '/../header.php';
 
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $TenNguoiNhan = $_POST['TenNguoiNhan'];
-    $SoDienThoai = $_POST['SoDienThoai'];
-    $DiaChi = $_POST['DiaChi'];
-
-    if (empty($TenNguoiNhan) || empty($SoDienThoai) || empty($DiaChi)) {
-        echo "Vui lòng điền đầy đủ thông tin.";
-    } else {
-        $sql = "INSERT INTO don_hang (TenNguoiNhan, SoDienThoai, DiaChi, TongTien) 
-                VALUES ('$TenNguoiNhan', '$SoDienThoai', '$DiaChi', '0')";
-        
-        if ($pdo->query($sql) == true) {
-            $id_don_hang = $pdo->lastInsertId();
-
-            // foreach ($_SESSION['cart'] as $item) {
-            //     $productId = $item['id'];
-            //     $quantity = $item['soluong'];
-            //     $sql = "INSERT INTO chi_tiet_don_hang (id_don_hang, MaSach, SoLuong) 
-            //             VALUES ($id_don_hang, $MaSach, $SoLuong)";
-            //     $pdo->query($sql);
-            // }
-
-            // // Xóa giỏ hàng sau khi đã thanh toán
-            // unset($_SESSION['cart']);
-
-            echo "Thanh toán đơn hàng thành công! Đơn hàng của bạn đã được lưu có ID: $id_don_hang.";
+    if (isset($_POST['pay']) && $_POST['pay']) {
+        $userid = $_SESSION['login']['username'];
+        $sqltmp = "SELECT * FROM cart WHERE TenTaiKhoan LIKE '%$userid%' AND MaDonHang = 0";
+        $stmt = $pdo->prepare($sqltmp);
+        $stmt->execute();
+        $SoLuongSP = $stmt->rowCount();
+        $TenNguoiNhan = $_POST['TenNguoiNhan'];
+        $SoDienThoai = $_POST['SoDienThoai'];
+        $EmailNhan = $_POST['EmailNhan'];
+        $DiaChi = $_POST['DiaChi'];
+        $status = 'pending';
+        $ship = $_POST['flexRadioDefault'];
+        if (empty($TenNguoiNhan) || empty($SoDienThoai) || empty($DiaChi) || empty($EmailNhan)) {
+            echo "Vui lòng điền đầy đủ thông tin.";
+        } elseif ($SoLuongSP == 0) {
         } else {
-            echo "Lỗi trong quá trình thanh toán.";
+            $idcode = rand(0, 999);
+            $sql = "INSERT INTO payment (id,TenKhachHang, TKKhachHang,SoDienThoai,Email, DiaChi,TongSP,TongTien, TrangThai)  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $statement = $pdo->prepare($sql);
+            $statement->execute([
+                $idcode,
+                $TenNguoiNhan,
+                $userid,
+                $SoDienThoai,
+                $EmailNhan,
+                $DiaChi,
+                $SoLuongSP,
+                $sum + $ship,
+                $status
+            ]);
+            $stmt2 = $pdo->prepare("UPDATE cart SET MaDonHang=$idcode WHERE TenTaiKhoan LIKE '%$userid%' AND MaDonHang = 0");
+            $stmt2->execute();
+?>
+            <script>
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Thanh toán thành công ',
+                    text: 'Cảm ơn vì đã mua hàng',
+                    footer: '<a href="">Why do I have this issue?</a>'
+                }).then(function() {
+                    window.location.href = 'index.php'
+                });
+            </script>
+<?php
         }
     }
-
-    $pdo = null;
+    // $pdo = null;
 }
 ?>
 
@@ -55,6 +71,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <label for="TenNguoiNhan" class="col-md-4 col-form-label">Họ và tên người nhận: </label>
                         <div class="col-md-8">
                             <input type="text" class="form-control" id="TenNguoiNhan" name="TenNguoiNhan" placeholder="Nhập họ và tên người nhận">
+                        </div>
+                    </div>
+                    <div class="form-group row pt-2">
+                        <label for="EmaiNhan" class="col-md-4 col-form-label">Email: </label>
+                        <div class="col-md-8">
+                            <input type="email" class="form-control" id="EmailNhan" name="EmailNhan" placeholder="Nhập địa chỉ mail">
                         </div>
                     </div>
                     <div class="form-group row pt-2">
@@ -113,21 +135,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="col-md-6 my-5">
                     <h5>PHƯƠNG THỨC VẬN CHUYỂN</h5>
                     <div class="form-check pt-3">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value='40000'>
                         <label class="form-check-label" for="flexRadioDefault1">
                             <strong>Giao hàng nhanh: 40.000 đ</strong>
                             <p>Thứ 7 - 2/11</p>
                         </label>
                     </div>
                     <div class="form-check pt-3">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value='30000'>
                         <label class="form-check-label" for="flexRadioDefault1">
                             <strong>Giao hàng tiêu chuẩn: 30.000 đ</strong>
                             <p>Thứ 7 - 5/11</p>
                         </label>
                     </div>
                     <div class="form-check pt-3">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value='20000'>
                         <label class="form-check-label" for="flexRadioDefault1">
                             <strong>Bưu điện: 20.000 đ</strong>
                             <p>Thứ 7 - 8/11</p>
@@ -192,77 +214,54 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <p><strong>Thành tiền</strong></p>
                 </div>
             </div>
-            <div class="row ">
-                <!-- San pham 1 -->
-                <div class="col-md-6 col-6">
-                    <div class="d-flex">
-                        <img src="../img/Sach1.jpg" class="zoom_image_product_cart rounded me-3" style="width: 96px; height: 130px;" />
-                        <div class="">
-                            <a href="#" class="nav-link">Đắc Nhân Tâm</a>
-                            <p class="text-muted">Kinh Dị</p>
+            <?php
+            $sum = 0;
+            if (isset($_SESSION["login"])) {
+                $id_user = $_SESSION['login']['username'];
+                $statement = $pdo->prepare("SELECT * FROM cart WHERE TenTaiKhoan LIKE '%$id_user%' AND MaDonHang=0");
+                $statement->execute();
+                $row_count = $statement->rowCount();
+                $htmlspecialchars = 'htmlspecialchars';
+                if ($row_count > 0) {
+                    while ($row = $statement->fetch()) {
+                        $sum += $htmlspecialchars($row['DonGia']) * $htmlspecialchars($row['SoLuong']);
+            ?>
+                        <div class="row ">
+                            <!-- San pham 1 -->
+                            <div class="col-md-6 col-6">
+                                <div class="d-flex">
+                                    <img src="../../admincp/modules/Manage_Book/uploads/<?php echo $htmlspecialchars($row['HinhAnh']) ?>" class="zoom_image_product_cart rounded me-3" style="width: 96px; height: 100px;" />
+                                    <div class="">
+                                        <a href="#" class="nav-link"> <?php echo $htmlspecialchars($row['TenSach']); ?></a>
+                                        <p class="text-muted">
+                                            <?php $idcate = $htmlspecialchars($row['MaTheLoai']);
+                                            $sql = "SELECT TenTheLoai FROM category where MaTheLoai LIKE '%$idcate%' LIMIT 1 ";
+                                            $statements = $pdo->prepare($sql);
+                                            $statements->execute();
+                                            $rows = $statements->fetch();
+                                            echo $htmlspecialchars($rows['TenTheLoai']) ?>
+                                        </p>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="col-md-2 col-2">
+                                <div class="text-center">
+                                    <?php echo  $htmlspecialchars($row['SoLuong']) ?>
+                                </div>
+
+                            </div>
+                            <div class="col-md-4 col-4 d-flex justify-content-center ">
+                                <p><?php echo number_format($htmlspecialchars($htmlspecialchars($row['DonGia']) * $htmlspecialchars($row['SoLuong'])), 0, ',', '.') . ' vnđ' ?></p>
+                            </div>
+
                         </div>
-                    </div>
+                        <hr>
+            <?php }
+                }
+                $ship = 30000;
+            } ?>
 
-                </div>
-                <div class="col-md-2 col-2">
-                    <div class="text-center">
-                        1
-                    </div>
-
-                </div>
-                <div class="col-md-4 col-4 d-flex justify-content-center ">
-                    <p>120.000 đ</p>
-                </div>
-
-            </div>
-            <hr>
-            <div class="row ">
-                <!-- San pham 1 -->
-                <div class="col-md-6 col-6">
-                    <div class="d-flex">
-                        <img src="../img/Sach1.jpg" class="zoom_image_product_cart rounded me-3" style="width: 96px; height: 130px;" />
-                        <div class="">
-                            <a href="#" class="nav-link">Đắc Nhân Tâm</a>
-                            <p class="text-muted">Kinh Dị</p>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-md-2 col-2">
-                    <div class="text-center">
-                        1
-                    </div>
-
-                </div>
-                <div class="col-md-4 col-4 d-flex justify-content-center ">
-                    <p>120.000 đ</p>
-                </div>
-
-            </div>
-            <hr>
-            <div class="row ">
-                <!-- San pham 1 -->
-                <div class="col-md-6 col-6">
-                    <div class="d-flex">
-                        <img src="../img/Sach1.jpg" class="zoom_image_product_cart rounded me-3" style="width: 96px; height: 130px;" />
-                        <div class="">
-                            <a href="#" class="nav-link">Đắc Nhân Tâm</a>
-                            <p class="text-muted">Kinh Dị</p>
-                        </div>
-                    </div>
-
-                </div>
-                <div class="col-md-2 col-2">
-                    <div class="text-center">
-                        1
-                    </div>
-
-                </div>
-                <div class="col-md-4 col-4 d-flex justify-content-center ">
-                    <p>120.000 đ</p>
-                </div>
-
-            </div>
             <hr>
             <div class="card shadow-0 border">
                 <div class="card-body">
@@ -270,20 +269,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <hr>
                     <div class="d-flex justify-content-between">
                         <p class="mb-2">Thành Tiền:</p>
-                        <p class="mb-2">129.000 đ</p>
+                        <p class="mb-2"><?php echo number_format($sum, 0, ',', '.') . ' vnđ'  ?></p>
                     </div>
                     <div class="d-flex justify-content-between">
                         <p class="mb-2">Phí Giao Hàng:</p>
-                        <p class="mb-2">30.000 đ</p>
+                        <p class="mb-2">30.000 vnđ</p>
                     </div>
                     <div class="d-flex justify-content-between">
                         <p class="mb-2">Mã Giảm Giá:</p>
-                        <p class="mb-2">- 30.000 đ</p>
+                        <p class="mb-2">0 vnđ</p>
                     </div>
                     <hr />
                     <div class="d-flex justify-content-between">
                         <p class="mb-2">Tổng Tiền:</p>
-                        <p class="mb-2 fw-bold">129.000 đ</p>
+                        <p class="mb-2 fw-bold"><?php echo number_format($sum + $ship, 0, ',', '.') . ' vnđ'  ?></p>
                     </div>
 
                 </div>
@@ -298,9 +297,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
 
                 <div class="col-md-3 col-6 d-flex justify-content-end">
-                    <button type="submit" class="btn w-100 shadow-0 mb-2 text-white" style="background-color:#38284f ;">
-                        Thanh Toán
-                    </button>
+
+                    <input type="submit" name="pay" class="btn w-100 shadow-0 mb-2 text-white" style="background-color:#38284f ;" value='Thanh Toán'>
                 </div>
 
             </div>

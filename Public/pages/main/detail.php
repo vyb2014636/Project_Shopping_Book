@@ -95,9 +95,7 @@ try {
                 <h1><?php echo number_format($htmlspecialchars($row['DonGia']), 0, ',', '.') ?>&nbsp;vnđ</h1>
               </div>
 
-              <p class="text-muted" style="font-size: 15px;">
-                <?php echo $htmlspecialchars($row['NoiDung']) ?>
-              </p>
+
               <div class="row">
                 <div class="col-md-4 col-4">
                   <p>Chính sách đổi trả: </p>
@@ -127,7 +125,7 @@ try {
             </div>
           </div>
         </div>
-        <input type="hidden" name="id-book" value="<?php echo $htmlspecialchars($row['HinhAnh']) ?>">
+        <input type="hidden" name="id-book" value="<?php echo $htmlspecialchars($row['MaSach']) ?>">
         <input type="hidden" name="img-book" value="<?php echo $htmlspecialchars($row['HinhAnh']) ?>">
         <input type="hidden" name="name-book" value="<?php echo $htmlspecialchars($row['TenSach']) ?>">
         <input type="hidden" name="price-book" value="<?php echo $htmlspecialchars($row['DonGia']) ?>">

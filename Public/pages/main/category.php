@@ -50,7 +50,6 @@ try {
               <input type="submit" class="add-to-cart btn btn-primary" style="width:90%" value="Thêm vào giỏ" name="add-cart">
             </div>
 
-            <input type="hidden" value="<?php echo $htmlspecialchars($row['NoiDung']) ?>" name="NoiDung">
             <input type="hidden" value="<?php echo $htmlspecialchars($row['TacGia']) ?>" name="TacGia">
             <input type="hidden" value="<?php echo $htmlspecialchars($row['NhaXB']) ?>" name="NXB">
             <input type="hidden" value="<?php echo $htmlspecialchars($row['MaSach']) ?>" name="MaSach">

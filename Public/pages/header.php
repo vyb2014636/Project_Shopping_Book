@@ -60,7 +60,15 @@
             </div>
 
             <div class="nav-item link-nav">
-              <a class="nav-link link-nav-item text-uppercase" href="../index.php?page=book"><span>Sản phẩm<after></after></span></a>
+              <a class="nav-link link-nav-item text-uppercase" href="../index.php?page=order"><span> <span class="position-absolute rounded-circle text-center" style="
+                      width: 8px;
+                      height: 8px;
+                      top: -1px;
+                      right: -6px;
+                      background-color: #38284f;
+                      font-size: 12px;
+                      color: white;
+                    " id="quantity-in-cart"><strong></strong></span>Đơn hàng<after></after></span></a>
             </div>
 
           </div>
@@ -88,7 +96,7 @@
 
                     if (isset($_SESSION['login'])) {
                       $tk = $_SESSION['login']['username'];
-                      $statement = $pdo->prepare("SELECT * FROM cart WHERE TenTaiKhoan LIKE '%$tk%'");
+                      $statement = $pdo->prepare("SELECT * FROM cart WHERE TenTaiKhoan LIKE '%$tk%' AND MaDonHang=0");
                       $statement->execute();
                       $row_count = $statement->rowCount();
                       echo $row_count;
@@ -168,7 +176,7 @@
 
                     if (isset($_SESSION['login'])) {
                       $tk = $_SESSION['login']['username'];
-                      $statement = $pdo->prepare("SELECT * FROM cart WHERE TenTaiKhoan LIKE '%$tk%'");
+                      $statement = $pdo->prepare("SELECT * FROM cart WHERE TenTaiKhoan LIKE '%$tk%' AND MaDonHang=0");
                       $statement->execute();
                       $row_count = $statement->rowCount();
                       echo $row_count;

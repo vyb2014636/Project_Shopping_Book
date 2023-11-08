@@ -1,9 +1,6 @@
 <?php
 session_start();
-print_r($_SESSION['role']);
-
 if (isset($_GET["logout"])) {
-
   if ($_GET["logout"] == "1") {
     unset($_SESSION["loginAD"]);
     unset($_SESSION["role"]);

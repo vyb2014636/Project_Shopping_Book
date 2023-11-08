@@ -21,8 +21,8 @@ if (isset($_SESSION['login'])) {
 }
 if ($page == 'category' &&  isset($_GET['idcate'])) {
   include_once __DIR__ . '/../Public/pages/main/category.php';
-} elseif ($page == 'book') {
-  include_once __DIR__ . '/../Public/pages/';
+} elseif ($page == 'order') {
+  include_once __DIR__ . '/../Public/pages/main/order.php';
 } elseif ($page == 'detail') {
   include_once __DIR__ . '/../Public/pages/main/detail.php';
 } elseif ($page == 'cart') {
@@ -50,6 +50,10 @@ if ($page == 'category' &&  isset($_GET['idcate'])) {
   include_once __DIR__ . '/../Public/pages/main/search.php';
 } elseif ($page == 'profile') {
   include_once __DIR__ . '/../Public/pages/main/profiles.php';
+} elseif ($page == 'payments') {
+  include_once __DIR__ . '/../Public/pages/main/pay.php';
+} elseif ($page == 'orderdetail' && isset($_GET['id'])) {
+  include_once __DIR__ . '/../Public/pages/main/detail_order.php';
 } else {
   include_once __DIR__ . '/../Public/pages/main.php';
 }

@@ -16,7 +16,7 @@ if (isset($_SESSION['login'])) {
     }
     $idbook = $_POST["MaSach"];
     $idcate = $_POST["MaTheLoai"];
-    $statement = $pdo->prepare("SELECT * FROM cart WHERE TenTaiKhoan LIKE '%$id_user%' AND MaSach LIKE '%$idbook%'");
+    $statement = $pdo->prepare("SELECT * FROM cart WHERE TenTaiKhoan LIKE '%$id_user%' AND MaSach LIKE '%$idbook%' AND MaDonHang=0");
     $statement->execute();
     $row_count = $statement->rowCount();
     if ($row_count > 0) {
@@ -71,7 +71,7 @@ if (isset($_SESSION['login'])) {
     $idbook = $_POST["MaSach"];
     $idcate = $_POST["MaTheLoai"];
 
-    $statement = $pdo->prepare("SELECT * FROM cart WHERE TenTaiKhoan LIKE '%$id_user%' AND MaSach LIKE '%$idbook%'");
+    $statement = $pdo->prepare("SELECT * FROM cart WHERE TenTaiKhoan LIKE '%$id_user%' AND MaSach LIKE '%$idbook%' AND MaDonHang=0");
     $statement->execute();
     $row_count = $statement->rowCount();
     if ($row_count > 0) {

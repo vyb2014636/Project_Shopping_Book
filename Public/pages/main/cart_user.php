@@ -26,7 +26,7 @@
                   $sum = 0;
                   if (isset($_SESSION["login"])) {
                     $id_user = $_SESSION['login']['username'];
-                    $statement = $pdo->prepare("SELECT * FROM cart WHERE TenTaiKhoan LIKE '%$id_user%'");
+                    $statement = $pdo->prepare("SELECT * FROM cart WHERE TenTaiKhoan LIKE '%$id_user%' AND MaDonHang=0");
                     $statement->execute();
                     $row_count = $statement->rowCount();
                     $htmlspecialchars = 'htmlspecialchars';
@@ -43,7 +43,6 @@
                               <?php echo $htmlspecialchars($row['TenSach']);
                               $idcate = $htmlspecialchars($row['MaTheLoai']); ?></a></h5><span class="text-muted font-weight-normal font-italic d-block d-sm-none d-md-block">Thể loại:
                             <?php
-                            // $htmlspecialchars = 'htmlspecialchars';
                             $sql = "SELECT TenTheLoai FROM category where MaTheLoai LIKE '%$idcate%' LIMIT 1 ";
                             $statements = $pdo->prepare($sql);
                             $statements->execute();
@@ -94,7 +93,7 @@
             <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tổng cộng</strong>
               <h5 class="font-weight-bold"><?php echo number_format($sum + $ship, 0, ',', '.') . ' vnđ'  ?></h5>
             </li>
-          </ul><a href="#" class="btn btn-dark rounded-pill py-2 btn-block">Đặt hàng</a>
+          </ul><a href="../../index.php?page=payments" class="btn btn-dark rounded-pill py-2 btn-block">Đặt hàng</a>
         </div>
       </div>
     </div>

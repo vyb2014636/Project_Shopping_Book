@@ -11,7 +11,7 @@
         $sum = 0;
         $totalprice = 0;
         $id_user = $_SESSION['login']['username'];
-        $statement = $pdo->prepare("SELECT * FROM cart WHERE TenTaiKhoan LIKE '%$id_user%'");
+        $statement = $pdo->prepare("SELECT * FROM cart WHERE TenTaiKhoan LIKE '%$id_user%' AND MaDonHang=0");
         $statement->execute();
         $row_count = $statement->rowCount();
         $htmlspecialchars = 'htmlspecialchars';
