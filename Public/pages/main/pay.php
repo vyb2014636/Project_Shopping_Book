@@ -135,22 +135,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="col-md-6 my-5">
                     <h5>PHƯƠNG THỨC VẬN CHUYỂN</h5>
                     <div class="form-check pt-3">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value='40000'>
-                        <label class="form-check-label" for="flexRadioDefault1">
+                        <input class="form-check-input" type="radio" name="shippingMethod" id="GiaoHangNhanh" value="Nhanh">
+                        <label class="form-check-label" for="GiaoHangNhanh">
                             <strong>Giao hàng nhanh: 40.000 đ</strong>
                             <p>Thứ 7 - 2/11</p>
                         </label>
                     </div>
                     <div class="form-check pt-3">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value='30000'>
-                        <label class="form-check-label" for="flexRadioDefault1">
+                        <input class="form-check-input" type="radio"  name="shippingMethod" id="GiaoHangTieuChuan" value="TieuChuan">
+                        <label class="form-check-label" for="GiaoHangTieuChuan">
                             <strong>Giao hàng tiêu chuẩn: 30.000 đ</strong>
                             <p>Thứ 7 - 5/11</p>
                         </label>
                     </div>
                     <div class="form-check pt-3">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" value='20000'>
-                        <label class="form-check-label" for="flexRadioDefault1">
+                        <input class="form-check-input" type="radio" name="shippingMethod" id="BuuDien" value="BuuDien">
+                        <label class="form-check-label" for="BuuDien">
                             <strong>Bưu điện: 20.000 đ</strong>
                             <p>Thứ 7 - 8/11</p>
                         </label>
@@ -273,7 +273,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                     <div class="d-flex justify-content-between">
                         <p class="mb-2">Phí Giao Hàng:</p>
-                        <p class="mb-2">30.000 vnđ</p>
+                        <p class="mb-2" id="shippingCost">0</p>
                     </div>
                     <div class="d-flex justify-content-between">
                         <p class="mb-2">Mã Giảm Giá:</p>
@@ -309,7 +309,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
     </form>
-
+    <script>
+        $(document).ready(function () {
+            const PhuongThuc = {
+                'Nhanh': 40000,
+                'TieuChuan': 30000,
+                'BuuDien': 20000
+            };
+    
+            function phivanchuyen() {
+                const chonPhuongThuc = $('input[name="shippingMethod"]:checked').val();    
+                let temp = parseFloat($('#totalAmount').data('amount'));
+                const previous_select = parseFloat($('#shippingCost').text().replace(' đ', '').trim());
+                temp -= previous_select;
+                const new_select = PhuongThuc[chonPhuongThuc] || 0;
+                temp += new_select;    
+                $('#shippingCost').text(new_select.toFixed(2).replace(/\.00$/, '') + ' đ');
+                // $('#totalAmount').text(temp.toFixed(2) + ' đ');
+            }    
+            phivanchuyen();
+            $('input[name="shippingMethod"]').change(phivanchuyen);
+        });
+    </script>
 
 
 </main>
