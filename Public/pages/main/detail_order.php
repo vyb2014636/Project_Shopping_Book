@@ -86,7 +86,7 @@ try {
 
                           <tr>
                             <td>Phí vận chuyển :</td>
-                            <td class="text-end">$65.00</td>
+                            <td class="text-end"><?php echo number_format($htmlspecialchars($rowt['Ship']), 0, ',', '.') . ' vnđ' ?></td>
                           </tr>
                           <tr>
                             <td>Estimated Tax :</td>

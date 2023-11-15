@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $EmailNhan = $_POST['EmailNhan'];
         $DiaChi = $_POST['DiaChi'];
         $status = 'pending';
-        $ship = $_POST['shippingMethodf'];
+        $ship = $_POST['shippingMethod'];
         if (empty($TenNguoiNhan) || empty($SoDienThoai) || empty($DiaChi) || empty($EmailNhan)) {
             echo "Vui lòng điền đầy đủ thông tin.";
         } elseif ($SoLuongSP == 0) {
@@ -101,24 +101,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="col-md-6 my-5">
                     <h5>PHƯƠNG THỨC VẬN CHUYỂN</h5>
                     <div class="form-check pt-3">
-                        <input class="form-check-input" type="radio" name="shippingMethod" id="GiaoHangNhanh" value="Nhanh">
-                        <input class="form-check-input" type="hidden" name="shippingMethodf" value="40000">
+                        <input class="form-check-input" type="radio" name="shippingMethod" id="GiaoHangNhanh" value="40000">
                         <label class="form-check-label" for="GiaoHangNhanh">
                             <strong>Giao hàng nhanh: 40.000 đ</strong>
                             <p>Thứ 7 - 2/11</p>
                         </label>
                     </div>
                     <div class="form-check pt-3">
-                        <input class="form-check-input" type="radio" name="shippingMethod" id="GiaoHangTieuChuan" value="TieuChuan">
-                        <input class="form-check-input" type="hidden" name="shippingMethodf" value="30000">
+                        <input class="form-check-input" type="radio" name="shippingMethod" id="GiaoHangTieuChuan" value="30000">
                         <label class="form-check-label" for="GiaoHangTieuChuan">
                             <strong>Giao hàng tiêu chuẩn: 30.000 đ</strong>
                             <p>Thứ 7 - 5/11</p>
                         </label>
                     </div>
                     <div class="form-check pt-3">
-                        <input class="form-check-input" type="radio" name="shippingMethod" id="BuuDien" value="BuuDien">
-                        <input class="form-check-input" type="hidden" name="shippingMethodf" value="20000">
+                        <input class="form-check-input" type="radio" name="shippingMethod" id="BuuDien" value="20000">
                         <label class="form-check-label" for="BuuDien">
                             <strong>Bưu điện: 20.000 đ</strong>
                             <p>Thứ 7 - 8/11</p>
