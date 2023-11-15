@@ -20,9 +20,11 @@ if (isset($_SESSION["loginAD"]) && $_SESSION["role"] == 1) {
         include_once __DIR__ . '/modules/Manage_Category/main.php';
       } elseif ($pages == 'books') {
         include_once __DIR__ . '/modules/Manage_Book/main.php';
+      } elseif ($pages == 'order') {
+        include_once __DIR__ . '/modules/Manage_Order/main.php';
       }
     } else {
-      echo '<h1 class="text-center">Đây là trang giới thiệu</h1>';
+      include_once __DIR__ . '/modules/intro.php';
     }
     ?>
 

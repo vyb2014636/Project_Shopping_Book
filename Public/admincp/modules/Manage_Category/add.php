@@ -1,5 +1,8 @@
 <main>
-  <div class="container" style="width: 30%">
+  <div class="card-header d-flex align-items-center justify-content-center py-2" style="font-size: x-large;">
+    <strong class="card-title mb-0">Thêm thể loại</strong>
+  </div>
+  <div class="container py-4" style="width: 40%">
     <form action="modules/Manage_Category/handle.php" method="POST">
       <div class="mb-3 d-flex">
         <label for="id-cate" class="form-label" style="width: 40%">

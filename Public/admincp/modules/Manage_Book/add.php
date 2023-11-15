@@ -6,7 +6,10 @@ $statement = $pdo->prepare($sql);
 $statement->execute();
 ?>
 <main>
-  <div class="container" style="width: 30%">
+  <div class="card-header d-flex align-items-center justify-content-center py-2" style="font-size: x-large;">
+    <strong class="card-title mb-0">Thêm sản phẩm</strong>
+  </div>
+  <div class="container py-4" style="width: 40%">
     <form action="modules/Manage_Book/handle.php" enctype="multipart/form-data" method="POST">
       <div class="mb-3 d-flex align-items-center">
         <label for="id-book" class="form-label text-end pe-3" style="width: 30%">

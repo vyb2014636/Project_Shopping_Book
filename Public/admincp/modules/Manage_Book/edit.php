@@ -20,6 +20,10 @@ try {
 
 ?>
 <main>
+  <div class="card-header d-flex align-items-center justify-content-center py-2" style="font-size: x-large;">
+    <strong class="card-title mb-0">Sửa sản phẩm</strong>
+  </div>
+
   <div class="container" style="width: 30%">
     <form action="modules/Manage_Book/handle.php?page=books&query=edit&id=<?php echo $htmlspecialchars($row["MaSach"]) ?>" enctype="multipart/form-data" method="POST">
       <div class="mb-3 d-flex align-items-center">
