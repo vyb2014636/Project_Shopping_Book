@@ -42,160 +42,7 @@ a {
 }
 /*  */
 
-/* Cart product */
-/* :root {
-  font-size: 16px;
-  --heading-color: hsl(0, 0%, 7%);
-  --date-text-color: hsl(0, 0%, 51%);
-  --previous-price-text-color: hsl(0, 98%, 44%);
-  --current-price-text-color: hsla(0, 0%, 0%, 0.822);
-  --pricing-font-weight: 800;
-  --title-font-weight: 800;
-  --date-font-weight: 550;
-  --card-main-color: whitesmoke;
-  --card-1-secondary-color: #38284f;
-}
 
-.container input {
-  display: none;
-}
-
-.card-div {
-  width: 17em;
-  flex-direction: column;
-  background-color: var(--card-main-color);
-  margin: 1.5em;
-  border-radius: 10px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
-  transition: transform 0.2s ease-in-out;
-}
-
-.img-div {
-  width: 100%;
-  height: 10em;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding-top: 1rem;
-  z-index: 1;
-  border-radius: 0 0 10px 10px;
-}
-
-.img-div img {
-  transform-origin: bottom;
-  transform: translateY(7.5%);
-  transition: transform 0.3s ease-in-out;
-}
-
-.div_card_header {
-  padding: 0.25em 0.25em 0.5em;
-  font-size: 1.5em;
-  color: var(--heart-icon-color);
-  border-radius: 10px 10px 0 0;
-}
-
-.header-card-product {
-  border-radius: 10px 10px 0 0;
-  width: 1em;
-  height: 1em;
-  position: relative;
-  z-index: 3;
-  cursor: pointer;
-}
-
-.image-product-card {
-  background-color: var(--card-1-secondary-color);
-}
-
-.image-product-card img {
-  width: 65%;
-  transform: translateY(7.5%);
-}
-
-.card-1 .div_card_header {
-  background-color: var(--card-1-secondary-color);
-}
-
-.text-container {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  padding: 0.25em 0.25em;
-  padding-top: 4em;
-  padding-bottom: 1em;
-  box-sizing: border-box;
-}
-
-.item-name,
-.text-container {
-  margin: 0 0;
-  text-align: center;
-}
-
-.text-container .item-name {
-  font-size: 1.5em;
-}
-
-.text-container .price {
-  font-size: 1.4em;
-  color: var(--date-text-color);
-}
-
-.card-div:hover .img-div img {
-  transform: translateY(7.5%) scale(1.2);
-}
-
-.card-div:hover {
-  transform: translate(0, -10px);
-} */
-
-/* 
-#card-1-like:checked~.heart-fill {
-  animation: like-animation 0.25s ease-in-out forwards;
-}
-
-#card-1-like:not(:checked)~.heart-fill {
-  animation: unlike-animation 0.25s ease-in-out;
-}
-
-
-@keyframes like-animation {
-  0% {
-    opacity: 1;
-    transform: scale(1)
-  }
-
-  50% {
-    opacity: 1;
-    color: var(--liked-heart-icon-color);
-    transform: scale(0.5);
-  }
-
-  100% {
-    opacity: 1;
-    color: var(--liked-heart-icon-color);
-    transform: scale(1.0);
-  }
-}
-
-@keyframes unlike-animation {
-  0% {
-    opacity: 1;
-    transform: scale(1)
-  }
-
-  50% {
-    opacity: 1;
-    transform: scale(0.5);
-  }
-
-  100% {
-    opacity: 1;
-    color: var(--heart-icon-color);
-    transform: scale(1.0);
-  }
-} */
 
 /* Gio hang */
 .icon-hover-danger:hover {
@@ -214,6 +61,13 @@ a {
 .icon-hover-purle:hover i {
   color: #38284f !important;
 }
+
+.icon-hover-purle:hover a {
+  color: #38284f !important;
+}
+
+
+
 
 .zoom_image_product_cart {
   transition: transform 0.2s;
@@ -235,7 +89,6 @@ a {
   position: absolute;
   left: 0;
   top: 20px;
-  text-transform: uppercase;
   font-size: 13px;
   font-weight: 700;
   background: red;
@@ -271,18 +124,12 @@ a {
 
 .product-details {
   font-weight: 500;
-  display: block;
+
   text-transform: uppercase;
   color: #363636;
   transition: 0.3s;
 }
-
 .product-details {
-  color: #fbb72c;
-}
-
-.product-details {
-  font-size: 15px;
   line-height: 22px;
   margin-bottom: 18px;
   color: #999;
@@ -293,12 +140,9 @@ a {
   border-top: 1px solid #eee;
   padding-top: 20px;
 }
-
-
 .product-price {
-  font-size: 25px;
   color: #000000;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 .product-price small {

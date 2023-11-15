@@ -48,7 +48,7 @@
                   <td class="border-0 align-middle"><strong><?php echo number_format($item[3], 0, ',', '.') . ' vnđ' ?></strong></td>
                   <td class="border-0 align-middle"><strong><?php echo $item[4] ?></strong></td>
                   <td class="border-0 align-middle"><strong><?php echo number_format($item[3] * $item[4], 0, ',', '.') . ' vnđ' ?></strong></td>
-                  <td class="border-0 align-middle"><a href="../../pages/modules/handle-cart.php?want=delcartid&id=<?php echo $item[0]  ?>&stay=1" class=" text-dark"><i class="fa fa-trash"></i></a></td>
+                  <td class="border-0 align-middle"><a href="../../pages/modules/handle-cart.php?want=delcartid&id=<?php echo $item[0]  ?>&stay=1" class=" text-dark icon-hover-danger"><i class="fa fa-trash"></i></a></td>
                 </tr>
               <?php }
                   } else {
