@@ -81,7 +81,7 @@ try {
                         <tbody>
                           <tr>
                             <td>Tổng tiền :</td>
-                            <td class="text-end"><?php echo number_format($htmlspecialchars($rowt['TongTien']) - 30000, 0, ',', '.') . ' vnđ' ?></td>
+                            <td class="text-end"><?php echo number_format($htmlspecialchars($rowt['TongTien']), 0, ',', '.') . ' vnđ' ?></td>
                           </tr>
 
                           <tr>

@@ -15,13 +15,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $EmailNhan = $_POST['EmailNhan'];
         $DiaChi = $_POST['DiaChi'];
         $status = 'pending';
-        $ship = $_POST['flexRadioDefault'];
+        $ship = $_POST['shippingMethodf'];
         if (empty($TenNguoiNhan) || empty($SoDienThoai) || empty($DiaChi) || empty($EmailNhan)) {
             echo "Vui lòng điền đầy đủ thông tin.";
         } elseif ($SoLuongSP == 0) {
         } else {
             $idcode = rand(0, 999);
-            $sql = "INSERT INTO payment (id,TenKhachHang, TKKhachHang,SoDienThoai,Email, DiaChi,TongSP,TongTien, TrangThai)  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO payment (id,TenKhachHang, TKKhachHang,SoDienThoai,Email, DiaChi,TongSP,Ship,TongTien)  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $statement = $pdo->prepare($sql);
             $statement->execute([
                 $idcode,
@@ -31,8 +31,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $EmailNhan,
                 $DiaChi,
                 $SoLuongSP,
-                $sum + $ship,
-                $status
+                $ship,
+                $sum + $ship
             ]);
             $stmt2 = $pdo->prepare("UPDATE cart SET MaDonHang=$idcode WHERE TenTaiKhoan LIKE '%$userid%' AND MaDonHang = 0");
             $stmt2->execute();
@@ -95,40 +95,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <input type="text" class="form-control" id="DiaChi" name="DiaChi" placeholder="Nhập địa chỉ">
                         </div>
                     </div>
-                    <!-- 
-                        <div class="form-group row pt-2">
-                            <label for="inputName" class="col-md-4 col-form-label">Tỉnh/Thành Phố: </label>
-                            <div class="col-md-8">
-                                <select class="form-select form-select-md " id="city" aria-label=".form-select-md">
-                                    <option value="" selected>Chọn tỉnh thành</option>
-                                </select>
-                            </div>
-                        </div>
-                        <div class="form-group row pt-2">
-                            <label for="inputName" class="col-md-4 col-form-label">Quận/huyện: </label>
-                            <div class="col-md-8">
-                                <select class="form-select form-select-md " id="district">
-                                    <option value="" selected>Chọn quận huyện</option>
-                                </select>
-
-                            </div>
-                        </div>
-                        <div class="form-group row pt-2">
-                            <label for="inputName" class="col-md-4 col-form-label">Phường/Xã: </label>
-                            <div class="col-md-8">
-                                <select class="form-select form-select-md" id="ward">
-                                    <option value="" selected>Chọn phường xã</option>
-                                </select>
-                            </div>
-                        </div> -->
-
-                    <!-- <div class="form-group row pt-2">
-                            <label for="inputName" class="col-md-4 col-form-label">Địa chỉ nhận hàng: </label>
-                            <div class="col-md-8">
-                                <input type="text" class="form-control" id="DiaChiNhanHang"
-                                    placeholder="Nhập địa chỉ nhận hàng">
-                            </div>
-                        </div> -->
 
 
                 </div>
@@ -136,13 +102,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <h5>PHƯƠNG THỨC VẬN CHUYỂN</h5>
                     <div class="form-check pt-3">
                         <input class="form-check-input" type="radio" name="shippingMethod" id="GiaoHangNhanh" value="Nhanh">
+                        <input class="form-check-input" type="hidden" name="shippingMethodf" value="40000">
                         <label class="form-check-label" for="GiaoHangNhanh">
                             <strong>Giao hàng nhanh: 40.000 đ</strong>
                             <p>Thứ 7 - 2/11</p>
                         </label>
                     </div>
                     <div class="form-check pt-3">
-                        <input class="form-check-input" type="radio"  name="shippingMethod" id="GiaoHangTieuChuan" value="TieuChuan">
+                        <input class="form-check-input" type="radio" name="shippingMethod" id="GiaoHangTieuChuan" value="TieuChuan">
+                        <input class="form-check-input" type="hidden" name="shippingMethodf" value="30000">
                         <label class="form-check-label" for="GiaoHangTieuChuan">
                             <strong>Giao hàng tiêu chuẩn: 30.000 đ</strong>
                             <p>Thứ 7 - 5/11</p>
@@ -150,6 +118,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                     <div class="form-check pt-3">
                         <input class="form-check-input" type="radio" name="shippingMethod" id="BuuDien" value="BuuDien">
+                        <input class="form-check-input" type="hidden" name="shippingMethodf" value="20000">
                         <label class="form-check-label" for="BuuDien">
                             <strong>Bưu điện: 20.000 đ</strong>
                             <p>Thứ 7 - 8/11</p>
@@ -259,7 +228,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <hr>
             <?php }
                 }
-                $ship = 30000;
             } ?>
 
             <hr>
@@ -282,7 +250,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <hr />
                     <div class="d-flex justify-content-between">
                         <p class="mb-2">Tổng Tiền:</p>
-                        <p class="mb-2 fw-bold"><?php echo number_format($sum + $ship, 0, ',', '.') . ' vnđ'  ?></p>
+                        <p class="mb-2 fw-bold"><?php echo number_format($sum, 0, ',', '.') . ' vnđ'  ?></p>
                     </div>
 
                 </div>
@@ -310,23 +278,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     </form>
     <script>
-        $(document).ready(function () {
+        $(document).ready(function() {
             const PhuongThuc = {
                 'Nhanh': 40000,
                 'TieuChuan': 30000,
                 'BuuDien': 20000
             };
-    
+
             function phivanchuyen() {
-                const chonPhuongThuc = $('input[name="shippingMethod"]:checked').val();    
+                const chonPhuongThuc = $('input[name="shippingMethod"]:checked').val();
                 let temp = parseFloat($('#totalAmount').data('amount'));
                 const previous_select = parseFloat($('#shippingCost').text().replace(' đ', '').trim());
                 temp -= previous_select;
                 const new_select = PhuongThuc[chonPhuongThuc] || 0;
-                temp += new_select;    
+                temp += new_select;
                 $('#shippingCost').text(new_select.toFixed(2).replace(/\.00$/, '') + ' đ');
                 // $('#totalAmount').text(temp.toFixed(2) + ' đ');
-            }    
+            }
             phivanchuyen();
             $('input[name="shippingMethod"]').change(phivanchuyen);
         });

@@ -1,19 +1,20 @@
 <?php
-try {
-  $userid = $_SESSION['login']['username'];
-  $stmt = $pdo->prepare("SELECT * FROM payment WHERE TKKhachHang LIKE '%$userid%'");
-  $stmt->execute();
-} catch (PDOException $e) {
-  echo $e->getMessage();
-}
-if (!isset($_SESSION['order'])) {
-  $_SESSION['order'] = [];
-}
-unset($_SESSION['order']);
-while ($row = $stmt->fetch()) {
-  $_SESSION['order'][] = $row['id'];
-}
-?>
+if (isset($_SESSION["login"])) {
+  try {
+    $userid = $_SESSION['login']['username'];
+    $stmt = $pdo->prepare("SELECT * FROM payment WHERE TKKhachHang LIKE '%$userid%'");
+    $stmt->execute();
+  } catch (PDOException $e) {
+    echo $e->getMessage();
+  }
+  if (!isset($_SESSION['order'])) {
+    $_SESSION['order'] = [];
+  }
+  unset($_SESSION['order']);
+  while ($row = $stmt->fetch()) {
+    $_SESSION['order'][] = $row['id'];
+  }
+} ?>
 
 <main class="px-2">
   <div class="container pt-3 px-0">
@@ -23,7 +24,7 @@ while ($row = $stmt->fetch()) {
     </div>
 
     <?php
-    if (isset($_SESSION['order'])) {
+    if (isset($_SESSION['order']) && isset($_SESSION['login'])) {
       for ($i = 0; $i < sizeof($_SESSION['order']); $i++) { ?>
         <div class="container pt-3 px-0">
           <div class="card row m-0 " style="background-color: #FFFFFF;">
@@ -74,7 +75,7 @@ while ($row = $stmt->fetch()) {
                     <div class="col-sm ">
                       <div class="d-flex align-items-center gap-2 text-muted">
                         <div>Tổng Tiền :</div>
-                        <h5 class="fs-14 mb-0">$<span class="product-line-price">
+                        <h5 class="fs-14 mb-0"><span class="product-line-price">
                             <?php
                             try {
                               $stmt3 = $pdo->prepare("SELECT * FROM payment WHERE TKKhachHang LIKE '%$userid%' AND id = $itemoder LIMIT 1");

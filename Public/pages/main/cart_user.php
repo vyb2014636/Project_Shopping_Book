@@ -78,20 +78,10 @@
                 if ($sum > 0) {
                   echo number_format($sum, 0, ',', '.') . ' vnđ';
                 } else echo '0 vnđ'; ?></strong></li>
-            <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Phí vận chuyển</strong><strong>
-                <?php
-                $ship = 0;
-                if ($sum > 0) {
-                  $ship = 30000;
-                  echo number_format($ship, 0, ',', '.') . ' vnđ';
-                } else {
-                  echo '0 vnđ';
-                }
-                ?>
-              </strong></li>
+
             <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Thuế</strong><strong>0 vnđ</strong></li>
             <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tổng cộng</strong>
-              <h5 class="font-weight-bold"><?php echo number_format($sum + $ship, 0, ',', '.') . ' vnđ'  ?></h5>
+              <h5 class="font-weight-bold"><?php echo number_format($sum, 0, ',', '.') . ' vnđ'  ?></h5>
             </li>
           </ul><a href="../../index.php?page=payments" class="btn btn-dark rounded-pill py-2 btn-block">Đặt hàng</a>
         </div>
