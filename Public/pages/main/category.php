@@ -28,11 +28,13 @@ try {
         <span class="text-white text-uppercase"><?php echo $htmlspecialchars($title['TenTheLoai']) ?></span>
       </div>
       <?php while ($row = $statement->fetch()) { ?>
-        <form action="pages/modules/handle-cart.php" method="POST" class="col-lg-3 col-md-4 col-sm-6 mb-3" style="overflow: hidden">
+    
+        
+        <form action="pages/modules/handle-cart.php" method="POST" class="col-lg-3 col-md-4 col-sm-6 mb-3 d-flex justify-content-center" style="overflow: hidden">
           <div class="product-card zoom_image_product_cart shadow-md ">
             <div class="badge ">Hot</div>
             <div class="product-tumb">
-              <a class="" href="../index.php?page=detail&idbook=<?php echo $htmlspecialchars($row['MaSach']) ?>">
+              <a class="text-center" href="../index.php?page=detail&idbook=<?php echo $htmlspecialchars($row['MaSach']) ?>">
                 <img class="zoom_image_product_cart"  src="../../admincp/modules/Manage_Book/uploads/<?php echo $htmlspecialchars($row['HinhAnh']) ?>" 
                 alt="" style="max-width: 100%; max-height: 100%; width: 150px; height: 200px; object-fit: cover;">
               </a>
@@ -40,7 +42,7 @@ try {
             <div class="product-details p-3">
               <!-- <span class="product-catagory"><?php echo $htmlspecialchars($row['TenTheLoai']) ?></span> -->
               <h4 class="pt-2 text-truncate text-break zoom_image_product_cart"><a href="../index.php?page=detail&idbook=<?php echo $htmlspecialchars($row['MaSach']) ?>" class="text-black t"><?php echo $htmlspecialchars($row['TenSach']) ?></a></h4>
-              <p class="pt-1 zoom_image_product_cart">Tác giả: <?php echo $htmlspecialchars($row['TacGia']) ?></p>
+              <p class="pt-1 zoom_image_product_cart text-truncate">Tác giả: <?php echo $htmlspecialchars($row['TacGia']) ?></p>
               <div class="product-bottom-details div-product-bottom">
                 <div class="row">
                   <div class="col-6 col-md-7 ">
@@ -52,6 +54,7 @@ try {
                     </button>
                    
                   </div>
+                  
                 </div>
               </div>
             </div> 
