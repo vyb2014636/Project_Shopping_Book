@@ -18,7 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["avatar"])) {
     move_uploaded_file($file_tmp, $target_file);
 
     // Cập nhật đường dẫn ảnh mới vào cơ sở dữ liệu
-    $update_sql = "UPDATE tbl_user SET Hinh = '$target_file' WHERE TenDangNhap = '$user_id'";
+    $update_sql = "UPDATE tbl_user SET Hinh = '$file_name' WHERE TenDangNhap = '$user_id'";
     $statement = $pdo->prepare($update_sql);
     $statement->execute();
 
@@ -49,7 +49,7 @@ if (isset($_SESSION["login"])) {
                 <?php if ($htmlspecialchars($row['Hinh']) == 'avatar.png') { ?>
                   <img src="../../img/<?php echo  $htmlspecialchars($row['Hinh']) ?>" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
                 <?php } else { ?>
-                  <img src="../../<?php echo  $htmlspecialchars($row['Hinh']) ?>" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                  <img src="../../img/avatar_user/<?php echo  $htmlspecialchars($row['Hinh']) ?>" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
                 <?php } ?>
                 <input type="file" id="avatar" placeholder="rỗng" accept="image/*" onchange="uploadAvatar()">
                 <script>

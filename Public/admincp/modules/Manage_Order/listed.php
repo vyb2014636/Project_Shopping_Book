@@ -1,6 +1,6 @@
 <?php
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  if (isset($_POST['update-status'])) {
+  if (isset($_POST['update-status']) && $_POST['update-status']) {
     if (isset($_POST['status'])) {
       $status = $_POST['status'];
       $id_order = $_POST['id-order'];
@@ -18,54 +18,75 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           window.location.href = 'index.php?page=order&query=listed';
         });
       </script>
-  <?php
+<?php
       exit;
     }
   }
 }
+if (isset($_POST["search"]) && $_POST["search"]) {
+  $keyword = $_POST["keyword"];
+  $sql = "SELECT * FROM payment WHERE id LIKE ? OR TenKhachHang LIKE ?";
+  $stmt = $pdo->prepare($sql);
+  $stmt->execute(["%$keyword%", "%$keyword%"]);
+  $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  if (empty($result)) {
+    $rows = 'Not Found';
+  }
+} else {
 
+  $sql = 'SELECT * FROM payment';
+  try {
+    $statement = $pdo->prepare($sql);
+    $statement->execute();
+    $rows = $statement->fetchAll(PDO::FETCH_ASSOC);
+  } catch (PDOException $e) {
+    echo '' . $e->getMessage() . '';
+  }
+}
+?>
 
-$sql = 'SELECT * FROM payment';
-try {
-  $statement = $pdo->prepare($sql);
-  $statement->execute();
-  // $result = $statement->fetchALL(PDO::FETCH_ASSOC);
-  ?>
+<div class="content" style="min-height: 100vh;">
+  <div class="animated fadeIn">
+    <div class="row">
+      <div class="col">
+        <div class="card">
+          <div class="card-header d-flex align-items-center justify-content-between">
+            <strong class="card-title mb-0">Danh sách Đơn hàng</strong>
+          </div>
+          <div class="d-flex align-items-center justify-content-between" style="padding: .75rem 1.25rem;">
+            <form action="" method="post" class="d-flex align-items-center" style="gap: 8px;">
+              <input type="text" class="p-2 px-3" placeholder="Từ khóa tìm kiếm" name="keyword" autocomplete="off" id="keyword" style="border: 1px solid #ccc">
+              <input type="submit" name="search" class="btn text-white py-2" value="Tìm kiếm" style="background-color: #28a745;">
+            </form>
+            <a href="index.php?page=order&query=listed"><i class="fa-solid fa-rotate-right p-2"></i></a>
+          </div>
+          <div class="table-stats order-table ov-h">
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Mã đơn</th>
+                  <th>Tên khách hàng</th>
+                  <th>Địa chỉ</th>
+                  <th>Số điện thoại</th>
 
-  <div class="content" style="min-height: 100vh;">
-    <div class="animated fadeIn">
-      <div class="row">
-        <div class="col">
-          <div class="card">
-            <div class="card-header d-flex align-items-center justify-content-between">
-              <strong class="card-title mb-0">Danh sách Đơn hàng</strong>
-            </div>
-            <!-- <div class="d-flex align-items-center justify-content-between" style="padding: .75rem 1.25rem;">
-              <form action="" method="post" class="d-flex align-items-center" style="gap: 8px;">
-                <input type="text" class="p-2 px-3" placeholder="Từ khóa tìm kiếm" name="keyword" autocomplete="off" id="keyword" style="border: 1px solid #ccc">
-                <input type="submit" name="search" class="btn text-white py-2" value="Tìm kiếm" style="background-color: #28a745;">
-              </form>
-              <a href="/index.php?page=products&act=list"><i class="fa-solid fa-rotate-right p-2"></i></a>
-            </div> -->
-            <div class="table-stats order-table ov-h">
-              <table class="table">
-                <thead>
+                  <th>Số sản phẩm</th>
+                  <th>Phí vận chuyển</th>
+                  <th>Tổng tiền</th>
+                  <th>Trạng thái</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+
+                <?php
+                if ($rows === 'Not Found') {
+                ?>
                   <tr>
-                    <th>Mã đơn</th>
-                    <th>Tên khách hàng</th>
-                    <th>Địa chỉ</th>
-                    <th>Số điện thoại</th>
-
-                    <th>Số sản phẩm</th>
-                    <th>Phí vận chuyển</th>
-                    <th>Tổng tiền</th>
-                    <th>Trạng thái</th>
-                    <th></th>
+                    <td colspan="9" class="text-center">Không tìm thấy </td>
                   </tr>
-                </thead>
-                <tbody>
                   <?php
-                  while ($row = $statement->fetch()) {
+                } else {
+                  foreach ($rows as $row) {
                     $htmlspecialchars = 'htmlspecialchars';
                   ?>
                     <tr>
@@ -95,7 +116,9 @@ try {
                           <div class='d-flex'>
                             <div>
                               <select class="form-select" name="status">
-                                <?php for ($i = 0; $i < 3; $i++) {
+                                <?php
+                                $tmp1 = 0;
+                                for ($i = 0; $i < 3; $i++) {
                                   if ($i == $htmlspecialchars($row['TrangThai'])) { ?>
                                     <option selected value="<?php echo $i ?>">
                                       <span class='count'>
@@ -105,7 +128,7 @@ try {
                                         } elseif ($i == 1) {
                                           echo 'Đang giao';
                                         } else {
-                                          // $tmp1 = 1;
+                                          $tmp1 = 1;
                                           echo 'Đã giao';
                                         }   ?>
                                       </span>
@@ -128,8 +151,11 @@ try {
                                 } ?>
                               </select>
                             </div>
+
                             <input type="hidden" name='id-order' value='<?php echo $htmlspecialchars($row['id']); ?>' class='btn btn-primary'>
-                            <input type="submit" name='update-status' value='UP' class='btn btn-primary'>
+                            <?php if ($tmp1 == 0) { ?>
+                              <input type="submit" name='update-status' value='UP' class='btn btn-primary'>
+                            <?php } ?>
                           </div>
                         </form>
                       </td>
@@ -140,16 +166,14 @@ try {
                     </tr>
                 <?php
                   }
-                } catch (PDOException $e) {
-                  echo '' . $e->getMessage() . '';
                 }
                 ?>
-                </tbody>
-              </table>
-            </div>
+              </tbody>
+            </table>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="clearfix"></div>
+</div>
+<div class="clearfix"></div>

@@ -73,6 +73,16 @@ try {
           Hình ảnh:</label>
         <input type="file" class="form-control" id="img-book" name="img-book" value="<?php echo $htmlspecialchars($row["HinhAnh"]) ?>" />
       </div>
+      <div class="mb-3 d-flex align-items-center">
+        <label for="img-book" class="form-label text-end pe-3" style="width: 30%">
+          Hình ảnh:</label>
+        <input type="file" class="form-control" id="img-book2" name="img-book2" value="<?php echo $htmlspecialchars($row["HinhAnh"]) ?>" />
+      </div>
+      <div class="mb-3 d-flex align-items-center">
+        <label for="img-book" class="form-label text-end pe-3" style="width: 30%">
+          Hình ảnh:</label>
+        <input type="file" class="form-control" id="img-book3" name="img-book3" value="<?php echo $htmlspecialchars($row["HinhAnh"]) ?>" />
+      </div>
       <div class="text-center">
         <input type="submit" class="btn btn-primary" name="edit-book" value="Sửa" />
         <a href="?page=books&query=listed" class="btn btn-primary">Xem danh sách</a>

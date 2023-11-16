@@ -11,6 +11,22 @@ WHERE role <> 1";
 $statement = $pdo->prepare($sql);
 $statement->execute();
 $quantityuser = $statement->fetch()[0];
+
+$sql = "SELECT SUM(TongTien) DoanhThu
+FROM payment
+WHERE TrangThai=2";
+$statement = $pdo->prepare($sql);
+$statement->execute();
+$totaldt = $statement->fetch()[0];
+
+$sql = "SELECT COUNT(*) VanChuyen
+FROM payment
+WHERE TrangThai=2";
+$statement = $pdo->prepare($sql);
+$statement->execute();
+$tranport = $statement->fetch()[0];
+
+$htmlspecialchars = 'htmlspecialchars';
 ?>
 
 
@@ -29,7 +45,9 @@ $quantityuser = $statement->fetch()[0];
               <div class="stat-content">
                 <div class="text-left dib">
                   <div class="stat-text">
-                    <span class="count">10000</span> đ
+                    <span class="count">
+                      <?php echo $htmlspecialchars($totaldt)  ?>
+                    </span> vnđ
                   </div>
                   <div class="stat-heading">Doanh thu</div>
                 </div>
@@ -49,7 +67,7 @@ $quantityuser = $statement->fetch()[0];
               <div class="stat-content">
                 <div class="text-left dib">
                   <div class="stat-text">
-                    <span class="count"><?php echo $quantitybook ?></span>
+                    <span class="count"><?php echo $htmlspecialchars($quantitybook) ?></span>
                   </div>
                   <div class="stat-heading">Sản phẩm</div>
                 </div>
@@ -69,7 +87,7 @@ $quantityuser = $statement->fetch()[0];
               <div class="stat-content">
                 <div class="text-left dib">
                   <div class="stat-text">
-                    <span class="count">5</span>
+                    <span class="count"><?php echo $htmlspecialchars($tranport) ?></span>
                   </div>
                   <div class="stat-heading">Vận chuyển</div>
                 </div>
@@ -90,6 +108,7 @@ $quantityuser = $statement->fetch()[0];
                 <div class="text-left dib">
                   <div class="stat-text">
                     <span class="count"><?php echo $quantityuser ?></span>
+
                   </div>
                   <div class="stat-heading">Khách hàng</div>
                 </div>

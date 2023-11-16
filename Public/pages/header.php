@@ -123,7 +123,7 @@
             if (isset($_SESSION['login'])) {
             ?>
               <div class="nav-item">
-                <a class="nav-link ms-2 text-uppercase" href="index.php?page=profile"><img src="../img/avatar.png" style="width: 100%;"></a>
+                <a class="nav-link ms-2 text-uppercase" href="index.php?page=profile"><img src="../img/<?php echo $_SESSION['login']['img'] ?>" style="width: 100%;"></a>
               </div>
               <div class="nav-item">
                 <a class="nav-link ms-2 text-uppercase" href="../index.php?logout=2"><i class="fa-solid fa-right-from-bracket fa-xl"></i> </a>

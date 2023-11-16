@@ -52,8 +52,18 @@ $statement->execute();
 
       <div class="mb-3 d-flex align-items-center">
         <label for="img-book" class="form-label text-end pe-3" style="width: 30%">
-          Hình ảnh:</label>
+          Hình ảnh 1:</label>
         <input type="file" class="form-control" id="img-book" name="img-book" />
+      </div>
+      <div class="mb-3 d-flex align-items-center">
+        <label for="img-book" class="form-label text-end pe-3" style="width: 30%">
+          Hình ảnh 2:</label>
+        <input type="file" class="form-control" id="img-book2" name="img-book2" />
+      </div>
+      <div class="mb-3 d-flex align-items-center">
+        <label for="img-book" class="form-label text-end pe-3" style="width: 30%">
+          Hình ảnh 3:</label>
+        <input type="file" class="form-control" id="img-book3" name="img-book3" />
       </div>
       <div class="text-center">
         <input type="submit" class="btn btn-primary" name="add-book" value="Thêm" />

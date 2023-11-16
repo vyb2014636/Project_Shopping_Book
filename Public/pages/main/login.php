@@ -16,6 +16,7 @@ if ((isset($_POST['dangnhap'])) && ($_POST['dangnhap'])) {
       $_SESSION['login']['username'] =  $username;
       $_SESSION['login']['password'] =  $password;
       $_SESSION['login']['fullname'] =  $kq['TenNguoiDung'];
+      $_SESSION['login']['img'] = $kq['Hinh'];
       $_SESSION['role'] = $role;
 ?>
       <script>

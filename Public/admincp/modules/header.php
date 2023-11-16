@@ -6,7 +6,7 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>CT467 - Project</title>
-  <meta name="description" content="CT467 - Project" />
+  <meta name="description" content="Maneger-Stock" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <link rel="apple-touch-icon" href="https://i.imgur.com/QRAUqs9.png" />
@@ -20,6 +20,7 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pixeden-stroke-7-icon@1.2.3/pe-icon-7-stroke/dist/pe-icon-7-stroke.min.css" />
   <link rel="stylesheet" href="asset/css/cs-skin-elastic.css" />
   <link rel="stylesheet" href="asset/css/style.css" />
+  <link rel="stylesheet" href="../../css/style.css">
   <link href="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.css" rel="stylesheet" />
   <link href="https://cdn.jsdelivr.net/npm/jqvmap@1.5.1/dist/jqvmap.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -79,12 +80,12 @@
 
 <body>
   <!-- Left Panel -->
-  <aside id="left-panel" class="left-panel" style="width: 19%;">
+  <aside id="left-panel" class="left-panel d-sm-none d-md-block" style="width: 19%;">
     <nav class="navbar navbar-expand-sm navbar-default">
       <div id="main-menu" class="main-menu collapse navbar-collapse">
         <ul class="nav navbar-nav">
           <li class="">
-            <a href="index.php"><i class="menu-icon fa fa-laptop"></i>Dashboard
+            <a href="#"><i class="menu-icon fa fa-laptop"></i>Dashboard
             </a>
           </li>
           <li class="menu-title">Chức năng</li>
@@ -166,14 +167,16 @@
   <!-- Right Panel -->
   <div id="right-panel" class="right-panel">
     <!-- Header-->
-    <header id="header" class="header">
-      <div class="top-left " style="width: 19%;">
-        <div class="navbar-header d-flex justify-content-between" style="width: 100%;">
-          <a class="navbar-brand " href="./" style="display: inline; color: #09c496;    font-weight: bold;">MANAGE</a>
-          <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
+    <header id="header" class="header d-flex justify-content-between align-items-center ">
+      <div class="top-left " id="top-left" style="width: 19%;">
+        <div class="navbar-header d-flex justify-content-between align-items-center" style="width: 100%;">
+          <a class="navbar-brand " href="./" style="display: inline; color: #38284f; font-weight: bold;">
+            <strong><i class="fa-solid fa-book fa-2xl"></i>ookLV </strong>
+          </a>
+          <a id="menuToggle" class="menutoggle p-0 d-sm-none d-md-block"><i class="fa fa-bars"></i></a>
         </div>
       </div>
-      <div class="top-right">
+      <div class="top-right d-sm">
         <div class="header-menu">
           <div class="user-area dropdown float-right">
             <?php if (isset($_SESSION['loginAD'])) { ?>
