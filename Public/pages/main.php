@@ -21,36 +21,44 @@ try {
         <span class="text-white">SẢN PHẨM MỚI NHẤT</span>
       </div>
       <?php while ($row = $statement->fetch()) { ?>
-        <form action="pages/modules/handle-cart.php" method="POST" class="d-flex justify-content-center col-sm-4 col-md-2 py-2 product" style="height: 400px">
-          <div class="border d-flex flex-column rounded-2" style="width: 100%;box-shadow: 2px 3px silver;">
-            <a class="card-img-top p-2 img-product" href="../index.php?page=detail&idbook=<?php echo $htmlspecialchars($row['MaSach']) ?>" style="height: 40%; margin-bottom: auto; flex-shrink:0;cursor: pointer; overflow: hidden;">
-              <img src=" ../../admincp/modules/Manage_Book/uploads/<?php echo $htmlspecialchars($row['HinhAnh']) ?>" style="width: 100%;height: 100%; object-fit: contain;" />
-            </a>
-            <div class="card-body px-3 py-2 body-product d-flex flex-column ">
-              <div class="card-name">
-                <h2 class="card-title text-truncate text-wrap name-book fw-bold justify-content-start">
-                  <a href="#" style="font-size: 0.48em;color:black"><?php echo $htmlspecialchars($row['TenSach']) ?></a>
-                </h2>
 
-              </div>
-              <div class="card-text py-2   mt-auto card-price">
-                Giá:&nbsp;<span class="price-product d-inline" name="price-book"> <?php echo number_format($htmlspecialchars($row['DonGia']), 0, ',', '.') . 'vnđ' ?></span>
-              </div>
-              <div class="mb-3"><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bxs-star"></i><i class="bx bx-star"></i></div>
-
+        
+        <form action="pages/modules/handle-cart.php" method="POST" class="col-lg-3 col-md-4 col-sm-6 mb-3" style="overflow: hidden">
+          <div class="product-card zoom_image_product_cart shadow-md ">
+            <div class="badge ">Hot</div>
+            <div class="product-tumb">
+              <a class="" href="../index.php?page=detail&idbook=<?php echo $htmlspecialchars($row['MaSach']) ?>">
+                <img class="zoom_image_product_cart"  src="../../admincp/modules/Manage_Book/uploads/<?php echo $htmlspecialchars($row['HinhAnh']) ?>" 
+                alt="" style="max-width: 100%; max-height: 100%; width: 150px; height: 200px; object-fit: cover;">
+              </a>
             </div>
-            <div class="star p-3 pt-0 d-flex flex-column" style="flex-shrink:0 ;">
-              <input type="submit" class="add-to-cart btn btn-primary" style="width:90%" value="Thêm vào giỏ" name="add-cart">
-            </div>
-
-            <input type="hidden" value="<?php echo $htmlspecialchars($row['TacGia']) ?>" name="TacGia">
-            <input type="hidden" value="<?php echo $htmlspecialchars($row['NhaXB']) ?>" name="NXB">
-            <input type="hidden" value="<?php echo $htmlspecialchars($row['MaSach']) ?>" name="MaSach">
-            <input type="hidden" value="<?php echo $htmlspecialchars($row['MaTheLoai']) ?>" name="MaTheLoai">
-            <input type="hidden" value="<?php echo $htmlspecialchars($row['HinhAnh']) ?>" name="img-book">
-            <input type="hidden" value="<?php echo $htmlspecialchars($row['TenSach']) ?>" name="name-book">
-            <input type="hidden" value="<?php echo $htmlspecialchars($row['DonGia']) ?>" name="price-book">
+            <div class="product-details p-3">
+              <!-- <span class="product-catagory"><?php echo $htmlspecialchars($row['TenTheLoai']) ?></span> -->
+              <h4 class="pt-2 text-truncate text-break zoom_image_product_cart"><a href="../index.php?page=detail&idbook=<?php echo $htmlspecialchars($row['MaSach']) ?>" class="text-black t"><?php echo $htmlspecialchars($row['TenSach']) ?></a></h4>
+              <p class="pt-1 zoom_image_product_cart">Tác giả: <?php echo $htmlspecialchars($row['TacGia']) ?></p>
+              <div class="product-bottom-details div-product-bottom">
+                <div class="row">
+                  <div class="col-6 col-md-7 ">
+                    <p class="pt-2 text-black " style="font-size: 20px;  "> <?php echo number_format($htmlspecialchars($row['DonGia']), 0, ',', '.') . 'vnđ' ?></p>
+                  </div>
+                  <div class="col-6 col-md-5">
+                    <button type="submit" class="btn text-white icon-hover-danger w-100 " 
+                    value="add" name="add-cart" style="width: 100%; background-color: #38284f;  border-radius: 0"><i class="fa-solid fa-cart-plus fa-lg"></i>
+                    </button>
+                   
+                  </div>
+                </div>
+              </div>
+            </div> 
           </div>
+
+          <input type="hidden" value="<?php echo $htmlspecialchars($row['TacGia']) ?>" name="TacGia">
+          <input type="hidden" value="<?php echo $htmlspecialchars($row['NhaXB']) ?>" name="NXB">
+          <input type="hidden" value="<?php echo $htmlspecialchars($row['MaSach']) ?>" name="MaSach">
+          <input type="hidden" value="<?php echo $htmlspecialchars($row['MaTheLoai']) ?>" name="MaTheLoai">
+          <input type="hidden" value="<?php echo $htmlspecialchars($row['HinhAnh']) ?>" name="img-book">
+          <input type="hidden" value="<?php echo $htmlspecialchars($row['TenSach']) ?>" name="name-book">
+          <input type="hidden" value="<?php echo $htmlspecialchars($row['DonGia']) ?>" name="price-book">
         </form>
       <?php } ?>
     </div>
