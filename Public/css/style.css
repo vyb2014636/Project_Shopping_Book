@@ -1,5 +1,5 @@
 /* Header */
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
 body {
   font-family: "Poppins", sans-serif;
@@ -42,8 +42,6 @@ a {
 }
 /*  */
 
-
-
 /* Gio hang */
 .icon-hover-danger:hover {
   border-color: #dc4c64 !important;
@@ -65,9 +63,6 @@ a {
 .icon-hover-purle:hover a {
   color: #38284f !important;
 }
-
-
-
 
 .zoom_image_product_cart {
   transition: transform 0.2s;
