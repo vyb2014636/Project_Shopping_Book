@@ -124,9 +124,22 @@ if (isset($_SESSION["login"])) {
           </div>
 
         </div>
-  <?php }
+    <?php }
           }
         } else {
-          echo 'KHÔNG CÓ ĐƠN HÀNG NÀO';
+    ?>
+    <div class="card product" style="border: none;">
+      <div class="card-body">
+        <div class="row gy-3">
+          <div class="col d-flex justify-content-center align-items-center flex-column" style="height: 300px;">
+            <img src="../../img/cart-empty.png" alt="">
+            <p style="color: #cccccc;">Nếu muốn đặt hàng hãy</p>
+            <a href="index.php?page=login" class="btn text-white" style="background-color: #38284f;">Đăng nhập</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<?php
         } ?>
 </main>

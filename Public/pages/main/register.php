@@ -8,11 +8,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $email = $_POST['email'];
       $phone = $_POST['phone'];
       $address = $_POST['address'];
+      $img_tmp = $_POST['img_tmp'];
       $roles = 2;
-      $sql = "INSERT INTO tbl_user (TenNguoiDung,TenDangNhap,MatKhau,Email,SoDienThoai,DiaChi,role) VALUES (?, ?, ?, ?, ?, ?, ?)";
+      $sql = "INSERT INTO tbl_user (TenNguoiDung,TenDangNhap,MatKhau,Email,SoDienThoai,DiaChi,Hinh,role) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
       try {
         $statement = $pdo->prepare($sql);
-        $statement->execute([$fullname, $username,  $password, $email, $phone, $address, $roles]);
+        $statement->execute([$fullname, $username,  $password, $email, $phone, $address, $img_tmp, $roles]);
 ?>
         <script>
           Swal.fire({
@@ -73,6 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     <label class="form-label"><strong>Địa chỉ</strong></label>
                     <input type="text" class="form-control form-control-lg" name="address" />
                   </div>
+                  <input type="hidden" name="img_tmp" value='avatar.png'>
                   <div>
                     <input class="btn btn-dark btn-lg btn-block" type="submit" name="dangky" value="Tạo tài khoản" />
 

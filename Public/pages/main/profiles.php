@@ -1,4 +1,36 @@
 <?php
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["avatar"])) {
+  $user_id = $_SESSION['login']['username'];
+
+  $file_name = $_FILES["avatar"]["name"];
+  $file_tmp = $_FILES["avatar"]["tmp_name"];
+  $file_size = $_FILES["avatar"]["size"];
+  $file_type = $_FILES["avatar"]["type"];
+
+  // Đường dẫn để lưu trữ ảnh
+  $upload_path = "img/avatar_user/";
+  $target_file = $upload_path . basename($file_name);
+
+  // Kiểm tra định dạng ảnh (có thể thêm kiểm tra đối với các định dạng khác)
+  $allowed_types = array("image/jpeg", "image/png", "image/gif");
+  if (in_array($file_type, $allowed_types)) {
+    // Di chuyển file tạm thời đến địa chỉ đích
+    move_uploaded_file($file_tmp, $target_file);
+
+    // Cập nhật đường dẫn ảnh mới vào cơ sở dữ liệu
+    $update_sql = "UPDATE tbl_user SET Hinh = '$target_file' WHERE TenDangNhap = '$user_id'";
+    $statement = $pdo->prepare($update_sql);
+    $statement->execute();
+
+    if ($conn->query($update_sql) === TRUE) {
+      echo "Avatar updated successfully";
+    } else {
+      echo "Error updating avatar: " . $conn->error;
+    }
+  } else {
+    echo "Invalid file type. Only JPEG, PNG, and GIF are allowed.";
+  }
+}
 if (isset($_SESSION["login"])) {
   $id_user = $_SESSION['login']['username'];
   $statement = $pdo->prepare("SELECT * FROM tbl_user WHERE TenDangNhap LIKE '%$id_user%'");
@@ -14,7 +46,38 @@ if (isset($_SESSION["login"])) {
           <div class="col-md-4">
             <div class="card mb-4">
               <div class="card-body text-center">
-                <img src="../../img/avatar.png" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                <?php if ($htmlspecialchars($row['Hinh']) == 'avatar.png') { ?>
+                  <img src="../../img/<?php echo  $htmlspecialchars($row['Hinh']) ?>" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                <?php } else { ?>
+                  <img src="../../<?php echo  $htmlspecialchars($row['Hinh']) ?>" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
+                <?php } ?>
+                <input type="file" id="avatar" placeholder="rỗng" accept="image/*" onchange="uploadAvatar()">
+                <script>
+                  function uploadAvatar() {
+                    var input = document.getElementById('avatar');
+                    var file = input.files[0];
+                    // Tạo đối tượng FormData để gửi dữ liệu hình ảnh
+                    var formData = new FormData();
+                    formData.append('avatar', file);
+                    // Sử dụng Ajax để gửi dữ liệu
+                    $.ajax({
+                      url: 'http://shopping_book.localhost/index.php?page=profile',
+                      type: 'POST',
+                      data: formData,
+                      processData: false,
+                      contentType: false,
+                      success: function(response) {
+                        Swal.fire({
+                          icon: 'success',
+                          title: 'Thành công ',
+                          text: 'Cập nhật ảnh đại diện thành công',
+                        }).then(function() {
+                          window.location.href = 'index.php?page=profile'
+                        });
+                      }
+                    });
+                  }
+                </script>
                 <h5 class="my-3"> <?php echo  $htmlspecialchars($row['TenNguoiDung']) ?> </h5>
                 <p class="text-muted mb-1">Full Stack Developer</p>
                 <p class="text-muted mb-4">Việt Nam</p>

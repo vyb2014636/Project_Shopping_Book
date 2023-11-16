@@ -75,9 +75,24 @@
             <li class="d-flex justify-content-between py-3 border-bottom"><strong class="text-muted">Tổng cộng</strong>
               <h5 class="font-weight-bold"><?php echo number_format($sum, 0, ',', '.') . ' vnđ'  ?></h5>
             </li>
-          </ul><a href="#" class="btn btn-dark rounded-pill py-2 btn-block">Đặt hàng</a>
+          </ul><a href="#" class="btn btn-dark rounded-pill py-2 btn-block" id='order-none'>Đặt hàng</a>
+
         </div>
       </div>
     </div>
   </div>
 </main>
+<script>
+  $(document).ready(function() {
+    $('#order-none').click(function(e) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Đặt hàng ',
+        text: 'Bạn cần đăng nhập để đặt hàng',
+      }).then(function() {
+        window.location.href = 'index.php?page=login'
+      });
+
+    });
+  });
+</script>
