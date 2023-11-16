@@ -17,26 +17,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $status = 'pending';
         $ship = $_POST['shippingMethod'];
         if (empty($TenNguoiNhan) || empty($SoDienThoai) || empty($DiaChi) || empty($EmailNhan)) {
-            echo "Vui lòng điền đầy đủ thông tin.";
-        } elseif ($SoLuongSP == 0) {
-        } else {
+?>
+            <script>
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Lỗi!',
+                    text: 'Vui lòng điền đầy đủ thông tin.',
+                    footer: '<a href="">Why do I have this issue?</a>'
+                });
+            </script>
+             <?php
+            } elseif ($SoLuongSP == 0) {
+            } else {
             $idcode = rand(0, 999);
-            $sql = "INSERT INTO payment (id,TenKhachHang, TKKhachHang,SoDienThoai,Email, DiaChi,TongSP,Ship,TongTien)  VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            $sql = "INSERT INTO payment (id,TenKhachHang, TKKhachHang,SoDienThoai,Email, DiaChi,TongSP,Ship,TongTien) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $statement = $pdo->prepare($sql);
             $statement->execute([
-                $idcode,
-                $TenNguoiNhan,
-                $userid,
-                $SoDienThoai,
-                $EmailNhan,
-                $DiaChi,
-                $SoLuongSP,
-                $ship,
-                $sum + $ship
+            $idcode,
+            $TenNguoiNhan,
+            $userid,
+            $SoDienThoai,
+            $EmailNhan,
+            $DiaChi,
+            $SoLuongSP,
+            $ship,
+            $sum + $ship
             ]);
             $stmt2 = $pdo->prepare("UPDATE cart SET MaDonHang=$idcode WHERE TenTaiKhoan LIKE '%$userid%' AND MaDonHang = 0");
             $stmt2->execute();
-?>
+            ?>
             <script>
                 Swal.fire({
                     icon: 'success',
@@ -101,21 +110,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="col-md-6 my-5">
                     <h5>PHƯƠNG THỨC VẬN CHUYỂN</h5>
                     <div class="form-check pt-3">
-                        <input class="form-check-input" type="radio" name="shippingMethod" id="GiaoHangNhanh" value="40000">
+                        <input class="form-check-input" type="radio" name="shippingMethod" id="GiaoHangNhanh" value="40000" required >
                         <label class="form-check-label" for="GiaoHangNhanh">
                             <strong>Giao hàng nhanh: 40.000 đ</strong>
                             <p>Thứ 7 - 2/11</p>
                         </label>
                     </div>
                     <div class="form-check pt-3">
-                        <input class="form-check-input" type="radio" name="shippingMethod" id="GiaoHangTieuChuan" value="30000">
+                        <input class="form-check-input" type="radio" name="shippingMethod" id="GiaoHangTieuChuan" value="30000" required > 
                         <label class="form-check-label" for="GiaoHangTieuChuan">
                             <strong>Giao hàng tiêu chuẩn: 30.000 đ</strong>
                             <p>Thứ 7 - 5/11</p>
                         </label>
                     </div>
                     <div class="form-check pt-3">
-                        <input class="form-check-input" type="radio" name="shippingMethod" id="BuuDien" value="20000">
+                        <input class="form-check-input" type="radio" name="shippingMethod" id="BuuDien" value="20000"  required>
                         <label class="form-check-label" for="BuuDien">
                             <strong>Bưu điện: 20.000 đ</strong>
                             <p>Thứ 7 - 8/11</p>
@@ -130,7 +139,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="col-md-6 pt-3">
                     <h5>PHƯƠNG THỨC THANH TOÁN</h5>
                     <div class="form-check pt-3">
-                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" checked>
                         <label class="form-check-label" for="flexRadioDefault1">
                             <span>
                                 <i class="fa-solid fa-money-bills fa-lg"></i>
@@ -197,8 +206,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                             <div class="col-md-6 col-6">
                                 <div class="d-flex">
                                     <img src="../../admincp/modules/Manage_Book/uploads/<?php echo $htmlspecialchars($row['HinhAnh']) ?>" class="zoom_image_product_cart rounded me-3" style="width: 96px; height: 100px;" />
-                                    <div class="">
-                                        <a href="#" class="nav-link"> <?php echo $htmlspecialchars($row['TenSach']); ?></a>
+                                    <div class="zoom_image_product_cart">
+                                        <a  href="#" class="nav-link"> <?php echo $htmlspecialchars($row['TenSach']); ?></a>
                                         <p class="text-muted">
                                             <?php $idcate = $htmlspecialchars($row['MaTheLoai']);
                                             $sql = "SELECT TenTheLoai FROM category where MaTheLoai LIKE '%$idcate%' LIMIT 1 ";
@@ -212,13 +221,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                             </div>
                             <div class="col-md-2 col-2">
-                                <div class="text-center">
+                                <div class="text-center zoom_image_product_cart">
                                     <?php echo  $htmlspecialchars($row['SoLuong']) ?>
                                 </div>
 
                             </div>
                             <div class="col-md-4 col-4 d-flex justify-content-center ">
-                                <p><?php echo number_format($htmlspecialchars($htmlspecialchars($row['DonGia']) * $htmlspecialchars($row['SoLuong'])), 0, ',', '.') . ' vnđ' ?></p>
+                                <p class="zoom_image_product_cart"><?php echo number_format($htmlspecialchars($htmlspecialchars($row['DonGia']) * $htmlspecialchars($row['SoLuong'])), 0, ',', '.') . ' vnđ' ?></p>
                             </div>
 
                         </div>
@@ -238,7 +247,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                     <div class="d-flex justify-content-between">
                         <p class="mb-2">Phí Giao Hàng:</p>
-                        <p class="mb-2" id="shippingCost">0</p>
+                        <p class="mb-2" id="shippingCost">30.000vnđ</p>
                     </div>
                     <div class="d-flex justify-content-between">
                         <p class="mb-2">Mã Giảm Giá:</p>
@@ -247,7 +256,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <hr />
                     <div class="d-flex justify-content-between">
                         <p class="mb-2">Tổng Tiền:</p>
-                        <p class="mb-2 fw-bold"><?php echo number_format($sum, 0, ',', '.') . ' vnđ'  ?></p>
+                        <p id="totalAmount" class="mb-2 fw-bold "><?php echo number_format($sum, 0, ',', '.') . ' vnđ'  ?></p>
                     </div>
 
                 </div>
@@ -276,26 +285,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </form>
     <script>
         $(document).ready(function() {
-            const PhuongThuc = {
-                'Nhanh': 40000,
-                'TieuChuan': 30000,
-                'BuuDien': 20000
-            };
+            $('input[name="shippingMethod"]').change(function() {
+                var chonGia = parseInt($('input[name="shippingMethod"]:checked').val()) || 0;
+                var formatGia = number_format(chonGia, 0, ',', '.');
+                $('#shippingCost').text(formatGia + ' vnđ');
+                var sum = <?php echo $sum; ?>;
+                var totalAmount = sum + chonGia;
+                var formatTongTien = number_format(totalAmount, 0, ',', '.');
+                $('#totalAmount').text(formatTongTien + ' vnđ');
+            });
 
-            function phivanchuyen() {
-                const chonPhuongThuc = $('input[name="shippingMethod"]:checked').val();
-                let temp = parseFloat($('#totalAmount').data('amount'));
-                const previous_select = parseFloat($('#shippingCost').text().replace(' đ', '').trim());
-                temp -= previous_select;
-                const new_select = PhuongThuc[chonPhuongThuc] || 0;
-                temp += new_select;
-                $('#shippingCost').text(new_select.toFixed(2).replace(/\.00$/, '') + ' đ');
-                $('#totalAmount').text(temp.toFixed(2) + ' đ');
+            function number_format(number, decimals, decPoint, thousandsSep) {
+                number = number.toFixed(decimals);
+                var parts = number.toString().split(decPoint);
+                parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, thousandsSep);
+                return parts.join(decPoint);
             }
-            phivanchuyen();
-            $('input[name="shippingMethod"]').change(phivanchuyen);
         });
+
+        
     </script>
-
-
 </main>
