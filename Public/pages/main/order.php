@@ -68,6 +68,24 @@ if (isset($_SESSION["login"])) {
                       </div>
                     </div>
                   </div>
+                  <?php
+                  try {
+                    $stmt3 = $pdo->prepare("SELECT * FROM payment WHERE TKKhachHang LIKE '%$userid%' AND id = $itemoder LIMIT 1");
+                    $stmt3->execute();
+                    $htmlspecialchars = 'htmlspecialchars';
+                    $rowst = $statementst->fetch();
+                  } catch (PDOException $e) {
+                    echo $e->getMessage();
+                  }
+                  while ($rowst =  $stmt3->fetch()) {
+                    if ($htmlspecialchars($rowst['TrangThai']) == 0) {
+                  ?>
+                      <div class='d-flex justify-content-end'><span>Đang xác nhận</span></div>
+                    <?php } elseif ($htmlspecialchars($rowst['TrangThai']) == 1) { ?>
+                      <div class='d-flex justify-content-end align-items-center'><i class="fa-solid fa-truck"></i>&nbsp;<span>Đang giao hàng</span></div>
+                    <?php } else { ?>
+                      <div class='d-flex justify-content-end'><span>Đã giao</span></div>
+                    <?php } ?>
                 </div>
                 <!-- card body -->
                 <div class="card-footer bg-white">
@@ -77,23 +95,23 @@ if (isset($_SESSION["login"])) {
                         <div>Tổng Tiền :</div>
                         <h5 class="fs-14 mb-0"><span class="product-line-price">
                             <?php
-                            try {
-                              $stmt3 = $pdo->prepare("SELECT * FROM payment WHERE TKKhachHang LIKE '%$userid%' AND id = $itemoder LIMIT 1");
-                              $stmt3->execute();
-                              $htmlspecialchars = 'htmlspecialchars';
-                              $rowst = $statementst->fetch();
-                            } catch (PDOException $e) {
-                              echo $e->getMessage();
-                            }
-                            while ($rowst =  $stmt3->fetch()) {
-                              echo  number_format($htmlspecialchars($rowst['TongTien']), 0, ',', '.') . ' vnđ';
+                            echo  number_format($htmlspecialchars($rowst['TongTien']), 0, ',', '.') . ' vnđ';
                             ?></span>
                         </h5>
                       </div>
                     </div>
                     <div class="col-sm-auto">
                       <div class="d-flex flex-wrap my-n1">
-                        <div>
+                        <div class='d-flex justify-content-end align-items-center'>
+                          <?php if ($htmlspecialchars($rowst['TrangThai']) == 2) { ?>
+                            <a href="../index.php?page=orderdetail&id=<?php echo $htmlspecialchars($rowst['id']); ?>" class="d-block text-white rounded-pill p-1 px-2 " data-bs-toggle="modal" style="background-color:#38284f">
+                              Đã nhận hàng </a>&nbsp;
+                          <?php } else {
+                          ?>
+                            <span class="disabled d-block text-white rounded-pill p-1 px-2 " data-bs-toggle="modal" style="background-color:#38284f">
+                              Chưa nhận hàng </span>&nbsp;
+                          <?php
+                          } ?>
                           <a href="../index.php?page=orderdetail&id=<?php echo $htmlspecialchars($rowst['id']); ?>" class="d-block text-white rounded-pill p-1 px-2 " data-bs-toggle="modal" style="background-color:#38284f">
                             Xem chi tiết </a>
                         </div>
