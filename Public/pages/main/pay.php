@@ -26,26 +26,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     footer: '<a href="">Why do I have this issue?</a>'
                 });
             </script>
-             <?php
-            } elseif ($SoLuongSP == 0) {
-            } else {
+        <?php
+        } elseif ($SoLuongSP == 0) {
+        } else {
             $idcode = rand(0, 999);
             $sql = "INSERT INTO payment (id,TenKhachHang, TKKhachHang,SoDienThoai,Email, DiaChi,TongSP,Ship,TongTien) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
             $statement = $pdo->prepare($sql);
             $statement->execute([
-            $idcode,
-            $TenNguoiNhan,
-            $userid,
-            $SoDienThoai,
-            $EmailNhan,
-            $DiaChi,
-            $SoLuongSP,
-            $ship,
-            $sum + $ship
+                $idcode,
+                $TenNguoiNhan,
+                $userid,
+                $SoDienThoai,
+                $EmailNhan,
+                $DiaChi,
+                $SoLuongSP,
+                $ship,
+                $sum + $ship
             ]);
             $stmt2 = $pdo->prepare("UPDATE cart SET MaDonHang=$idcode WHERE TenTaiKhoan LIKE '%$userid%' AND MaDonHang = 0");
             $stmt2->execute();
-            ?>
+        ?>
             <script>
                 Swal.fire({
                     icon: 'success',
@@ -110,21 +110,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 <div class="col-md-6 my-5">
                     <h5>PHƯƠNG THỨC VẬN CHUYỂN</h5>
                     <div class="form-check pt-3">
-                        <input class="form-check-input" type="radio" name="shippingMethod" id="GiaoHangNhanh" value="40000" required >
+                        <input class="form-check-input" type="radio" name="shippingMethod" id="GiaoHangNhanh" value="40000" required>
                         <label class="form-check-label" for="GiaoHangNhanh">
                             <strong>Giao hàng nhanh: 40.000 đ</strong>
                             <p>Thứ 7 - 2/11</p>
                         </label>
                     </div>
                     <div class="form-check pt-3">
-                        <input class="form-check-input" type="radio" name="shippingMethod" id="GiaoHangTieuChuan" value="30000" required > 
+                        <input class="form-check-input" type="radio" name="shippingMethod" id="GiaoHangTieuChuan" value="30000" required>
                         <label class="form-check-label" for="GiaoHangTieuChuan">
                             <strong>Giao hàng tiêu chuẩn: 30.000 đ</strong>
                             <p>Thứ 7 - 5/11</p>
                         </label>
                     </div>
                     <div class="form-check pt-3">
-                        <input class="form-check-input" type="radio" name="shippingMethod" id="BuuDien" value="20000"  required>
+                        <input class="form-check-input" type="radio" name="shippingMethod" id="BuuDien" value="20000" required>
                         <label class="form-check-label" for="BuuDien">
                             <strong>Bưu điện: 20.000 đ</strong>
                             <p>Thứ 7 - 8/11</p>
@@ -207,7 +207,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                                 <div class="d-flex">
                                     <img src="../../admincp/modules/Manage_Book/uploads/<?php echo $htmlspecialchars($row['HinhAnh']) ?>" class="zoom_image_product_cart rounded me-3" style="width: 96px; height: 100px;" />
                                     <div class="zoom_image_product_cart">
-                                        <a  href="#" class="nav-link"> <?php echo $htmlspecialchars($row['TenSach']); ?></a>
+                                        <a href="#" class="nav-link"> <?php echo $htmlspecialchars($row['TenSach']); ?></a>
                                         <p class="text-muted">
                                             <?php $idcate = $htmlspecialchars($row['MaTheLoai']);
                                             $sql = "SELECT TenTheLoai FROM category where MaTheLoai LIKE '%$idcate%' LIMIT 1 ";
@@ -247,7 +247,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     </div>
                     <div class="d-flex justify-content-between">
                         <p class="mb-2">Phí Giao Hàng:</p>
-                        <p class="mb-2" id="shippingCost">30.000vnđ</p>
+                        <p class="mb-2" id="shippingCost">0 vnđ</p>
                     </div>
                     <div class="d-flex justify-content-between">
                         <p class="mb-2">Mã Giảm Giá:</p>
@@ -302,7 +302,5 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 return parts.join(decPoint);
             }
         });
-
-        
     </script>
 </main>

@@ -34,28 +34,50 @@
         <?php }
         }
       } else { ?>
-        <div>
-          <h5>GIỎ HÀNG RỖNG</h5>
+        <div style="transform: translateY(50%);">
+          <div class="empty-state d-flex flex-column align-items-center justify-content-center">
+            <div class="empty-state__icon-wrapper position-relative">
+              <svg role="presentation" stroke-width="1" focusable="false" width="32" height="32" class="icon icon-cart" viewBox="0 0 22 22">
+                <path d="M11 7H3.577A2 2 0 0 0 1.64 9.497l2.051 8A2 2 0 0 0 5.63 19H16.37a2 2 0 0 0 1.937-1.503l2.052-8A2 2 0 0 0 18.422 7H11Zm0 0V1" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"></path>
+              </svg>
+              <span class="position-absolute rounded-circle text-center" style="
+                 width: 20px;
+                      height: 22px;
+                      top: -10px;
+                      right: -10px;
+                      background-color: #38284f;
+                      color: white;
+                      align-items: center
+              ">0</span>
+            </div>
+
+            <div class="prose">
+              <p class="h5">Chưa có sản phẩm</p>
+              <a class="btn " href="index.php" style="background-color: #38284f;color: white;">Tiếp tục mua hàng</a>
+            </div>
+          </div>
         </div>
       <?php } ?>
 
     </div>
   </div>
-  <div class="offcanvas-footer" style="padding: 16px; padding-top: 0px">
-    <div class="border-top position-relative opacity-1 py-2" id="total-cart">
-      <span>Tổng tiền : <?php
-                        if (isset($totalprice)) {
-                          echo number_format($totalprice, 0, ',', '.') . 'vnđ';
-                        } else {
-                          echo '0';
-                        }
-                        ?></span>
-    </div>
-    <div class="">
-      <div class="btn btn-dark"><a class="text-white" href="../index.php?page=cart">Mở giỏ hàng</a></div>
-      <div class="btn btn-dark"><a class="text-white" href="../pages/modules/handle-cart.php?want=delcart">Xóa giỏ hàng</a></div>
+  <?php if ((isset($_SESSION["cart"])) && (count($_SESSION["cart"]) > 0)) { ?>
+    <div class="offcanvas-footer" style="padding: 16px; padding-top: 0px">
+      <div class="border-top position-relative opacity-1 py-2" id="total-cart">
+        <span>Tổng tiền : <?php
+                          if (isset($totalprice)) {
+                            echo number_format($totalprice, 0, ',', '.') . 'vnđ';
+                          } else {
+                            echo '0';
+                          }
+                          ?></span>
+      </div>
+      <div class="">
+        <div class="btn btn-dark"><a class="text-white" href="../index.php?page=cart">Mở giỏ hàng</a></div>
+        <div class="btn btn-dark"><a class="text-white" href="../pages/modules/handle-cart.php?want=delcart">Xóa giỏ hàng</a></div>
 
-      <div class="btn btn-primary">Thanh toán</div>
+        <div class="btn " style="background-color: #38284f;color: white;">Thanh toán</div>
+      </div>
     </div>
-  </div>
+  <?php } ?>
 </div>

@@ -66,8 +66,8 @@ $statement->execute();
         <input type="file" class="form-control" id="img-book3" name="img-book3" />
       </div>
       <div class="text-center">
-        <input type="submit" class="btn btn-primary" name="add-book" value="Thêm" />
-        <a href="?page=books&query=listed" class="btn btn-primary">Xem danh sách</a>
+        <input type="submit" class="btn" name="add-book" value="Thêm" style="background-color: #38284f;color: white;" />
+        <a href="?page=books&query=listed" class="btn " style="background-color: #38284f;color: white;">Xem danh sách</a>
       </div>
     </form>
   </div>

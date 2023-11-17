@@ -54,7 +54,7 @@
                   } else {
               ?>
               <tr>
-                <th scope="row" class="border-0">Giỏ hàng rỗng</th>
+                <th scope="row" class="border-0" colspan="5">Giỏ hàng rỗng</th>
 
               </tr>
             <?php } ?>

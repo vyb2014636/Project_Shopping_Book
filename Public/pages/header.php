@@ -126,8 +126,21 @@
                 <a class="nav-link ms-2 text-uppercase" href="index.php?page=profile"><img src="../img/<?php echo $_SESSION['login']['img'] ?>" style="width: 100%;"></a>
               </div>
               <div class="nav-item">
-                <a class="nav-link ms-2 text-uppercase" href="../index.php?logout=2"><i class="fa-solid fa-right-from-bracket fa-xl"></i> </a>
+                <a class="nav-link ms-2 text-uppercase" id="signout"><i class="fa-solid fa-right-from-bracket fa-xl"></i> </a>
               </div>
+              <script>
+                $(document).ready(function() {
+                  $("#signout").click(function(e) {
+                    Swal.fire({
+                      icon: 'success',
+                      title: 'Thành công',
+                      text: 'Đã đăng xuất',
+                    }).then(function() {
+                      window.location.href = '../index.php?logout=2'
+                    });
+                  });
+                });
+              </script>
             <?php
             }
             ?>

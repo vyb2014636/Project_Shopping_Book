@@ -14,8 +14,8 @@
         <input type="text" class="form-control" id="name-cate" name="name-cate" />
       </div>
       <div class="text-center">
-        <input type="submit" class="btn btn-primary" name="add-cate" value="Thêm" />
-        <a href="?page=category&query=listed" class="btn btn-primary">Xem danh sách</a>
+        <input type="submit" class="btn" name="add-cate" style="background-color: #38284f;color: white;" value="Thêm" />
+        <a href="?page=category&query=listed" class="btn " style="background-color: #38284f;color: white;">Xem danh sách</a>
       </div>
     </form>
   </div>

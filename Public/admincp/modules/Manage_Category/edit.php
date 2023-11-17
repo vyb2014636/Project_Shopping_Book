@@ -28,7 +28,7 @@ try {
         <input type="text" class="form-control" id="name-cate" name="name-cate" value="<?php echo $htmlspecialchars($row['TenTheLoai']) ?>" />
       </div>
       <div class="text-center">
-        <input type="submit" class="btn btn-primary" name="edit-cate" value="Sửa" />
+        <input type="submit" class="btn" name="edit-cate" value="Sửa" style="background-color: #38284f;color: white;" />
       </div>
     </form>
   </div>

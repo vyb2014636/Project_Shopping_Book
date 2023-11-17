@@ -31,7 +31,7 @@ if (isset($_POST["search"]) && $_POST["search"]) {
           <div class="d-flex align-items-center justify-content-between" style="padding: .75rem 1.25rem;">
             <form action="" method="post" class="d-flex align-items-center" style="gap: 8px;">
               <input type="text" class="p-2 px-3" placeholder="Từ khóa tìm kiếm" name="keyword" autocomplete="off" id="keyword" style="border: 1px solid #ccc">
-              <input type="submit" name="search" class="btn text-white py-2" value="Tìm kiếm" style="background-color: #28a745;">
+              <input type="submit" name="search" class="btn text-white py-2" value="Tìm kiếm" style="background-color: #38284f;">
             </form>
             <a href="index.php?page=category&query=listed"><i class="fa-solid fa-rotate-right p-2"></i></a>
           </div>
@@ -41,7 +41,6 @@ if (isset($_POST["search"]) && $_POST["search"]) {
                 <tr>
                   <th>Mã thể loại</th>
                   <th>Tên thể loại</th>
-                  <th>Số lượng sản phẩm</th>
                   <th>Thao tác</th>
                 </tr>
               </thead>
@@ -62,7 +61,6 @@ if (isset($_POST["search"]) && $_POST["search"]) {
                       <td>
                         <span class="name"><?php echo $htmlspecialchars($row['TenTheLoai']) ?></span>
                       </td>
-                      <td><span class="price">5</span></td>
 
                       <td>
                         <a class="text-dark" href="modules/Manage_Category/handle.php?query=delete&id=<?php echo ($htmlspecialchars($row['MaTheLoai'])) ?>"><i class="fa-solid fa-trash-can fa-lg"></i></a> |

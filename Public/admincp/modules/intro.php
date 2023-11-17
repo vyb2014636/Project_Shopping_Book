@@ -119,3 +119,20 @@ $htmlspecialchars = 'htmlspecialchars';
       </div>
     </div>
   </div>
+  <div class="container d-flex align-items-center flex-column jutify-content-center mt-3 py-5">
+    <!-- Masthead Avatar Image-->
+    <!-- Masthead Heading-->
+    <div class="d-flex align-items-center jutify-content-center">
+      <div class="divider-custom-line"><i class="fa-solid fa-book-open fa-flip fa-2xl"></i></div>
+      <div class="px-3">
+        <h1 class="masthead-heading  mb-0">Welcome,Admin for <a class="navbar-brand " href="./" style="display: inline; color: #38284f; font-weight: bold;">
+            <strong><i class="fa-solid fa-book fa-2xl"></i>ookLV </strong>
+          </a></h1>
+      </div>
+      <div class="divider-custom-line"><i class="fa-solid fa-book-open fa-flip fa-2xl"></i></div>
+    </div><!-- Icon Divider-->
+    <div class="my-5">
+      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum pariatur, excepturi deleniti sunt asperiores exercitationem in doloremque architecto qui quod reprehenderit atque ducimus fuga? Repellat provident ducimus maxime vero explicabo.</p>
+    </div>
+    <!-- Masthead Subheading-->
+  </div>

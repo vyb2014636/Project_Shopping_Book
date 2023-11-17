@@ -91,11 +91,19 @@ try {
                 <span class="text-warning">(50 đánh giá)</span>
               </div>
 
-              <div class="mb-3">
-                <h1><?php echo number_format($htmlspecialchars($row['DonGia']), 0, ',', '.') ?>&nbsp;vnđ</h1>
-              </div>
-
-
+              <?php if ($htmlspecialchars($row['MaTheLoai']) == "EDU") { ?>
+                <div class="mb-3 d-flex align-items-center">
+                  <h2><?php echo number_format($htmlspecialchars($row['DonGia'] - $row['DonGia'] * 0.15), 0, ',', '.') ?>&nbsp;vnđ</h2>
+                  <p class="old-price mb-0 ms-2">
+                    <span class="price text-decoration-line-through" id="old-price-408802"><?php echo number_format($htmlspecialchars($row['DonGia']), 0, ',', '.') ?>&nbsp;vnđ</span>
+                    <span class="discount-percent" style="background-color: #38284f; color:white; border-radius: 5px; padding:0 3px;">-15%</span>
+                  </p>
+                </div>
+              <?php } else { ?>
+                <div class="mb-3 d-flex align-items-center">
+                  <h2><?php echo number_format($htmlspecialchars($row['DonGia']), 0, ',', '.') ?>&nbsp;vnđ</h2>
+                </div>
+              <?php } ?>
               <div class="row">
                 <div class="col-md-4 col-4">
                   <p>Chính sách đổi trả: </p>
@@ -128,263 +136,15 @@ try {
         <input type="hidden" name="id-book" value="<?php echo $htmlspecialchars($row['MaSach']) ?>">
         <input type="hidden" name="img-book" value="<?php echo $htmlspecialchars($row['HinhAnh']) ?>">
         <input type="hidden" name="name-book" value="<?php echo $htmlspecialchars($row['TenSach']) ?>">
-        <input type="hidden" name="price-book" value="<?php echo $htmlspecialchars($row['DonGia']) ?>">
+        <?php if ($htmlspecialchars($row['MaTheLoai']) === 'EDU') { ?>
+          <input type="hidden" name="price-book" value="<?php echo $htmlspecialchars($row['DonGia'] - $row['DonGia'] * 0.15) ?>">
+        <?php } else { ?>
+          <input type="hidden" name="price-book" value="<?php echo $htmlspecialchars($row['DonGia']) ?>">
+        <?php } ?>
         <input type="hidden" name="MaSach" value="<?php echo $htmlspecialchars($row['MaSach']) ?>">
         <input type="hidden" name="MaTheLoai" value="<?php echo $htmlspecialchars($row['MaTheLoai']) ?>">
       </form>
     </div>
-    <div class="container bg-white my-3 pt-3 text-muted">
-      <h4>Thông tin sản phẩm</h4>
-      <div class="row">
-        <div class="col-md-4 col-6">
-          <p>Mã hàng: </p>
-          <p>Nhà Cung Cấp: </p>
-          <p>Tác giả: </p>
-          <p>NXB: </p>
-          <p>Năm XB: </p>
-          <p>Ngôn Ngữ: </p>
-          <p>Trọng lượng (gr): </p>
-          <p>Kích Thước: </p>
-          <p>Số trang</p>
-          <p>Hình thức:</p>
-
-        </div>
-
-        <div class="col-md-8 col-6 ">
-          <!-- Mã hàng -->
-          <p>9780008116606</p>
-          <!-- Nhà cung cấp -->
-          <p>VietNam</p>
-          <!-- Tac Giả -->
-          <p>Loi</p>
-          <!-- NXB -->
-          <p>Thiếu niên nhi đồng</p>
-          <!-- Năm XB:  -->
-          <p>1945</p>
-          <!-- Ngôn Ngữ-->
-          <p>Tiếng Việt</p>
-          <!--Trọng lượng (gr) -->
-          <p>250</p>
-          <!--Kích thước-->
-          <p>15.7 x 11.6 x 1.7 cm</p>
-          <!-- Số trang -->
-          <p>160</p>
-          <!--Hình thức -->
-          Bìa Cứng
-        </div>
-        <div>
-          <p>
-            Sau hơn nửa thế kỷ, những trang thư "có lửa" từ chiến trường một lần nữa trở về, thành "những
-            con
-            chữ không im lặng" để kể về khí phách Việt Nam trong quá khứ hào hùng và cả thời đại mà chúng ta
-            đang sống.</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="container my-3 pt-3 bg-white">
-      <h4>Đánh giá sản phẩm</h4>
-      <!-- Tỉ lệ  -->
-      <div class="row pt-4">
-        <div class="col-md-4 col-4">
-          <div>
-            <span style="font-size: 60px;">4.5/</span><span style="font-size: 30px;">5 &nbsp;</span>
-
-            <span class="text-warning">
-              <i class="fa-solid fa-star fa-lg"></i>
-              <i class="fa-solid fa-star fa-lg"></i>
-              <i class="fa-solid fa-star fa-lg"></i>
-              <i class="fa-solid fa-star fa-lg"></i>
-              <i class="fa-solid fa-star fa-lg"></i></span>
-          </div>
-          <i>
-            Đây là thông tin người mua đánh giá shop bán sản phẩm này có đúng mô tả không.
-          </i>
-        </div>
-
-
-        <div class="col-md-4 col-8">
-          <div class="row">
-            <div class="col-md-4 col-5 my-2 pt-1">
-              <!-- 5 -->
-              <div class="text-warning pt-1">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star "></i>
-                <i class="fa-solid fa-star "></i>
-                <i class="fa-solid fa-star "></i>
-                <i class="fa-solid fa-star "></i>
-              </div>
-              <!-- 4 -->
-              <div class="text-warning pt-1">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star "></i>
-                <i class="fa-solid fa-star "></i>
-                <i class="fa-solid fa-star "></i>
-                <i class="fa-regular fa-star"></i>
-              </div>
-              <!-- 3 -->
-              <div class="text-warning pt-1">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star "></i>
-                <i class="fa-solid fa-star "></i>
-                <i class="fa-regular fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-              </div>
-              <!-- 2 -->
-              <div class="text-warning pt-1">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star "></i>
-                <i class="fa-regular fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-              </div>
-              <!-- 1 -->
-              <div class="text-warning pt-1">
-                <i class="fa-solid fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-                <i class="fa-regular fa-star"></i>
-              </div>
-            </div>
-            <div class="col-md-8 col-7 my-2 pt-1">
-              <div class="pt-1">
-                <div class="progress my-1">
-                  <div class="progress-bar " style="width: 35%" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div>
-              <div class="pt-1">
-                <div class="progress my-1">
-                  <div class="progress-bar " style="width: 35%" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div>
-              <div class="pt-1">
-                <div class="progress my-1">
-                  <div class="progress-bar " style="width: 35%" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div>
-              <div class="pt-1">
-                <div class="progress my-1">
-                  <div class="progress-bar " style="width: 35%" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div>
-              <div class="pt-1">
-                <div class="progress my-1">
-                  <div class="progress-bar " style="width: 35%" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-4 d-flex justify-content-center align-items-center my-3 ">
-          <button type="button" class="btn text-white" style="width: 50%; background-color: #38284f;" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            <i class="fa-solid fa-pen"></i>
-            Viết đánh giá
-            <!--Viết ddanhs giá -->
-          </button>
-          <div class="modal fade " id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog ">
-              <div class="modal-content ">
-                <div class="modal-header ">
-                  <h5 class="modal-title " id="exampleModalLabel"><STRONG>VIẾT ĐÁNH GIÁ SẢN PHẨM</STRONG></h5>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                  <form>
-                    <div class="mb-3 text-warning text-center">
-                      <i class="fa-regular fa-star fa-lg"></i>
-                      <i class="fa-regular fa-star fa-lg"></i>
-                      <i class="fa-regular fa-star fa-lg"></i>
-                      <i class="fa-regular fa-star fa-lg"></i>
-                      <i class="fa-regular fa-star fa-lg"></i>
-
-                    </div>
-                    <div class="mb-3">
-                      <label for="message-text" class="col-form-label">Message:</label>
-                      <textarea class="form-control" id="message-text"></textarea>
-                    </div>
-                  </form>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Send message</button>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <hr>
-      <!-- Binh Luan -->
-      <!-- Cmt1 -->
-      <div class="p-3 mb-2">
-        <div class="d-flex flex-row">
-          <img src="../img/register.webp" height="50" width="50" class="rounded-circle">
-          <div class="ms-2">
-            <h6 class="mb-1 text-primary">Luong Hai Dang</h6>
-            <i class="text-warning fa fa-star fa-sm"></i>
-            <i class="text-warning fa-regular fa-star fa-sm"></i>
-            <i class="text-warning fa-regular fa-star fa-sm"></i>
-            <i class="text-warning fa-regular fa-star fa-sm"></i>
-            <i class="text-warning fa-regular fa-star fa-sm"></i>
-            <p class="comment-text">Sản phẩm như là cái gì....</p>
-          </div>
-        </div>
-        <div class="d-flex justify-content-between">
-          <div class="d-flex flex-row gap-3 align-items-center">
-            <div class="d-flex align-items-center">
-              <i class="fa-solid fa-thumbs-up"></i>
-              <span class="ms-1 fs-10">Like</span>
-            </div>
-
-
-          </div>
-          <div class="d-flex flex-row">
-            <span class="text-muted fw-normal fs-10">29-10-2023
-              PM</span>
-          </div>
-        </div>
-      </div>
-
-      <hr>
-      <!-- Cmt2 -->
-      <div class="p-3 mb-2">
-        <div class="d-flex flex-row">
-          <img src="../img/register.webp" height="50" width="50" class="rounded-circle">
-          <div class="ms-2">
-            <h6 class="mb-1 text-primary">Luong Hai Dang</h6>
-            <i class="text-warning fa fa-star fa-sm"></i>
-            <i class="text-warning fa-regular fa-star fa-sm"></i>
-            <i class="text-warning fa-regular fa-star fa-sm"></i>
-            <i class="text-warning fa-regular fa-star fa-sm"></i>
-            <i class="text-warning fa-regular fa-star fa-sm"></i>
-
-
-            <p class="comment-text ">SSản phẩm như là cái gì....</p>
-          </div>
-        </div>
-        <div class="d-flex justify-content-between">
-          <div class="d-flex flex-row gap-3 align-items-center">
-            <div class="d-flex align-items-center">
-              <i class="fa-solid fa-thumbs-up"></i>
-              <span class="ms-1 fs-10">Like</span>
-            </div>
-
-          </div>
-          <div class="d-flex flex-row">
-            <span class="text-muted fw-normal fs-10">29-10-2023
-              PM</span>
-          </div>
-        </div>
-      </div>
-
-
-    </div>
-
-    </div>
-
   <?php } ?>
 
 </main>

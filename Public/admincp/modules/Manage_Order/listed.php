@@ -23,17 +23,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
   }
 }
+
 if (isset($_POST["search"]) && $_POST["search"]) {
   $keyword = $_POST["keyword"];
   $sql = "SELECT * FROM payment WHERE id LIKE ? OR TenKhachHang LIKE ?";
   $stmt = $pdo->prepare($sql);
   $stmt->execute(["%$keyword%", "%$keyword%"]);
   $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-  if (empty($result)) {
+  if (empty($rows)) {
     $rows = 'Not Found';
   }
 } else {
-
   $sql = 'SELECT * FROM payment';
   try {
     $statement = $pdo->prepare($sql);
@@ -56,7 +56,7 @@ if (isset($_POST["search"]) && $_POST["search"]) {
           <div class="d-flex align-items-center justify-content-between" style="padding: .75rem 1.25rem;">
             <form action="" method="post" class="d-flex align-items-center" style="gap: 8px;">
               <input type="text" class="p-2 px-3" placeholder="Từ khóa tìm kiếm" name="keyword" autocomplete="off" id="keyword" style="border: 1px solid #ccc">
-              <input type="submit" name="search" class="btn text-white py-2" value="Tìm kiếm" style="background-color: #28a745;">
+              <input type="submit" name="search" class="btn text-white py-2" value="Tìm kiếm" style="background-color: #38284f;">
             </form>
             <a href="index.php?page=order&query=listed"><i class="fa-solid fa-rotate-right p-2"></i></a>
           </div>
@@ -73,7 +73,7 @@ if (isset($_POST["search"]) && $_POST["search"]) {
                   <th>Phí vận chuyển</th>
                   <th>Tổng tiền</th>
                   <th>Trạng thái</th>
-                  <th></th>
+                  <th>Chi tiết</th>
                 </tr>
               </thead>
               <tbody>
@@ -154,14 +154,14 @@ if (isset($_POST["search"]) && $_POST["search"]) {
 
                             <input type="hidden" name='id-order' value='<?php echo $htmlspecialchars($row['id']); ?>' class='btn btn-primary'>
                             <?php if ($tmp1 == 0) { ?>
-                              <input type="submit" name='update-status' value='UP' class='btn btn-primary'>
+                              <input type="submit" name='update-status' value='UP' class='btn text-white' style="background-color: #38284f;">
                             <?php } ?>
                           </div>
                         </form>
                       </td>
 
                       <td>
-                        <a class="text-dark" href="?page=order&query=detail&id=<?php echo $htmlspecialchars($row['id']) ?>"> <i class="fa-solid fa-pen fa-lg"></i></a>
+                        <a class="text-dark" href="?page=order&query=detail&id=<?php echo $htmlspecialchars($row['id']) ?>"> <i class="fa-solid fa-eye fa-lg"></i></a>
                       </td>
                     </tr>
                 <?php

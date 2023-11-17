@@ -35,19 +35,24 @@
                         $sum += $htmlspecialchars($row['DonGia']) * $htmlspecialchars($row['SoLuong']);
                   ?>
                   <tr>
-                    <th scope="row" class="border-0">
-                      <div class="p-2">
+                    <th scope="row" class="border-0" style="width: 50%;">
+                      <div class="p-2 d-flex justify-content-start align-items-center">
                         <img src="../../admincp/modules/Manage_Book/uploads/<?php echo $htmlspecialchars($row['HinhAnh']) ?>" alt="" width="70" class="img-fluid rounded shadow-sm">
-                        <div class="ml-3 d-inline-block align-middle">
-                          <h5 class="mb-0"> <a href="#" class="text-dark d-inline-block align-middle d-sm-none d-md-block">
-                              <?php echo $htmlspecialchars($row['TenSach']);
-                              $idcate = $htmlspecialchars($row['MaTheLoai']); ?></a></h5><span class="text-muted font-weight-normal font-italic d-block d-sm-none d-md-block">Thể loại:
+                        <div class="ms-3 ml-3 d-inline-block  ">
+                          <div class="row">
+                            <div class="mb-0 col-8 text-truncate">
+                              <?php echo $htmlspecialchars($row['TenSach']); ?>sssssss
+                            </div>
+                          </div>
+                          <span class="text-muted font-weight-normal font-italic d-block d-sm-none d-md-block">Thể loại:
                             <?php
+                            $idcate = $htmlspecialchars($row['MaTheLoai']);
                             $sql = "SELECT TenTheLoai FROM category where MaTheLoai LIKE '%$idcate%' LIMIT 1 ";
                             $statements = $pdo->prepare($sql);
                             $statements->execute();
                             $rows = $statements->fetch();
-                            echo $htmlspecialchars($rows['TenTheLoai']) ?></span>
+                            echo $htmlspecialchars($rows['TenTheLoai']) ?>
+                          </span>
                         </div>
                       </div>
                     </th>
@@ -61,8 +66,7 @@
                     } else {
                 ?>
                 <tr>
-                  <th scope="row" class="border-0">Giỏ hàng rỗng</th>
-
+                  <th scope="row" class="border-0" colspan="3">Giỏ hàng rỗng</th>
                 </tr>
             <?php }
                   } ?>

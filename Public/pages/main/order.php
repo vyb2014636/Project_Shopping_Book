@@ -84,7 +84,7 @@ if (isset($_SESSION["login"])) {
                     <?php } elseif ($htmlspecialchars($rowst['TrangThai']) == 1) { ?>
                       <div class='d-flex justify-content-end align-items-center'><i class="fa-solid fa-truck"></i>&nbsp;<span>Đang giao hàng</span></div>
                     <?php } else { ?>
-                      <div class='d-flex justify-content-end'><span>Đã giao</span></div>
+                      <div class='d-flex justify-content-end align-items-center'><i class="fa-solid fa-circle-check"></i>&nbsp;<span>Đã giao</span></div>
                     <?php } ?>
                 </div>
                 <!-- card body -->
@@ -134,7 +134,12 @@ if (isset($_SESSION["login"])) {
           <div class="col d-flex justify-content-center align-items-center flex-column" style="height: 300px;">
             <img src="../../img/cart-empty.png" alt="">
             <p style="color: #cccccc;">Nếu muốn đặt hàng hãy</p>
-            <a href="index.php?page=login" class="btn text-white" style="background-color: #38284f;">Đăng nhập</a>
+            <?php if (isset($_SESSION['login'])) { ?>
+              <a href="index.php" class="btn text-white" style="background-color: #38284f;">Tiếp tục mua sắm</a>
+            <?php } else { ?>
+              <a href="index.php?page=login" class="btn text-white" style="background-color: #38284f;">Đăng nhập</a>
+            <?php } ?>
+
           </div>
         </div>
       </div>

@@ -34,7 +34,7 @@ if (isset($_POST["search"]) && $_POST["search"]) {
           <div class="d-flex align-items-center justify-content-between" style="padding: .75rem 1.25rem;">
             <form action="" method="post" class="d-flex align-items-center" style="gap: 8px;">
               <input type="text" class="p-2 px-3" placeholder="Từ khóa tìm kiếm" name="keyword" autocomplete="off" id="keyword" style="border: 1px solid #ccc">
-              <input type="submit" name="search" class="btn text-white py-2" value="Tìm kiếm" style="background-color: #28a745;">
+              <input type="submit" name="search" class="btn text-white py-2" value="Tìm kiếm" style="background-color: #38284f;">
             </form>
             <a href="index.php?page=books&query=listed"><i class="fa-solid fa-rotate-right p-2"></i></a>
           </div>

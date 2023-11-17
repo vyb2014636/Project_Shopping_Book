@@ -2,13 +2,19 @@
   <div id="carouselExampleAutoplaying" class="carousel slide px-0 py-2 col-md-8 rounded-4" data-bs-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img src="../img/slidebar.jpg" class="d-block w-100 rounded-4" style="height: 330px;" alt="...">
+        <a href="index.php?page=category&idcate=EDU">
+          <img src="../img/slidebar.jpg" class="d-block w-100 rounded-4" style="height: 330px;" alt="...">
+        </a>
       </div>
       <div class="carousel-item">
-        <img src="../img/slidebar1.jpg" class="d-block w-100 rounded-4" style="height: 330px;" alt="...">
+        <a href="index.php?page=category&idcate=EDU">
+          <img src="../img/slidebar1.jpg" class="d-block w-100 rounded-4" style="height: 330px;" alt="...">
+        </a>
       </div>
       <div class="carousel-item">
-        <img src="../img/slidebar2.jpg" class="d-block w-100 rounded-4" style="height: 330px;" alt="...">
+        <a href="index.php?page=category&idcate=EDU">
+          <img src="../img/slidebar2.jpg" class="d-block w-100 rounded-4" style="height: 330px;" alt="...">
+        </a>
       </div>
     </div>
     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
@@ -22,10 +28,14 @@
   </div>
   <div class="d-sm-none d-md-flex col-md-4 ps-1 py-2 px-0 d-flex flex-column justify-content-between">
     <div style="height:100%">
-      <img src="../img/slidebar.jpg" class="d-block w-100 rounded-4" style="height:100%;padding-bottom: 2px;">
+      <a href="index.php?page=category&idcate=EDU">
+        <img src="../img/slidebar1.png" class="d-block w-100 rounded-4" style="height:100%;padding-bottom: 2px;">
+      </a>
     </div>
     <div style="height:100% " class="rounded-4">
-      <img src="../img/slidebar.jpg" class="d-block w-100 rounded-4" style="height:100%;padding-top: 2px;">
+      <a href="index.php?page=category&idcate=EDU">
+        <img src="../img/slidebar2.png" class="d-block w-100 rounded-4" style="height:100%;padding-top: 2px;">
+      </a>
     </div>
   </div>
 </div>

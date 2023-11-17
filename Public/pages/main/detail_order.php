@@ -75,25 +75,20 @@ try {
                 }
                 while ($rowt = $stmtt->fetch()) { ?>
                   <tr class="border-top border-top-dashed">
-                    <td colspan="3"></td>
-                    <td colspan="2" class="fw-medium p-0">
+                    <td colspan="2"></td>
+                    <td colspan="3" class="fw-medium p-0">
                       <table class="table table-borderless mb-0">
                         <tbody>
                           <tr>
-                            <td>Tổng tiền :</td>
+                            <td style="width: 50%;">Tổng tiền :</td>
                             <td class="text-end"><?php echo number_format($htmlspecialchars($rowt['TongTien']) - $rowt['Ship'], 0, ',', '.') . ' vnđ' ?></td>
                           </tr>
-
                           <tr>
-                            <td>Phí vận chuyển :</td>
+                            <td style="width: 50%;">Phí vận chuyển :</td>
                             <td class="text-end"><?php echo number_format($htmlspecialchars($rowt['Ship']), 0, ',', '.') . ' vnđ' ?></td>
                           </tr>
-                          <tr>
-                            <td>Estimated Tax :</td>
-                            <td class="text-end">0</td>
-                          </tr>
                           <tr class="border-top border-top-dashed">
-                            <th scope="row">Tổng :</th>
+                            <th scope="row" style="width: 50%;">Tổng :</th>
                             <th class="text-end"><?php echo number_format($htmlspecialchars($rowt['TongTien']), 0, ',', '.') . ' vnđ' ?> </th>
                           </tr>
                         </tbody>

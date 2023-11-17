@@ -85,7 +85,7 @@
       <div id="main-menu" class="main-menu collapse navbar-collapse">
         <ul class="nav navbar-nav">
           <li class="">
-            <a href="#"><i class="menu-icon fa fa-laptop"></i>Dashboard
+            <a href="index.php"><i class="menu-icon fa fa-laptop"></i>Dashboard
             </a>
           </li>
           <li class="menu-title">Chức năng</li>
@@ -114,24 +114,24 @@
               </li>
             </ul>
           </li>
+          <li class=" menu-item-has-children dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="menu-icon fa-solid fa-user"></i>
+              Khách hàng
+            </a>
+            <ul class="sub-menu children dropdown-menu">
+              <li>
+                <i class="fa fa-list"></i>
+                <a href="index.php?page=shopper&query=listed">Danh sách</a>
+              </li>
+            </ul>
+          </li>
           <li class="menu-item-has-children dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <i class="menu-icon fa fa-table"></i>Đơn hàng</a>
             <ul class="sub-menu children dropdown-menu">
               <li>
                 <i class="fa fa-list"></i><a href="index.php?page=order&query=listed">Danh sách đơn hàng</a>
-              </li>
-            </ul>
-          </li>
-          <li class=" menu-item-has-children dropdown">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <i class="menu-icon fa-solid fa-truck"></i>
-              Vận chuyển
-            </a>
-            <ul class="sub-menu children dropdown-menu">
-              <li>
-                <i class="fa fa-list"></i>
-                <a href="index.php?page=transport&act=list">Danh sách</a>
               </li>
             </ul>
           </li>
@@ -201,4 +201,5 @@
           </div>
         </div>
       </div>
+
     </header>
