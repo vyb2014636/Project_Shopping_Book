@@ -7,13 +7,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Trang chủ</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
-  <link rel="stylesheet" href="../css/style.css" />
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-  <script src="/js/script.js"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha	512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/jquery.validate.min.js" integrity="sha512-WMEKGZ7L5LWgaPeJtw9MBM4i5w5OSBlSjTjCtSnvFJGSVD26gE5+Td12qN5pvWXhuWaWcVwF++F7aqu9cvqP0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="../js/script.js"></script>
+  <link rel="stylesheet" href="../css/style.css" />
+
 </head>
 
 <body style="background-color: #efefef;">
@@ -123,7 +127,7 @@
             if (isset($_SESSION['login'])) {
             ?>
               <div class="nav-item">
-                <a class="nav-link ms-2 text-uppercase" href="index.php?page=profile"><img src="../img/<?php echo $_SESSION['login']['img'] ?>" style="width: 100%;"></a>
+                <a class="nav-link ms-2 text-uppercase" href="index.php?page=profile"><img src="../img/avatar_user/<?php echo $_SESSION['login']['img'] ?>" style="width: 100%;"></a>
               </div>
               <div class="nav-item">
                 <a class="nav-link ms-2 text-uppercase" id="signout"><i class="fa-solid fa-right-from-bracket fa-xl"></i> </a>
@@ -272,9 +276,9 @@
   </div>
   <!--Show Nav Mobile-->
 
-  <div class="offcanvas offcanvas-start rounded m-3" data-bs-scroll="false" data-bs-backdrop="true" tabindex="-1" id="category" aria-labelledby="category-label" style="height: 400px; width: 30%">
+  <div class="offcanvas offcanvas-start rounded m-3" data-bs-scroll="false" data-bs-backdrop="true" tabindex="-1" id="category" aria-labelledby="category-label" style=" width: 30%">
     <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="category-label">Chọn thể loại sách</h5>
+      <h5 class="offcanvas-title ronaldo" id="category-label">Chọn thể loại sách</h5>
       <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
     <div class="offcanvas-body" id="menu-cart-shopping-items">
@@ -290,7 +294,15 @@
         }
         while ($row = $statement->fetch()) {
         ?>
-          <div class='p-2'><a class="text-black" href="../index.php?page=category&idcate=<?php echo $htmlspecialchars($row['MaTheLoai']) ?>"><?php echo $htmlspecialchars($row['TenTheLoai']) ?></a></div>
+          <div class='p-2 d-flex justify-content-between chevrons'>
+            <a class="text-black " href="../index.php?page=category&idcate=<?php echo $htmlspecialchars($row['MaTheLoai']) ?>"><?php echo $htmlspecialchars($row['TenTheLoai']) ?>
+            </a>
+            <span class=" rounded-circle my-auto d-flex align-items-center justify-content-center" style="width: 4%;height: 20px;background-color: #2727271a;">
+              <svg role="presentation" focusable="false" width="5" height="8" class="icon icon-chevron-right-small reverse-icon" viewBox="0 0 5 8">
+                <path d="m.75 7 3-3-3-3" fill="none" stroke="currentColor" stroke-width="1.5"></path>
+              </svg>
+            </span>
+          </div>
         <?php
         }
         ?>

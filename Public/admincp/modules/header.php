@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>CT467 - Project</title>
+  <title>CT275 - Project_ShoppingBook</title>
   <meta name="description" content="Maneger-Stock" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 

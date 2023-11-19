@@ -10,7 +10,17 @@ if (isset($_GET['act']) &&  $_GET['act'] == 'delete') {
   $sql = "DELETE FROM tbl_user WHERE id LIKE '%$id%' LIMIT 1";
   $statement = $pdo->prepare($sql);
   $statement->execute();
-  header("location:index.php?page=shopper&query=listed");
+?>
+  <script>
+    Swal.fire({
+      icon: 'success',
+      title: 'Thành công',
+      text: 'Xóa thành công',
+    }).then(function() {
+      window.location.href = 'index.php?page=shopper&query=listed';
+    });
+  </script>
+<?php
 }
 if (isset($_POST["search"]) && $_POST["search"]) {
   $keyword = $_POST["keyword"];

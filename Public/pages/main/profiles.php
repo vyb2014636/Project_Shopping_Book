@@ -1,32 +1,35 @@
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_FILES["avatar"])) {
   $user_id = $_SESSION['login']['username'];
-
-  $file_name = $_FILES["avatar"]["name"];
   $file_tmp = $_FILES["avatar"]["tmp_name"];
+  $file_name = $_FILES["avatar"]["name"];
+  $file_name =  time() . '_' . $file_name;
   $file_size = $_FILES["avatar"]["size"];
   $file_type = $_FILES["avatar"]["type"];
-
   // Đường dẫn để lưu trữ ảnh
   $upload_path = "img/avatar_user/";
   $target_file = $upload_path . basename($file_name);
-
+  $name_file = basename($file_name);
   // Kiểm tra định dạng ảnh (có thể thêm kiểm tra đối với các định dạng khác)
   $allowed_types = array("image/jpeg", "image/png", "image/gif");
   if (in_array($file_type, $allowed_types)) {
     // Di chuyển file tạm thời đến địa chỉ đích
     move_uploaded_file($file_tmp, $target_file);
-
     // Cập nhật đường dẫn ảnh mới vào cơ sở dữ liệu
-    $update_sql = "UPDATE tbl_user SET Hinh = '$file_name' WHERE TenDangNhap = '$user_id'";
+    $statement = $pdo->prepare("SELECT * FROM tbl_user WHERE TenDangNhap LIKE '%$user_id%'");
+    $statement->execute();
+    $row = $statement->fetch(PDO::FETCH_ASSOC);
+    if ($row['Hinh'] != 'avatar.png') {
+      unlink('img/avatar_user/' . $row["Hinh"]);
+    }
+    $update_sql = "UPDATE tbl_user SET Hinh = '$name_file' WHERE TenDangNhap LIKE '%$user_id%'";
     $statement = $pdo->prepare($update_sql);
     $statement->execute();
-
-    if ($conn->query($update_sql) === TRUE) {
-      echo "Avatar updated successfully";
-    } else {
-      echo "Error updating avatar: " . $conn->error;
-    }
+    $_SESSION['login']['img'] = $name_file;
+    // if ($pdo->query($update_sql) === TRUE) {
+    // } else {
+    // echo "Error updating avatar: " . $conn->error;
+    // }
   } else {
     echo "Invalid file type. Only JPEG, PNG, and GIF are allowed.";
   }
@@ -61,7 +64,7 @@ if (isset($_SESSION["login"])) {
                     formData.append('avatar', file);
                     // Sử dụng Ajax để gửi dữ liệu
                     $.ajax({
-                      url: 'http://shopping_book.localhost/index.php?page=profile',
+                      url: 'http://ct275_project.localhost/index.php?page=profile',
                       type: 'POST',
                       data: formData,
                       processData: false,

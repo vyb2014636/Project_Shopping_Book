@@ -105,7 +105,7 @@ if (!isset($_SESSION["loginAD"])) {
                                     </form>
                                 </div>
                             </div>
-                            <div class="col-md-6 col-lg-5 d-none d-md-block bg-dark" style="border-radius: 0 1rem 1rem 0"></div>
+                            <div class="col-md-6 col-lg-5 d-none d-md-block " style="border-radius: 0 1rem 1rem 0;background-image: url('../img/adminlogin.jpg');"></div>
                         </div>
                     </div>
                 </div>

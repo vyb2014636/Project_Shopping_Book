@@ -65,11 +65,11 @@ if ((isset($_POST['dangnhap'])) && ($_POST['dangnhap'])) {
                   </div>
                   <div class="form-outline mb-4">
                     <label class="form-label" for="username"><strong>Tên đăng nhập</strong></label>
-                    <input type="text" id="firstname" name="username" class="form-control form-control-lg" />
+                    <input type="text" id="firstname" name="username" class="form-control form-control-lg" placeholder="Nhập tên tài khoản" />
                   </div>
                   <div class="form-outline mb-4">
                     <label class="form-label" for=""><strong>Mật khẩu</strong></label>
-                    <input type="password" id="password" name="password" class="form-control form-control-lg" />
+                    <input type="password" id="password" name="password" class="form-control form-control-lg" placeholder="Nhập mật khẩu" />
                   </div>
                   <div class="mb-3">
                     <input class="btn btn-dark btn-lg btn-block" type="submit" name="dangnhap" value="Đăng nhập" />
@@ -89,7 +89,7 @@ if ((isset($_POST['dangnhap'])) && ($_POST['dangnhap'])) {
                 </form>
               </div>
             </div>
-            <div class="col-md-6 col-lg-5 d-none d-md-block bg-dark" style="border-radius: 0 1rem 1rem 0"></div>
+            <div class="col-md-6 col-lg-5 d-none d-md-block" style="border-radius: 0 1rem 1rem 0; background-image: url('../../img/bglogin.jpg'); "></div>
           </div>
         </div>
       </div>

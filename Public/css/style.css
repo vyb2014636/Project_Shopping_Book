@@ -19,11 +19,6 @@ a {
   box-shadow: none !important;
 }
 
-@media screen and (max-width: 540px) {
-  .centerOnMobile {
-    text-align: center;
-  }
-}
 .link-nav .link-nav-item span {
   position: relative;
 }
@@ -147,7 +142,16 @@ a {
   display: inline-block;
   margin-right: 5px;
 }
-
 .product-links {
   text-align: right;
+}
+
+.chevrons:hover .chevrons span {
+  background-color: black;
+  color: white;
+}
+@media screen and (max-width: 540px) {
+  .centerOnMobile {
+    text-align: center;
+  }
 }

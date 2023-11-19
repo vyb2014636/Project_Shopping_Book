@@ -1,5 +1,3 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
-<script src="../js/script.js"></script>
 <footer class="text-center text-lg-start bg-light text-muted border-top mt-3">
   <section class="">
     <div class="container d-flex justify-content-center justify-content-lg-between p-2 border-bottom">

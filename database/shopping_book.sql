@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 17, 2023 lúc 09:41 AM
+-- Thời gian đã tạo: Th10 19, 2023 lúc 02:41 PM
 -- Phiên bản máy phục vụ: 10.4.28-MariaDB
 -- Phiên bản PHP: 8.2.4
 
@@ -80,21 +80,7 @@ CREATE TABLE `cart` (
 --
 
 INSERT INTO `cart` (`id`, `TenTaiKhoan`, `MaSach`, `TenSach`, `HinhAnh`, `DonGia`, `SoLuong`, `MaTheLoai`, `MaDonHang`) VALUES
-(78, 'decute14', 'S03', 'Thần số học', 'sach3.jpg', 129000, 1, 'KH', 327),
-(79, 'decute14', 'S02', 'Sĩ số lớp vắng 0', 'sach2.jpg', 81600, 1, 'HR', 327),
-(80, 'decute14', 'S05', 'Vàng và máu', 'kinhdi2.jpg', 46750, 7, 'HR', 968),
-(81, 'decute14', 'S06', 'Kho Vàng Sầm Sơn', 'kinhdi1.jpg', 59500, 1, 'HR', 251),
-(82, 'decute14', 'S10', 'Nghĩ Giàu & Làm Giàu (Khổ Nhỏ) ', 'sachrich.jpg', 91800, 1, 'KHKT', 906),
-(83, 'decute14', 'S04', 'English Listening Build', 'sach4.jpg', 150000, 1, 'GT', 906),
-(84, 'decute14', 'S03', 'Thần số học', 'sach3.jpg', 129000, 1, 'KH', 906),
-(85, 'decute14', 'S05', 'Vàng và máu', 'kinhdi2.jpg', 46750, 7, 'HR', 285),
-(86, 'decute14', 'S04', 'English Listening Build', 'sach4.jpg', 150000, 1, 'GT', 285),
-(87, 'decute14', 'S03', 'Thần số học', 'sach3.jpg', 129000, 1, 'KH', 285),
-(88, 'decute14', 'S04', 'English Listening Build', 'sach4.jpg', 150000, 1, 'GT', 125),
-(92, 'decute14', 'S05', 'Vàng và máu', 'kinhdi2.jpg', 46750, 7, 'HR', 398),
-(93, 'decute14', 'S03', 'Thần số học', 'sach3.jpg', 129000, 1, 'KH', 398),
-(101, 'decute14', 'S15', 'Điều Khiến Giáo Viên Ưu Tú Trở Nên Khác Biệt', '1700204001_teacher1.jpg', 54187.5, 5, 'EDU', 546),
-(102, 'decute14', 'S13', 'Education - Kinh Doanh Giáo Dục Tại Thị Trường Việt Nam', '1700202131_edu1.jpg', 158950, 14, 'EDU', 546);
+(106, 'loib123', 'S05', 'Vàng và máu', 'kinhdi2.jpg', 46750, 5, 'HR', 275);
 
 -- --------------------------------------------------------
 
@@ -143,7 +129,7 @@ CREATE TABLE `payment` (
 --
 
 INSERT INTO `payment` (`id`, `TenKhachHang`, `TKKhachHang`, `SoDienThoai`, `Email`, `DiaChi`, `TongSP`, `Ship`, `TongTien`, `TrangThai`) VALUES
-(546, 'Hồ Văn Dễ', 'decute14', '0123456789', 'decute14@gmail.com', 'An Giang,Châu Đốc', '2', 40000, 2536240, 2);
+(275, 'Nguyễn Thành Lợi', 'loib123', '0123456789', 'loib123456@gmail.com', 'An Giang,Châu Đốc', '1', 40000, 273750, 2);
 
 -- --------------------------------------------------------
 
@@ -169,8 +155,7 @@ CREATE TABLE `tbl_user` (
 
 INSERT INTO `tbl_user` (`id`, `TenNguoiDung`, `TenDangNhap`, `MatKhau`, `Email`, `SoDienThoai`, `DiaChi`, `Hinh`, `role`) VALUES
 (1, 'Nguyễn Thành Lợi', 'loib2019', 'e10adc3949ba59abbe56e057f20f883e', 'loi@gmail.com', '', '', 'avatar.png', 1),
-(5, 'hồ văn dễ', 'decute14', 'e10adc3949ba59abbe56e057f20f883e', 'decute14@gmail.com', '0912345678', 'An Giang sat thủ', 'avartamoi.png', 2),
-(6, 'Lâm Thanh Vỹ', 'vyvn2409', '826a8da04a53d9c6ddda65a7afd48dc8', 'vy2409@gmail.com', '0919781456', '109/11 Bạc Liêu', 'avartamoi.png', 2);
+(17, 'Nguyễn Thành Lợi', 'loib123', '25f9e794323b453885f5181f1b624d0b', 'loib123456@gmail.com', '0123456789', 'An Giang', '1700401106_avartamoi.png', 2);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -215,13 +200,13 @@ ALTER TABLE `tbl_user`
 -- AUTO_INCREMENT cho bảng `cart`
 --
 ALTER TABLE `cart`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=103;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=107;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
