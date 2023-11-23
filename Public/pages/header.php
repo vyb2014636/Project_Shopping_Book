@@ -17,12 +17,23 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.20.0/jquery.validate.min.js" integrity="sha512-WMEKGZ7L5LWgaPeJtw9MBM4i5w5OSBlSjTjCtSnvFJGSVD26gE5+Td12qN5pvWXhuWaWcVwF++F7aqu9cvqP0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
   <script src="../js/script.js"></script>
   <link rel="stylesheet" href="../css/style.css" />
+  <style>
+    .chevronsas span {
+      width: 4%;
+      height: 20px;
+      background-color: #2727271a;
+      display: inline;
+    }
 
+    .chevronsas :hover .chevronsas span {
+      background-color: black;
+      color: white;
+    }
+  </style>
 </head>
 
 <body style="background-color: #efefef;">
   <header>
-
     <div class="superNav border-bottom p-3" style="background-color: #38284f; color: white">
       <div class="container">
         <div class="row">
@@ -130,7 +141,7 @@
                 <a class="nav-link ms-2 text-uppercase" href="index.php?page=profile"><img src="../img/avatar_user/<?php echo $_SESSION['login']['img'] ?>" style="width: 100%;"></a>
               </div>
               <div class="nav-item">
-                <a class="nav-link ms-2 text-uppercase" id="signout"><i class="fa-solid fa-right-from-bracket fa-xl"></i> </a>
+                <a class="nav-link ms-2 text-uppercase" id="signout" href="#"><i class="fa-solid fa-right-from-bracket fa-xl"></i> </a>
               </div>
               <script>
                 $(document).ready(function() {
@@ -257,21 +268,42 @@
   <div class="collapse multi-collapse under-header d-md-none" id="menu-mobile">
     <ul style="list-style: none">
       <li class="pb-1 pt-2">
-        <a class="dropdown-item" href="#">Danh mục</a>
+        <a class="dropdown-item" data-bs-toggle="collapse" href="#categoryMB" role="button" aria-expanded="false" aria-controls="collapseExample">Danh mục</a>
+        <ul style="list-style: none" class="collapse" id="categoryMB">
+          <?php
+          $sql = "SELECT * FROM category";
+          try {
+            $statement = $pdo->prepare($sql);
+            $statement->execute();
+            $htmlspecialchars = 'htmlspecialchars';
+          } catch (PDOException $e) {
+            echo $e->getMessage();
+          }
+          while ($row = $statement->fetch()) {
+          ?>
+            <li class="pb-1 pt-2 link-nav">
+              <a class="link-nav-item text-black" href="../index.php?page=category&idcate=<?php echo $htmlspecialchars($row['MaTheLoai']) ?>">
+                <?php echo $htmlspecialchars($row['TenTheLoai']) ?>
+                <after></after>
+              </a>
+            </li>
+          <?php } ?>
+        </ul>
       </li>
-      <li class="py-1"><a class="dropdown-item" href="#">Sản phẩm</a></li>
-      <li class="py-1"><a class="dropdown-item" href="#">Sales</a></li>
+      <li class="py-1"><a class="dropdown-item" href="index.php?page=category&idcate=EDU">Sales</a></li>
       <li class="py-1"><a class="dropdown-item" href="index.php?page=login">Đăng nhập</a></li>
     </ul>
     <div class="py-1" style="padding-left: 32px">
-      <div class="d-flex justify-content-start">
-        <div class="input-group" style="width: 80%">
-          <input type="text" class="form-control border-dark" style="color: #7a7a7a" placeholder="Tìm kiếm sản phẩm" />
-          <button class="btn btn-dark text-white">
-            <i class="fa-solid fa-magnifying-glass fa-xl"></i>
-          </button>
+      <form action="index.php?stext">
+        <div class="d-flex justify-content-start">
+          <div class="input-group" style="width: 80%">
+            <input type="text" class="form-control border-dark" style="color: #7a7a7a" placeholder="Tìm kiếm sản phẩm" name="stext" />
+            <button class="btn btn-dark text-white">
+              <i class="fa-solid fa-magnifying-glass fa-xl"></i>
+            </button>
+          </div>
         </div>
-      </div>
+      </form>
     </div>
   </div>
   <!--Show Nav Mobile-->
@@ -283,6 +315,7 @@
     </div>
     <div class="offcanvas-body" id="menu-cart-shopping-items">
       <div class="category">
+
         <?php
         $sql = "SELECT * FROM category";
         try {
@@ -294,15 +327,13 @@
         }
         while ($row = $statement->fetch()) {
         ?>
-          <div class='p-2 d-flex justify-content-between chevrons'>
-            <a class="text-black " href="../index.php?page=category&idcate=<?php echo $htmlspecialchars($row['MaTheLoai']) ?>"><?php echo $htmlspecialchars($row['TenTheLoai']) ?>
-            </a>
-            <span class=" rounded-circle my-auto d-flex align-items-center justify-content-center" style="width: 4%;height: 20px;background-color: #2727271a;">
+          <a class="text-black chevronsas p-2 d-flex justify-content-between chevronsas" href="../index.php?page=category&idcate=<?php echo $htmlspecialchars($row['MaTheLoai']) ?>"><?php echo $htmlspecialchars($row['TenTheLoai']) ?>
+            <span class="rounded-circle my-auto d-flex align-items-center justify-content-center">
               <svg role="presentation" focusable="false" width="5" height="8" class="icon icon-chevron-right-small reverse-icon" viewBox="0 0 5 8">
                 <path d="m.75 7 3-3-3-3" fill="none" stroke="currentColor" stroke-width="1.5"></path>
               </svg>
             </span>
-          </div>
+          </a>
         <?php
         }
         ?>

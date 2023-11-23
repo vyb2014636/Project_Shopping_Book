@@ -146,10 +146,6 @@ a {
   text-align: right;
 }
 
-.chevrons:hover .chevrons span {
-  background-color: black;
-  color: white;
-}
 @media screen and (max-width: 540px) {
   .centerOnMobile {
     text-align: center;

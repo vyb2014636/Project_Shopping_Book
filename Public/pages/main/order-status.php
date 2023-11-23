@@ -12,11 +12,13 @@
     color: #FFFFFF;
   }
 </style>
+
 <?php
 if (isset($_SESSION["login"])) {
   try {
+    $status_order = $_GET['status'];
     $userid = $_SESSION['login']['username'];
-    $stmt = $pdo->prepare("SELECT * FROM payment WHERE TKKhachHang LIKE '%$userid%'");
+    $stmt = $pdo->prepare("SELECT * FROM payment WHERE TKKhachHang LIKE '%$userid%' AND TrangThai = '$status_order'");
     $stmt->execute();
   } catch (PDOException $e) {
     echo $e->getMessage();
@@ -36,22 +38,21 @@ if (isset($_SESSION["login"])) {
       <i class="fa-solid fa-cart-shopping fa-xl text-white"></i>
       <span class="text-white">Đơn hàng của bạn</span>
     </div>
-    <?php if (isset($_SESSION['login'])) { ?>
-      <div class="StatusOrder">
-        <a href="index.php?page=order">
-          Danh sách
-        </a>
-        <a href="index.php?page=order&status=0">
-          Chờ xác nhận
-        </a>
-        <a href="index.php?page=order&status=1">
-          Đang giao
-        </a>
-        <a href="index.php?page=order&status=2">
-          Đã giao
-        </a>
-      </div>
-      <?php }
+    <div class="StatusOrder">
+      <a href="index.php?page=order">
+        Danh sách
+      </a>
+      <a href="index.php?page=order&status=0">
+        Chờ xác nhận
+      </a>
+      <a href="index.php?page=order&status=1">
+        Đang giao
+      </a>
+      <a href="index.php?page=order&status=2">
+        Đã giao
+      </a>
+    </div>
+    <?php
     if (isset($_SESSION['order']) && isset($_SESSION['login'])) {
       for ($i = 0; $i < sizeof($_SESSION['order']); $i++) { ?>
         <div class="container pt-3 px-0">
@@ -156,18 +157,19 @@ if (isset($_SESSION["login"])) {
           }
         } else {
     ?>
-    <div class="card product" style="border: none;">
+    <div class="card product mt-3" style="border: none;">
       <div class="card-body">
         <div class="row gy-3">
           <div class="col d-flex justify-content-center align-items-center flex-column" style="height: 300px;">
             <img src="../../img/cart-empty.png" alt="">
-            <p style="color: #cccccc;">Nếu muốn đặt hàng hãy</p>
-            <?php if (isset($_SESSION['login'])) { ?>
-              <a href="index.php" class="btn text-white" style="background-color: #38284f;">Tiếp tục mua sắm</a>
-            <?php } else { ?>
-              <a href="index.php?page=login" class="btn text-white" style="background-color: #38284f;">Đăng nhập</a>
-            <?php } ?>
-
+            <p style="color: #cccccc;">Chưa có đơn
+              <?php if ($status_order == 1) {
+                echo 'đang giao';
+              } else {
+                echo 'đã giao';
+              }
+              ?>
+            </p>
           </div>
         </div>
       </div>

@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 require_once __DIR__ . "/../Public/admincp/config/config.php";
 if (isset($_GET["logout"])) {
@@ -22,8 +21,10 @@ if (isset($_SESSION['login'])) {
 }
 if ($page == 'category' &&  isset($_GET['idcate'])) {
   include_once __DIR__ . '/../Public/pages/main/category.php';
-} elseif ($page == 'order') {
+} elseif ($page == 'order' && !isset($_GET['status'])) {
   include_once __DIR__ . '/../Public/pages/main/order.php';
+} elseif ($page == 'order' && isset($_GET['status'])) {
+  include_once __DIR__ . '/../Public/pages/main/order-status.php';
 } elseif ($page == 'detail') {
   include_once __DIR__ . '/../Public/pages/main/detail.php';
 } elseif ($page == 'cart') {

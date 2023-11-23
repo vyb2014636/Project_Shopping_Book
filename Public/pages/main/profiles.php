@@ -54,7 +54,12 @@ if (isset($_SESSION["login"])) {
                 <?php } else { ?>
                   <img src="../../img/avatar_user/<?php echo  $htmlspecialchars($row['Hinh']) ?>" alt="avatar" class="rounded-circle img-fluid" style="width: 150px;">
                 <?php } ?>
-                <input type="file" id="avatar" placeholder="rỗng" accept="image/*" onchange="uploadAvatar()">
+                <div class="pt-3 ">
+                  <label for="avatar" style="background-color: silver;border-radius: 5px;padding: 2px;">
+                    Thay đổi ảnh đại diện
+                  </label>
+                  <input type="file" id="avatar" placeholder="rỗng" accept="image/*" onchange="uploadAvatar()" style="display: none;">
+                </div>
                 <script>
                   function uploadAvatar() {
                     var input = document.getElementById('avatar');
@@ -82,7 +87,6 @@ if (isset($_SESSION["login"])) {
                   }
                 </script>
                 <h5 class="my-3"> <?php echo  $htmlspecialchars($row['TenNguoiDung']) ?> </h5>
-                <p class="text-muted mb-1">Full Stack Developer</p>
                 <p class="text-muted mb-4">Việt Nam</p>
 
               </div>
